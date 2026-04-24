@@ -1,0 +1,6 @@
+#SliderP .thumb {
+    -fx-background-color: #ff0841;
+}
+#SliderP .track{
+    -fx-background-color: #EBDFCC;
+}

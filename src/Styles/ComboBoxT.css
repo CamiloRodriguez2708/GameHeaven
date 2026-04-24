@@ -1,0 +1,30 @@
+/* Caja del ComboBox (cuando está cerrado) */
+#ComboBoxT {
+    -fx-background-color: #EBDFCC;
+    -fx-background-radius: 20;
+    -fx-border-radius: 20;
+}
+
+/* SOLO la lista desplegable */
+#ComboBoxT .list-view {
+    -fx-background-color: #EBDFCC;
+    -fx-background-radius: 15;
+}
+
+/* Ítems */
+#ComboBoxT .list-cell {
+    -fx-background-color: #EBDFCC;
+    -fx-background-edge: 20;
+    -fx-text-fill: #02031A;
+}
+
+/* Hover */
+#ComboBoxT .list-cell:hover {
+    -fx-background-color: #ff0841;
+    -fx-text-fill: white;
+    -fx-background-radius: 15;
+}
+
+#ComboBoxT .cell {
+    -fx-background-color: transparent;
+}
