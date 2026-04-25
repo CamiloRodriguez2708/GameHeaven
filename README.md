@@ -27,10 +27,12 @@ El proyecto está orientado al aprendizaje de:
 
 ---
 
-## 📌 Autor
+## 👥 Equipo de desarrollo
 
-Camilo Rodríguez  
-Sofia Arrollo
-Yirley Nieves
-Sebastian Gonzales
+**Proyecto realizado por:**
+
+- Camilo Rodríguez  
+- Sofía Arrollo  
+- Yirley Nieves  
+- Sebastián Gonzales  
 Ingeniería de Sistemas – Universidad de Córdoba
