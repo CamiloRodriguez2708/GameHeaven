@@ -4,21 +4,15 @@
  */
 package Controlador;
 
-import javafx.scene.input.MouseEvent;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.ResourceBundle;
 import javafx.animation.FadeTransition;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Slider;
-import javafx.scene.input.KeyCombination;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -27,31 +21,17 @@ import javafx.util.Duration;
  *
  * @author USUARIO
  */
-public class PaginaPrincipalController implements Initializable {
+public class PantallaSignUpController implements Initializable {
 
-    @FXML
-    private ComboBox<String> ComboBoxT;
-    
-    @FXML
-    private Slider SliderP;
-    
-    
-    
+    /**
+     * Initializes the controller class.
+     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        
-        ArrayList<String> list = new ArrayList<>();
-        Collections.addAll(list, new String[]{"Tienda","Historial","Favoritos"});
-        
-        ComboBoxT.getItems().addAll(list);
-        
-        
-    }
-    @FXML
-    public void Login(MouseEvent event) throws Exception {
-
-    Parent root = FXMLLoader.load(getClass().getResource("/Vista/PantallaLogin.fxml"));
+    }    
+    public void Principal(MouseEvent event) throws Exception {
+    Parent root = FXMLLoader.load(getClass().getResource("/Vista/paginaPrincipal.fxml"));
 
     Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
@@ -71,8 +51,4 @@ public class PaginaPrincipalController implements Initializable {
         fadeIn.setToValue(1);
         fadeIn.play();
     });
-
-    fadeOut.play();
-}
-    
-}
+}}

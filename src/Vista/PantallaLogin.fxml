@@ -52,7 +52,7 @@
                         <Font name="Nirmala UI Bold" size="16.0" />
                      </font>
                   </Text>
-                  <Text fill="#02031a" layoutX="30.0" layoutY="414.0" strokeType="OUTSIDE" strokeWidth="0.0" text="No tienes cuenta?">
+                  <Text fill="#02031a" layoutX="30.0" layoutY="414.0" onMouseClicked="#signUp" strokeType="OUTSIDE" strokeWidth="0.0" text="No tienes cuenta?">
                      <font>
                         <Font name="Nirmala UI Bold" size="16.0" />
                      </font>
