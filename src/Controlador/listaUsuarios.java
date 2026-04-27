@@ -1,159 +1,162 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Controlador;
+
 import Modelo.nodoUsuario;
 import java.util.Date;
-import javax.swing.JTextField;
-/**
- *
- * @author Camilo Rodriguez
- */
+
 public class listaUsuarios {
-    nodoUsuario cab;
-    
-    public listaUsuarios(){
-    cab = null;
-    }
-    public nodoUsuario buscarID(String a){
-        if(cab == null){
-            return null;
-        }
-        else{
-            nodoUsuario b = cab;
-            do{
-                if(b.iD == Integer.parseInt(a)){
-                    return b;
-                }
-                else{
-                    b=b.sig;
-                }
-            } while(b != cab);
-            return null;
+    private static nodoUsuario cab;
+    private static boolean datosDemoCargados = false;
+
+    public listaUsuarios() {
+        if (!datosDemoCargados) {
+            cargarDatosDemo();
+            datosDemoCargados = true;
         }
     }
-    
-    public nodoUsuario buscarCorr(String a){
-        if(cab == null){
-            return null;
-        }
-        else{
-            nodoUsuario b = cab;
-            do{
-                if(b.correo.equals(a)){
-                    return b;
-                }
-                else{
-                    b=b.sig;
-                }
-            } while(b != cab);
-            return null;
-        }
+
+    private void cargarDatosDemo() {
+        Date hoy = new Date();
+        agregarInicio(
+                "Usuario Demo",
+                "usuario@gameheaven.com",
+                "1234",
+                "Usuario Demo",
+                "CC",
+                "1000000000",
+                "Sin especificar",
+                "3000000000",
+                "Pregunta",
+                "",
+                "Tarjeta",
+                "000",
+                "Cundinamarca",
+                "Bogotá",
+                "",
+                hoy,
+                0,
+                1001,
+                0
+        );
+
+        agregarInicio(
+                "Administrador",
+                "admin@gameheaven.com",
+                "admin123",
+                "Administrador",
+                "CC",
+                "1000000001",
+                "Sin especificar",
+                "3000000001",
+                "Pregunta",
+                "",
+                "Tarjeta",
+                "000",
+                "Cundinamarca",
+                "Bogotá",
+                "",
+                hoy,
+                0,
+                1002,
+                1
+        );
     }
-    
-    public nodoUsuario crearNodo(String nombreU, String correo, String contraseña, String nombreR, String tipoD, String numD, String genero, String telefono, String pregunta, String nomBanco, String tipoMetodoP, String codigoP, String departamento, String municipio, String dirrecion, Date fechaNacimiento, int numTarjeta, int iD, int tipo){
-        
-        if (buscarCorr(correo) != null){
-           
+
+    public nodoUsuario buscarID(String a) {
+        if (cab == null) {
             return null;
         }
-        else{
-            
-            
-            try{
-                nodoUsuario n = new nodoUsuario(nombreU, correo, contraseña, nombreR, tipoD, numD, genero, telefono, pregunta, nomBanco, tipoMetodoP, codigoP, departamento, municipio, dirrecion, fechaNacimiento, numTarjeta, iD, tipo);
-                return n;
+        nodoUsuario b = cab;
+        do {
+            if (b.iD == Integer.parseInt(a)) {
+                return b;
             }
-            catch (Exception e){
-                return null;
+            b = b.sig;
+        } while (b != cab);
+        return null;
+    }
+
+    public nodoUsuario buscarCorr(String a) {
+        if (cab == null) {
+            return null;
+        }
+        nodoUsuario b = cab;
+        do {
+            if (b.correo.equalsIgnoreCase(a)) {
+                return b;
             }
-            
+            b = b.sig;
+        } while (b != cab);
+        return null;
+    }
+
+    public nodoUsuario crearNodo(String nombreU, String correo, String contraseña, String nombreR, String tipoD, String numD, String genero, String telefono, String pregunta, String nomBanco, String tipoMetodoP, String codigoP, String departamento, String municipio, String dirrecion, Date fechaNacimiento, int numTarjeta, int iD, int tipo) {
+        if (buscarCorr(correo) != null) {
+            return null;
+        }
+        try {
+            return new nodoUsuario(nombreU, correo, contraseña, nombreR, tipoD, numD, genero, telefono, pregunta, nomBanco, tipoMetodoP, codigoP, departamento, municipio, dirrecion, fechaNacimiento, numTarjeta, iD, tipo);
+        } catch (Exception e) {
+            return null;
         }
     }
-    
-    
-    
-    public void agregarInicio(String nombreU, String correo, String contrasena, String nombreR, String tipoD, String numD, String genero, String telefono, String pregunta, String nomBanco, String tipoMetodoP, String codigoP, String departamento, String municipio, String dirrecion, Date fechaNacimiento, int numTarjeta, int iD, int tipo){
+
+    public void agregarInicio(String nombreU, String correo, String contrasena, String nombreR, String tipoD, String numD, String genero, String telefono, String pregunta, String nomBanco, String tipoMetodoP, String codigoP, String departamento, String municipio, String dirrecion, Date fechaNacimiento, int numTarjeta, int iD, int tipo) {
         nodoUsuario info = crearNodo(nombreU, correo, contrasena, nombreR, tipoD, numD, genero, telefono, pregunta, nomBanco, tipoMetodoP, codigoP, departamento, municipio, dirrecion, fechaNacimiento, numTarjeta, iD, tipo);
-        
-        if(info != null){
-            if(cab == null){
+
+        if (info != null) {
+            if (cab == null) {
                 cab = info;
                 cab.sig = cab;
                 cab.at = cab;
-            }
-            
-            else {
+            } else {
                 info.sig = cab;
                 info.at = cab.at;
                 cab.at.sig = info;
                 cab.at = info;
                 cab = info;
-                
             }
         }
     }
-    
-    public boolean eliminar(String iD){
+
+    public boolean eliminar(String iD) {
         nodoUsuario aux = buscarID(iD);
-        if (aux == null){
+        if (aux == null) {
             return false;
         }
-        else{
-        if(cab== null){
+        if (cab == null) {
             return false;
-        }
-        else if(cab != null && cab.sig == cab){
+        } else if (cab.sig == cab) {
             cab.sig = null;
             cab.at = null;
             cab = null;
             return true;
-        }
-        else if(aux == cab && cab != null && cab.sig != null){
-            cab.sig.at =cab.at;
+        } else if (aux == cab) {
+            cab.sig.at = cab.at;
             cab.at.sig = cab.sig;
             cab = cab.sig;
-            aux.sig = null;
-            aux.at = null;
-            aux =null;
             return true;
-        }
-        else if(aux == cab.at && cab != null && cab.sig != null){
+        } else if (aux == cab.at) {
             cab.at.at.sig = cab;
             cab.at = cab.at.at;
-            aux.at = null;
-            aux.sig= null;
-            aux = null;
             return true;
-        }
-        else if(aux != cab.at && aux != cab && cab != null && cab.sig != null){
+        } else {
             aux.sig.at = aux.at;
             aux.at.sig = aux.sig;
-            aux.sig = null;
-            aux.at = null;
-            aux = null;
             return true;
         }
-        return false;
-        }
     }
-    
-    public nodoUsuario iniciarSesion(String correo, String contrasena){
-        nodoUsuario aux = cab;
-        if (aux == null){
+
+    public nodoUsuario iniciarSesion(String correo, String contrasena) {
+        if (cab == null) {
             return null;
         }
-        else{
-        do{
-            if (correo.equals(aux.correo) && contrasena.equals(aux.contrasena)){
+        nodoUsuario aux = cab;
+        do {
+            if (correo.equalsIgnoreCase(aux.correo) && contrasena.equals(aux.contrasena)) {
                 return aux;
             }
             aux = aux.sig;
-        } while(aux != cab);
+        } while (aux != cab);
         return null;
-        }
     }
-    
 }
-
