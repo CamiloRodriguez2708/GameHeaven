@@ -1,0 +1,17 @@
+1;God of War;PS4|PC;Normal;accion;rpg|historia;Juego épico de Kratos;50GB;8GB RAM;16GB RAM;Español|Inglés;2018;god.jpg;cap1.jpg;cap2.jpg;40;50;15;10;4.8
+2;The Legend of Zelda BOTW;Switch;Normal;accion;rpg|exploracion;Explora Hyrule en libertad total;14GB;4GB RAM;8GB RAM;Español|Inglés;2017;tlo.jpg;cap1.jpg;cap2.jpg;50;60;15;10;4.8
+3;Kingdom Hearts III;PS4;Normal;accion;rpg|fantasia;Crossover epico de Disney y Final Fantasy;40GB;8GB RAM;16GB RAM;Español|Inglés;2019;kingdom.jpg;cap1.jpg;cap2.jpg;60;70;10;8;4.5
+4;Bloodborne;PS4;Normal;accion;rpg|souls;Juego desafiante de terror gotico;30GB;8GB RAM;16GB RAM;Español|Inglés;2015;bloodborne.jpg;cap1.jpg;cap2.jpg;50;60;12;7;4.7
+5;Persona 5 Royal;PC|PS4;Normal;rpg;anime|historia;JRPG con historia profunda;45GB;8GB RAM;16GB RAM;Español|Inglés;2020;persona.jpg;cap1.jpg;cap2.jpg;60;70;18;9;4.9
+6;Stardew Valley;PC|Switch;Normal;casual;granja|relajante;Simulador de granja relajante;2GB;4GB RAM;8GB RAM;Español|Inglés;2016;stardew.jpg;cap1.jpg;cap2.jpg;10;15;50;30;4.8
+7;Factorio;PC;Normal;estrategia;automatizacion|logica;Construye y automatiza fabricas;3GB;4GB RAM;8GB RAM;Español|Inglés;2020;factorio.jpg;cap1.jpg;cap2.jpg;15;20;25;15;4.7
+8;Borderlands 3;PC|PS4;Normal;disparos;loot|cooperativo;Shooter con millones de armas;75GB;8GB RAM;16GB RAM;Español|Inglés;2019;borderlands.jpg;cap1.jpg;cap2.jpg;40;50;20;10;4.4
+9;Rhythm Heaven Groove;Switch;Normal;ritmo;musica|casual;Juego de ritmo divertido;5GB;4GB RAM;8GB RAM;Español|Inglés;2015;rhythm.jpg;cap1.jpg;cap2.jpg;20;25;30;20;4.3
+10;Civilization VI;PC;Normal;estrategia;turnos|historia;Construye una civilizacion;12GB;4GB RAM;8GB RAM;Español|Inglés;2016;sid.jpg;cap1.jpg;cap2.jpg;50;60;15;10;4.6
+11;Among Us;PC|Mobile;Normal;casual;multijugador|deduccion;Descubre al impostor;1GB;2GB RAM;4GB RAM;Español|Inglés;2018;among.jpg;cap1.jpg;cap2.jpg;5;10;100;50;4.2
+12;Inscryption;PC;Normal;estrategia;cartas|terror;Juego de cartas oscuro;2GB;4GB RAM;8GB RAM;Español|Inglés;2021;ins.jpg;cap1.jpg;cap2.jpg;20;25;20;10;4.8
+13;Plants vs Zombies;PC|Mobile;Normal;estrategia;defensa|casual;Defiende tu casa de zombies;1GB;2GB RAM;4GB RAM;Español|Inglés;2009;plants.jpg;cap1.jpg;cap2.jpg;15;20;40;25;4.5
+14;Uncharted 4;PS4;Normal;accion;aventura|historia;Aventura cinematografica de Nathan Drake;50GB;8GB RAM;16GB RAM;Español|Inglés;2016;uncharted.jpg;cap1.jpg;cap2.jpg;60;70;10;5;4.9
+15;Super Mario Odyssey;Switch;Normal;accion;plataformas|aventura;Aventura 3D de Mario viajando por distintos mundos;6GB;4GB RAM;8GB RAM;Español|Inglés;2017;mario.jpg;cap1.jpg;cap2.jpg;60;70;20;15;4.9
+
+

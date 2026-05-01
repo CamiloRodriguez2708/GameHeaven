@@ -4,18 +4,20 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" style="-fx-background-color: #02031A;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador.PaginaPrincipalController">
+<BorderPane fx:id="Pantalla" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" style="-fx-background-color: #02031A;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador.PaginaPrincipalController">
    <top>
       <Pane prefHeight="85.0" prefWidth="1366.0" style="-fx-background-color: #021B2B;" BorderPane.alignment="CENTER">
          <children>
@@ -72,11 +74,11 @@
          </children></Pane>
    </top>
    <center>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="mi-slider" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="0.0" prefWidth="1370.0" styleClass="mi-slider" BorderPane.alignment="CENTER">
          <children>
             <HBox layoutX="348.0" layoutY="48.0">
                <children>
-                  <Button mnemonicParsing="false" style="-fx-background-color: #EBDFCC; -fx-background-radius: 5;" text="Todos">
+                  <Button fx:id="btnMostrarTodo" mnemonicParsing="false" onAction="#mostrarTodoClick" style="-fx-background-color: #EBDFCC; -fx-background-radius: 5;" text="Todos">
                      <HBox.margin>
                         <Insets right="5.0" />
                      </HBox.margin>
@@ -87,7 +89,7 @@
                         <Font name="Nirmala UI Bold" size="16.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" style="-fx-background-color: EBDFCC; -fx-background-radius: 5;" text="Acción">
+                  <Button fx:id="btnAccion" mnemonicParsing="false" onAction="#accionClick" style="-fx-background-color: EBDFCC; -fx-background-radius: 5;" text="Acción">
                      <HBox.margin>
                         <Insets right="5.0" />
                      </HBox.margin>
@@ -98,7 +100,7 @@
                         <Font name="Nirmala UI Bold" size="16.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" style="-fx-background-color: EBDFCC; -fx-background-radius: 5;" text="Disparos">
+                  <Button fx:id="btnDisparos" mnemonicParsing="false" onAction="#disparosClick" style="-fx-background-color: EBDFCC; -fx-background-radius: 5;" text="Disparos">
                      <HBox.margin>
                         <Insets right="5.0" />
                      </HBox.margin>
@@ -109,7 +111,7 @@
                         <Font name="Nirmala UI Bold" size="16.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" style="-fx-background-color: EBDFCC; -fx-background-radius: 5;" text="Rpg">
+                  <Button fx:id="btnRPG" mnemonicParsing="false" onAction="#rpgClick" style="-fx-background-color: EBDFCC; -fx-background-radius: 5;" text="Rpg">
                      <HBox.margin>
                         <Insets right="5.0" />
                      </HBox.margin>
@@ -120,7 +122,7 @@
                         <Font name="Nirmala UI Bold" size="16.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" style="-fx-background-color: EBDFCC; -fx-background-radius: 5;" text="Ritmico">
+                  <Button fx:id="btnRitmo" mnemonicParsing="false" onAction="#ritmoClick" style="-fx-background-color: EBDFCC; -fx-background-radius: 5;" text="Ritmico">
                      <HBox.margin>
                         <Insets right="5.0" />
                      </HBox.margin>
@@ -131,7 +133,7 @@
                         <Font name="Nirmala UI Bold" size="16.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" style="-fx-background-color: EBDFCC; -fx-background-radius: 5;" text="Estrategia">
+                  <Button fx:id="btnEstrategia" mnemonicParsing="false" onAction="#estrategiaClick" style="-fx-background-color: EBDFCC; -fx-background-radius: 5;" text="Estrategia">
                      <HBox.margin>
                         <Insets right="5.0" />
                      </HBox.margin>
@@ -142,7 +144,7 @@
                         <Font name="Nirmala UI Bold" size="16.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" style="-fx-background-color: EBDFCC; -fx-background-radius: 5;" text="Casual">
+                  <Button fx:id="btnCasual" mnemonicParsing="false" onAction="#casualClick" style="-fx-background-color: EBDFCC; -fx-background-radius: 5;" text="Casual">
                      <HBox.margin>
                         <Insets right="5.0" />
                      </HBox.margin>
@@ -176,11 +178,22 @@
                   <Font name="Nirmala UI Bold" size="16.0" />
                </font>
             </Text>
-            <Text fill="#ebdfcc" layoutX="298.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="100">
+            <Text fx:id="FiltroPrecio" fill="#ebdfcc" layoutX="298.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="100">
                <font>
                   <Font name="Nirmala UI Bold" size="16.0" />
                </font>
             </Text>
+            <ScrollPane fx:id="Scroll" fitToWidth="true" layoutY="123.0" style="-fx-background-color: transparent;">
+              <content>
+                        <FlowPane fx:id="panelCatalogo" alignment="TOP_CENTER" hgap="20.0" layoutX="-8.0" layoutY="8.0" prefHeight="804.0" prefWidth="1355.0" style="-fx-background-color: #02031A;" stylesheets="@../Styles/ScrollPane.css" vgap="20.0">
+                     <padding>
+                        <Insets bottom="250.0" />
+                     </padding></FlowPane>
+              </content>
+               <padding>
+                  <Insets bottom="250.0" />
+               </padding>
+            </ScrollPane>
          </children>
          <BorderPane.margin>
             <Insets />
