@@ -1,0 +1,28 @@
+/* Cada item */
+.menu-item {
+    -fx-background-color: transparent;
+    -fx-padding: 8 12;
+    -fx-background-radius: 10;
+}
+
+/* Texto */
+.menu-item .label {
+    -fx-text-fill: #02031A;
+}
+
+/* Hover */
+.menu-item:focused {
+    -fx-background-color: #ff0841;
+    -fx-background-radius: 10;
+}
+
+.menu-item:focused .label {
+    -fx-text-fill: white;
+}
+
+.context-menu {
+    -fx-background-color: white;
+    -fx-background-radius: 15;
+    -fx-border-radius: 15;
+    -fx-padding: 5;
+}

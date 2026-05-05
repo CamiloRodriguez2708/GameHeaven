@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador.PantallaAgregarElementoController">
+   <children>
+      <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0">
+         <center>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #02031A;" BorderPane.alignment="CENTER">
+               <children>
+                  <HBox layoutX="146.0" layoutY="242.0">
+                     <children>
+                        <VBox prefHeight="43.0" prefWidth="79.0" style="-fx-background-color: #081621; -fx-background-radius: 20;">
+                           <children>
+                              <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                                 <children>
+                                    <ImageView fx:id="impPortada3" fitHeight="59.0" fitWidth="86.0" layoutX="-3.0" layoutY="-7.0" pickOnBounds="true" preserveRatio="true" />
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </VBox>
+                        <VBox prefHeight="43.0" prefWidth="79.0" style="-fx-background-color: #081621; -fx-background-radius: 20;">
+                           <children>
+                              <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                                 <children>
+                                    <ImageView fx:id="impPortada2" fitHeight="43.0" fitWidth="66.0" layoutX="7.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true" />
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <AnchorPane fx:id="PanelDescripcion" layoutX="739.0" layoutY="19.0" prefHeight="318.0" prefWidth="579.0" style="-fx-background-color: #081621; -fx-background-radius: 20;">
+                     <children>
+                        <TextArea fx:id="TextAreaD" layoutX="12.0" layoutY="52.0" prefHeight="246.0" prefWidth="555.0" stylesheets="@../Styles/Detalles.css">
+                           <font>
+                              <Font name="Nirmala UI Bold" size="18.0" />
+                           </font></TextArea>
+                        <Text fill="#ebdfcc" layoutX="14.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Descripción:">
+                           <font>
+                              <Font name="Nirmala UI Bold" size="24.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="PanelDescripcion1" layoutX="737.0" layoutY="360.0" prefHeight="256.0" prefWidth="579.0" style="-fx-background-color: #081621; -fx-background-radius: 20;">
+                     <children>
+                        <Text fill="#ebdfcc" layoutX="14.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Plataformas:">
+                           <font>
+                              <Font name="Nirmala UI Bold" size="24.0" />
+                           </font>
+                        </Text>
+                        <ComboBox fx:id="plataformaC" layoutX="206.0" layoutY="30.0" prefHeight="37.0" prefWidth="190.0" style="-fx-background-color: EBDFCC; -fx-background-radius: 30;" stylesheets="@../Styles/Detalles.css" />
+                        <Text fill="#ebdfcc" layoutX="14.0" layoutY="137.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Digital">
+                           <font>
+                              <Font name="Nirmala UI Bold" size="24.0" />
+                           </font>
+                        </Text>
+                        <Text fill="#ebdfcc" layoutX="14.0" layoutY="199.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fisico">
+                           <font>
+                              <Font name="Nirmala UI Bold" size="24.0" />
+                           </font>
+                        </Text>
+                        <Text fill="#ebdfcc" layoutX="145.0" layoutY="137.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Stock:">
+                           <font>
+                              <Font name="Nirmala UI Bold" size="24.0" />
+                           </font>
+                        </Text>
+                        <Text fill="#ebdfcc" layoutX="350.0" layoutY="137.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Precio:">
+                           <font>
+                              <Font name="Nirmala UI Bold" size="24.0" />
+                           </font>
+                        </Text>
+                        <TextField fx:id="stockD" layoutX="226.0" layoutY="104.0" prefHeight="49.0" prefWidth="105.0" style="-fx-background-radius: 30; -fx-background-color: #EBDFCC;">
+                           <font>
+                              <Font name="Nirmala UI Bold" size="18.0" />
+                           </font></TextField>
+                        <TextField fx:id="precioD" layoutX="439.0" layoutY="104.0" prefHeight="49.0" prefWidth="105.0" style="-fx-background-radius: 30; -fx-background-color: #EBDFCC;">
+                           <font>
+                              <Font name="Nirmala UI Bold" size="18.0" />
+                           </font></TextField>
+                        <Text fill="#ebdfcc" layoutX="145.0" layoutY="199.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Stock:">
+                           <font>
+                              <Font name="Nirmala UI Bold" size="24.0" />
+                           </font>
+                        </Text>
+                        <Text fill="#ebdfcc" layoutX="350.0" layoutY="199.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Precio:">
+                           <font>
+                              <Font name="Nirmala UI Bold" size="24.0" />
+                           </font>
+                        </Text>
+                        <TextField fx:id="stockF" layoutX="226.0" layoutY="166.0" prefHeight="49.0" prefWidth="105.0" style="-fx-background-radius: 30; -fx-background-color: #EBDFCC;">
+                           <font>
+                              <Font name="Nirmala UI Bold" size="18.0" />
+                           </font></TextField>
+                        <TextField fx:id="precioF" layoutX="439.0" layoutY="166.0" prefHeight="49.0" prefWidth="105.0" style="-fx-background-radius: 30; -fx-background-color: #EBDFCC;">
+                           <font>
+                              <Font name="Nirmala UI Bold" size="18.0" />
+                           </font></TextField>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutX="100.0" layoutY="18.0" prefHeight="279.0" prefWidth="579.0" style="-fx-background-color: #081621; -fx-background-radius: 20;">
+                     <children>
+                        <Text fill="#ebdfcc" layoutX="161.0" layoutY="205.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Arrastra el archivo .jpg">
+                           <font>
+                              <Font name="Nirmala UI Bold" size="24.0" />
+                           </font>
+                        </Text>
+                        <ImageView fx:id="portada" fitHeight="253.0" fitWidth="495.0" layoutX="35.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" />
+                     </children>
+                  </AnchorPane>
+                  <VBox layoutX="100.0" layoutY="452.0">
+                     <children>
+                        <AnchorPane fx:id="PanelDescripcion211" prefHeight="72.0" prefWidth="579.0" style="-fx-background-color: #081621; -fx-background-radius: 20;">
+                           <VBox.margin>
+                              <Insets bottom="20.0" />
+                           </VBox.margin>
+                           <children>
+                              <Text fill="#ebdfcc" layoutX="32.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre:">
+                                 <font>
+                                    <Font name="Nirmala UI Bold" size="24.0" />
+                                 </font>
+                              </Text>
+                              <TextField fx:id="nombreTF" layoutX="190.0" layoutY="12.0" prefHeight="47.0" prefWidth="366.0" style="-fx-background-radius: 30; -fx-background-color: #EBDFCC;">
+                                 <font>
+                                    <Font name="Nirmala UI Bold" size="18.0" />
+                                 </font></TextField>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane fx:id="PanelDescripcion21" prefHeight="72.0" prefWidth="579.0" style="-fx-background-color: #081621; -fx-background-radius: 20;">
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                           <children>
+                              <Text fill="#ebdfcc" layoutX="28.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Plataformas:">
+                                 <font>
+                                    <Font name="Nirmala UI Bold" size="24.0" />
+                                 </font>
+                              </Text>
+                              <TextField fx:id="plataformasTF" layoutX="190.0" layoutY="13.0" prefHeight="47.0" prefWidth="362.0" style="-fx-background-color: #EBDFCC; -fx-background-radius: 30;">
+                                 <font>
+                                    <Font name="Nirmala UI Bold" size="18.0" />
+                                 </font></TextField>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </VBox>
+                  <HBox layoutX="173.0" layoutY="321.0">
+                     <children>
+                        <AnchorPane fx:id="arrastrar2" prefHeight="79.0" prefWidth="131.0" style="-fx-background-color: #081621; -fx-background-radius: 20;">
+                           <HBox.margin>
+                              <Insets right="20.0" />
+                           </HBox.margin>
+                           <children>
+                              <ImageView fx:id="captura1" fitHeight="63.0" fitWidth="112.0" layoutX="10.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane prefHeight="79.0" prefWidth="131.0" style="-fx-background-color: #081621; -fx-background-radius: 20;">
+                           <children>
+                              <ImageView fx:id="captura2" fitHeight="63.0" fitWidth="112.0" layoutX="10.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane fx:id="PanelDescripcion222" prefHeight="79.0" prefWidth="131.0" style="-fx-background-color: #081621; -fx-background-radius: 20;">
+                           <HBox.margin>
+                              <Insets left="20.0" />
+                           </HBox.margin>
+                           <children>
+                              <ImageView fx:id="captura3" fitHeight="63.0" fitWidth="112.0" layoutX="12.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true" />
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </HBox>
+               </children>
+            </AnchorPane>
+         </center>
+         <top>
+            <Pane prefHeight="85.0" prefWidth="1366.0" style="-fx-background-color: #021B2B;" BorderPane.alignment="CENTER">
+               <children>
+                  <ImageView fitHeight="63.0" fitWidth="73.0" layoutX="21.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Imagenes/logo%2080x60%20PX.png" />
+                     </image>
+                  </ImageView>
+                  <AnchorPane fx:id="Buscar" layoutX="480.0" layoutY="20.0" />
+                  <ImageView fitHeight="64.0" fitWidth="64.0" layoutX="128.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Imagenes/User%2064%20PX.png" />
+                     </image>
+                  </ImageView>
+                  <Text fx:id="txtUsuario" fill="#ebdfcc" layoutX="205.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Invitado">
+                     <font>
+                        <Font name="Nirmala UI Bold" size="16.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="txtAccion" fill="#ff0841" layoutX="205.0" layoutY="37.0" onMouseClicked="#Login" strokeType="OUTSIDE" strokeWidth="0.0" text="Ingresar">
+                     <font>
+                        <Font name="Nirmala UI Bold" size="16.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Text>
+                  <Button layoutX="1200.0" layoutY="20.0" mnemonicParsing="false" onMouseClicked="#gestion" prefHeight="45.0" prefWidth="107.0" style="-fx-background-radius: 20; -fx-background-color: B10C43;" text="Volver" textFill="#ebdfcc">
+                     <font>
+                        <Font name="Nirmala UI Bold" size="18.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button layoutX="1074.0" layoutY="21.0" mnemonicParsing="false" onMouseClicked="#crearNodo" prefHeight="45.0" prefWidth="107.0" style="-fx-background-radius: 20; -fx-background-color: B10C43;" text="Guardar" textFill="#ebdfcc">
+                     <font>
+                        <Font name="Nirmala UI Bold" size="18.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+               </children>
+            </Pane>
+         </top>
+      </BorderPane>
+   </children>
+</StackPane>

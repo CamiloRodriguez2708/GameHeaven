@@ -93,17 +93,9 @@ public class PantallaLoginController implements Initializable {
             }
 
             Scene scene = stage.getScene();
-            FadeTransition fadeOut = new FadeTransition(Duration.millis(200), scene.getRoot());
-            fadeOut.setFromValue(1);
-            fadeOut.setToValue(0);
-            fadeOut.setOnFinished(e -> {
+            
                 scene.setRoot(root);
-                FadeTransition fadeIn = new FadeTransition(Duration.millis(200), root);
-                fadeIn.setFromValue(0);
-                fadeIn.setToValue(1);
-                fadeIn.play();
-            });
-            fadeOut.play();
+               
         } catch (Exception ex) {
             mostrarAlerta("No se pudo abrir la pantalla solicitada.");
         }

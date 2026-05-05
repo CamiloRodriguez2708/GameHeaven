@@ -126,17 +126,10 @@ public class PantallaSignUpController implements Initializable {
                 stage = (Stage) ((Node) ((MouseEvent) evento).getSource()).getScene().getWindow();
             }
             Scene scene = stage.getScene();
-            FadeTransition fadeOut = new FadeTransition(Duration.millis(200), scene.getRoot());
-            fadeOut.setFromValue(1);
-            fadeOut.setToValue(0);
-            fadeOut.setOnFinished(e -> {
+            
                 scene.setRoot(root);
-                FadeTransition fadeIn = new FadeTransition(Duration.millis(200), root);
-                fadeIn.setFromValue(0);
-                fadeIn.setToValue(1);
-                fadeIn.play();
-            });
-            fadeOut.play();
+               
+           
         } catch (Exception ex) {
             alerta("No se pudo abrir la pantalla solicitada.");
         }

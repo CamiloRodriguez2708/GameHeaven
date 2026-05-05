@@ -1,0 +1,40 @@
+#ScrollG .scroll-bar:vertical {
+    -fx-background-color: #1a1a2e;
+    -fx-background-radius: 20;
+}
+
+#ScrollG .scroll-bar:vertical .thumb {
+    -fx-background-color: #ff0841;
+    -fx-background-radius: 5px;
+}
+
+#ScrollG .scroll-bar:vertical .increment-button,
+#ScrollG .scroll-bar:vertical .decrement-button {
+    -fx-background-color: transparent;
+}
+
+#ScrollG .scroll-bar:vertical .increment-arrow,
+#ScrollG .scroll-bar:vertical .decrement-arrow {
+    -fx-shape: "";
+    -fx-padding: 0;
+}
+#ScrollG .scroll-bar:vertical {
+    -fx-pref-width: 12px; /* grosor de la barra */
+}
+
+#ScrollG .scroll-bar:vertical .thumb {
+    -fx-background-color: #ff0841;
+    -fx-background-radius: 5px;
+}
+
+#ScrollG{
+    -fx-background-color: transparent;
+}
+
+#ScrollG .viewport {
+    -fx-background-color: transparent;
+}
+
+#ScrollG .content {
+    -fx-background-color: transparent;
+}

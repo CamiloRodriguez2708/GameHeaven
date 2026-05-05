@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="519.0" prefWidth="747.0" style="-fx-background-color: #02031A; -fx-background-radius: 30; -fx-border-color: #FF0841; -fx-border-radius: 30; -fx-border-width: 3; -fx-border-insets: -1;" stylesheets="@../Styles/Detalles.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador.SubDetallesController">
+   <children>
+      <Pane layoutX="38.0" layoutY="233.0" prefHeight="54.0" prefWidth="318.0" style="-fx-background-color: #021B2B; -fx-background-radius: 30;">
+         <children>
+            <HBox alignment="CENTER" layoutX="37.0" layoutY="8.0">
+               <children>
+                  <ImageView fx:id="captura1" fitHeight="43.0" fitWidth="69.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Datos/Imagenes/Factorio/factorio.jpg" />
+                     </image>
+                     <HBox.margin>
+                        <Insets right="20.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <ImageView fx:id="captura2" fitHeight="43.0" fitWidth="69.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Datos/Imagenes/Factorio/factorio.jpg" />
+                     </image>
+                     <HBox.margin>
+                        <Insets right="20.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <ImageView fx:id="captura3" fitHeight="43.0" fitWidth="69.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Datos/Imagenes/Factorio/factorio.jpg" />
+                     </image>
+                     <HBox.margin>
+                        <Insets right="20.0" />
+                     </HBox.margin>
+                  </ImageView>
+               </children>
+            </HBox>
+         </children>
+      </Pane>
+      <Pane layoutX="376.0" layoutY="28.0" prefHeight="446.0" prefWidth="350.0" style="-fx-background-color: #021B2B; -fx-background-radius: 30;">
+         <children>
+            <Text fx:id="nombreTxt" fill="#ebdfcc" layoutX="6.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre:">
+               <font>
+                  <Font name="Nirmala UI Bold" size="18.0" />
+               </font>
+            </Text>
+            <Text fill="#ebdfcc" layoutX="8.0" layoutY="115.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Descripción:">
+               <font>
+                  <Font name="Nirmala UI Bold" size="18.0" />
+               </font>
+            </Text>
+            <TextArea fx:id="TextAreaD" editable="false" layoutX="8.0" layoutY="126.0" prefHeight="303.0" prefWidth="335.0" style="-fx-background-color: #ebdfcc;" wrapText="true">
+               <font>
+                  <Font name="Nirmala UI Bold" size="16.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+            </TextArea>
+            <Text fx:id="idTxt" fill="#ebdfcc" layoutX="8.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ID:">
+               <font>
+                  <Font name="Nirmala UI Bold" size="18.0" />
+               </font>
+            </Text>
+            <Text fx:id="promedioTxt" fill="#ebdfcc" layoutX="8.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Promedio de califcación:">
+               <font>
+                  <Font name="Nirmala UI Bold" size="18.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
+      <Pane layoutX="38.0" layoutY="31.0" prefHeight="193.0" prefWidth="318.0" style="-fx-background-color: #021B2B; -fx-background-radius: 30;">
+         <children>
+            <ImageView fx:id="portada" fitHeight="166.0" fitWidth="295.0" layoutX="12.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Datos/Imagenes/Factorio/factorio.jpg" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <ComboBox fx:id="plataformaC" layoutX="38.0" layoutY="300.0" prefHeight="35.0" prefWidth="143.0" promptText="Plataforma" style="-fx-background-color: ebdfcc; -fx-background-radius: 25; -fx-font-size: 16; -fx-font-family: Nirmala UI; -fx-font-weight: bold; -fx-text-fill: #02031A;" stylesheets="@../Styles/PlataformaC.css">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ComboBox>
+      <ComboBox fx:id="edicionC" layoutX="213.0" layoutY="300.0" prefHeight="35.0" prefWidth="143.0" promptText="Edición" style="-fx-background-color: ebdfcc; -fx-background-radius: 25; -fx-font-size: 16; -fx-font-family: Nirmala UI; -fx-font-weight: bold; -fx-text-fill: #02031A;" stylesheets="@../Styles/edicionC.css">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ComboBox>
+      <Pane layoutX="38.0" layoutY="355.0" prefHeight="119.0" prefWidth="318.0" style="-fx-background-color: #021B2B; -fx-background-radius: 30;">
+         <children>
+            <Text fill="#ebdfcc" layoutX="51.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Stock:">
+               <font>
+                  <Font name="Nirmala UI Bold" size="18.0" />
+               </font>
+            </Text>
+            <Text fill="#ebdfcc" layoutX="48.0" layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Precio:">
+               <font>
+                  <Font name="Nirmala UI Bold" size="18.0" />
+               </font>
+            </Text>
+            <TextField fx:id="stockT" alignment="CENTER" editable="false" layoutX="175.0" layoutY="9.0" prefHeight="35.0" prefWidth="91.0" style="-fx-background-radius: 30; -fx-background-color: ebdfcc;">
+               <font>
+                  <Font name="Nirmala UI Bold" size="18.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+            </TextField>
+            <TextField fx:id="precioT" alignment="CENTER" editable="false" layoutX="175.0" layoutY="72.0" prefHeight="35.0" prefWidth="91.0" style="-fx-background-radius: 30; -fx-background-color: ebdfcc;">
+               <font>
+                  <Font name="Nirmala UI Bold" size="18.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+            </TextField>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

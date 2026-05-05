@@ -5,6 +5,7 @@ import Controlador.TarjetaController;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,11 +21,17 @@ import javafx.stage.Stage;
 import javafx.animation.FadeTransition;
 import javafx.application.Platform;
 import javafx.geometry.Insets;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextInputDialog;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
+
 
 public class PaginaPrincipalController implements Initializable {
     
@@ -40,6 +47,12 @@ public class PaginaPrincipalController implements Initializable {
     private Text txtUsuario, FiltroPrecio, txtAccion;
     
     @FXML
+    private AnchorPane Buscar;
+    
+    @FXML
+    private Pane PaneCompra;
+    
+    @FXML
     private FlowPane panelCatalogo;
     
     @FXML
@@ -47,6 +60,11 @@ public class PaginaPrincipalController implements Initializable {
     
     @FXML
     private BorderPane Pantalla;
+    
+    @FXML
+    private Button Gestionar;
+    
+   
     
       @FXML
       private void accionClick() { 
@@ -105,15 +123,25 @@ public class PaginaPrincipalController implements Initializable {
      @FXML private javafx.scene.control.Button btnEstrategia;
      @FXML private javafx.scene.control.Button btnCasual;
     
-    private ListaDobleVideojuegos listaJuegos = new ListaDobleVideojuegos();
+    
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         ArrayList<String> list = new ArrayList<>();
-        Collections.addAll(list, "Tienda", "Historial", "Favoritos");
+        Collections.addAll(list, "Catalogo", "Historial", "Favoritos");
         ComboBoxT.getItems().setAll(list);
         actualizarUsuario();
         Scroll.getStylesheets().add(getClass().getResource("/Styles/ScrollPane.css").toExternalForm());
+        if(Sesion.usuarioActual != null){
+        Mostrar();
+        }
+        else{
+            Buscar.setVisible(true);
+            PaneCompra.setVisible(true);
+            ComboBoxT.setVisible(true);
+            Gestionar.setVisible(true);
+        }
+        
         SliderP.valueProperty().addListener((obs, oldVal, newVal) -> {
             FiltroPrecio.setText(String.valueOf(newVal.intValue()));
             filtrarTodo(actFiltro, newVal.doubleValue());
@@ -151,7 +179,7 @@ public class PaginaPrincipalController implements Initializable {
     
     private void filtrarTodo(String categoriaBusqueda, double precioMax) {
         panelCatalogo.getChildren().clear(); 
-        nodoVideojuego temp = listaJuegos.inicio;
+        nodoVideojuego temp = Sistema.listaJuegos.inicio;
 
         while (temp != null) {
 
@@ -195,7 +223,7 @@ public class PaginaPrincipalController implements Initializable {
     
     private void mostrarTodos() {
          panelCatalogo.getChildren().clear();
-    nodoVideojuego temp = listaJuegos.inicio;
+         nodoVideojuego temp = Sistema.listaJuegos.inicio;
 
     while (temp != null) {
         try {
@@ -217,30 +245,47 @@ public class PaginaPrincipalController implements Initializable {
 
     }
     
-    
-
+    @FXML
+    public void Mostrar(){
+        if(Sesion.usuarioActual.tipo == 1){
+            Buscar.setVisible(false);
+            PaneCompra.setVisible(false);
+            ComboBoxT.setVisible(false);
+            Gestionar.setVisible(true);
+        }
+        else if(Sesion.usuarioActual.tipo == 0){
+            Buscar.setVisible(true);
+            PaneCompra.setVisible(true);
+            ComboBoxT.setVisible(true);
+            Gestionar.setVisible(false);
+        }
+        
+    }
+   
     @FXML
     public void Login(MouseEvent event) throws Exception {
         if (Sesion.usuarioActual != null) {
             Sesion.usuarioActual = null;
             actualizarUsuario();
+            Buscar.setVisible(true);
+            PaneCompra.setVisible(true);
+            ComboBoxT.setVisible(true);
+            Gestionar.setVisible(false);
             return;
         }
-
         Parent root = FXMLLoader.load(getClass().getResource("/Vista/PantallaLogin.fxml"));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = stage.getScene();
-
-        FadeTransition fadeOut = new FadeTransition(Duration.millis(250), scene.getRoot());
-        fadeOut.setFromValue(1);
-        fadeOut.setToValue(0);
-        fadeOut.setOnFinished(e -> {
-            scene.setRoot(root);
-            FadeTransition fadeIn = new FadeTransition(Duration.millis(250), root);
-            fadeIn.setFromValue(0);
-            fadeIn.setToValue(1);
-            fadeIn.play();
-        });
-        fadeOut.play();
+        scene.setRoot(root);
     }
+    
+    @FXML
+    public void Admin (MouseEvent event) throws Exception {
+        Parent root = FXMLLoader.load(getClass().getResource("/Vista/PantallaGestion.fxml"));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = stage.getScene();
+        scene.setRoot(root);
+    }
+   
 }
+

@@ -30,6 +30,7 @@ public class TarjetaController implements Initializable {
     @FXML private Text precio, nombre;
     
     
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
@@ -51,7 +52,7 @@ public class TarjetaController implements Initializable {
     public void anadirDatos(nodoVideojuego juego){
         try {
        
-            InputStream is = TarjetaController.class.getResourceAsStream("/Datos/Imagenes/" + juego.portada);
+            InputStream is = TarjetaController.class.getResourceAsStream("/Datos/Imagenes/" + juego.nombre+"/"+juego.portada);
             if (is != null) {
                 portada.setImage(new Image(is));
             }

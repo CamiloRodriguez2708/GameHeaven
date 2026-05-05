@@ -26,8 +26,8 @@ public class nodoVideojuego {
 
     //imagenes
     public String portada;         
-    public String captura1;      
-    public String captura2;        
+    public ArrayList<String> capturas;      
+            
 
    
     public float precioDigital;
@@ -47,8 +47,8 @@ public class nodoVideojuego {
     public nodoVideojuego(int id, String nombre, ArrayList<String> plataforma, String edicion, String categoria, 
                           ArrayList<String> etiquetas, String descripcion, String peso, String requisitosMin, 
                           String requisitosRec, ArrayList<String> idioma, String fechaLanzamiento, String portada, 
-                          String captura1, String captura2, float precioDigital, float precioFisico,
-                          ArrayList<Integer> stockDigital, ArrayList<Integer> stockFisico, ArrayList<Float> calificaiones) {
+                          ArrayList<String> capturas, float precioDigital, float precioFisico,
+                          ArrayList<Integer> stockDigital, ArrayList<Integer> stockFisico, ArrayList<Float> calificaciones) {
         this.id = id;
         this.nombre = nombre;
         this.plataforma = plataforma;
@@ -62,8 +62,7 @@ public class nodoVideojuego {
         this.idioma = idioma;
         this.fechaLanzamiento = fechaLanzamiento;
         this.portada = portada;
-        this.captura1 = captura1;
-        this.captura2 = captura2;
+        this.capturas = capturas;
         this.precioDigital = precioDigital;
         this.precioFisico = precioFisico;
         this.stockDigital = stockDigital;
@@ -74,4 +73,17 @@ public class nodoVideojuego {
         this.sig = null;
         this.ant = null;
     }
+    
+    public float promedioCal(){
+    float aux = 0;
+    
+    if (calificaciones == null || calificaciones.isEmpty()){
+        return 0;
+    }
+    
+    for(int i = 0; i<calificaciones.size(); i++){
+        aux += calificaciones.get(i);
+    }
+    return aux/calificaciones.size();
+}
 }

@@ -1,0 +1,132 @@
+/* ===== BASE ===== */
+#TextAreaD {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-padding: 0;
+}
+
+/* ===== CAPA REAL DEL TEXTAREA ===== */
+#TextAreaD .text-area {
+    -fx-background-color: #02031A;
+    -fx-background-radius: 15;
+    -fx-background-insets: 0;
+
+    -fx-border-color: transparent;
+}
+
+/* ===== CONTENT ===== */
+#TextAreaD .content {
+    -fx-background-color: #02031A;
+    -fx-background-radius: 15;
+    -fx-background-insets: 0;
+
+    -fx-padding: 15;
+}
+
+/* ===== VIEWPORT ===== */
+#TextAreaD .viewport {
+    -fx-background-color: #02031A;
+    -fx-background-radius: 15;
+    -fx-background-insets: 0;
+}
+
+/* ===== TEXTO ===== */
+#TextAreaD {
+    -fx-text-fill: #EBDFCC;
+    -fx-font-family: "Nirmala UI";
+    -fx-font-size: 16px;
+
+    -fx-highlight-fill: #ff0841; /* selección */
+    -fx-highlight-text-fill: white;
+}
+
+/* ===== SCROLL ===== */
+#TextAreaD .scroll-bar:vertical {
+    -fx-background-color: transparent;
+    -fx-pref-width: 10px;
+}
+
+#TextAreaD .scroll-bar:vertical .thumb {
+    -fx-background-color: #ff0841;
+    -fx-background-radius: 5px;
+}
+
+#TextAreaD .scroll-bar:vertical .track {
+    -fx-background-color: transparent;
+}
+
+#TextAreaD .scroll-bar .increment-button,
+#TextAreaD .scroll-bar .decrement-button {
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+}
+
+#TextAreaD .scroll-bar .increment-arrow,
+#TextAreaD .scroll-bar .decrement-arrow {
+    -fx-shape: "";
+}
+
+
+
+
+/* Caja del ComboBox (cuando está cerrado) */
+#edicionC{
+    
+    -fx-background-radius: 20;
+    -fx-border-radius: 20;
+}
+
+/* SOLO la lista desplegable */
+#edicionC .list-view {
+    
+    -fx-background-radius: 15;
+}
+
+/* Ítems */
+#edicionC .list-cell {
+    
+    -fx-background-edge: 20;
+    -fx-text-fill: #02031A;
+}
+
+/* Hover */
+#edicionC .list-cell:hover {
+    -fx-background-color: #ff0841;
+    -fx-text-fill: white;
+    -fx-background-radius: 15;
+}
+
+#edicionC .cell {
+    -fx-background-color: transparent;
+}
+
+/* Caja del ComboBox (cuando está cerrado) */
+#plataformaC{
+    
+    -fx-background-radius: 20;
+    -fx-border-radius: 20;
+}
+
+/* SOLO la lista desplegable */
+#plataformaC .list-view {
+    
+    -fx-background-radius: 15;
+}
+
+/* Ítems */
+#plataformaC .list-cell {
+    
+    -fx-background-edge: 20;
+    -fx-text-fill: #02031A;
+}
+
+/* Hover */
+#plataformaC .list-cell:hover {
+    -fx-background-color: #ff0841;
+    -fx-text-fill: white;
+    -fx-background-radius: 15;
+}
+
+#plataformaC .cell {
+    -fx-background-color: transparent;
+}

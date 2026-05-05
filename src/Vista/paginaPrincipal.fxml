@@ -26,14 +26,23 @@
                   <Image url="@../Imagenes/logo%2080x60%20PX.png" />
                </image>
             </ImageView>
-            <TextField layoutX="480.0" layoutY="20.0" prefHeight="45.0" prefWidth="406.0" promptText="Buscar..." style="-fx-background-radius: 20; -fx-background-color: #EBDFCC; -fx-padding: 8 50;">
-               <font>
-                  <Font name="Nirmala UI Bold" size="16.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="TEXT" />
-               </cursor>
-            </TextField>
+            <AnchorPane fx:id="Buscar" layoutX="480.0" layoutY="20.0">
+               <children>
+                  <TextField prefHeight="45.0" prefWidth="406.0" promptText="Buscar..." style="-fx-background-radius: 20; -fx-background-color: #EBDFCC; -fx-padding: 8 50;">
+                     <font>
+                        <Font name="Nirmala UI Bold" size="16.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="TEXT" />
+                     </cursor>
+                  </TextField>
+                  <ImageView fitHeight="38.0" fitWidth="38.0" layoutX="6.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Imagenes/Lupa%2050%20PX.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
             <ImageView fitHeight="64.0" fitWidth="64.0" layoutX="128.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../Imagenes/User%2064%20PX.png" />
@@ -52,12 +61,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Text>
-            <ImageView fitHeight="38.0" fitWidth="38.0" layoutX="486.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../Imagenes/Lupa%2050%20PX.png" />
-               </image>
-            </ImageView>
-            <Pane layoutX="1235.0" layoutY="19.0" prefHeight="45.0" prefWidth="99.0" style="-fx-background-color: EBDFCC; -fx-background-radius: 20;">
+            <Pane fx:id="PaneCompra" layoutX="1235.0" layoutY="19.0" prefHeight="45.0" prefWidth="99.0" style="-fx-background-color: EBDFCC; -fx-background-radius: 20;">
                <children>
                   <ImageView fitHeight="28.0" fitWidth="29.0" layoutX="14.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -69,9 +73,11 @@
                         <Font name="Nirmala UI Bold" size="24.0" />
                      </font>
                   </Text>
-               </children></Pane>
+               </children>
+            </Pane>
             <ComboBox fx:id="ComboBoxT" layoutX="1077.0" layoutY="19.0" prefHeight="45.0" prefWidth="141.0" promptText="Tienda" style="-fx-background-color: EBDFCC; -fx-background-radius: 20; -fx-font-size: 16; -fx-font-family: Nirmala UI; -fx-font-weight: bold; -fx-text-fill: #02031A;" stylesheets="@../Styles/ComboBoxT.css" visibleRowCount="3" />
-         </children></Pane>
+         </children>
+      </Pane>
    </top>
    <center>
       <AnchorPane prefHeight="0.0" prefWidth="1370.0" styleClass="mi-slider" BorderPane.alignment="CENTER">
@@ -168,7 +174,7 @@
                   </Button>
                </children>
             </HBox>
-            <Slider fx:id="SliderP" blockIncrement="1.0" layoutX="193.0" layoutY="60.0" style="-fx-skin: blue;" stylesheets="@../Styles/SliderP.css" value="100.0">
+            <Slider fx:id="SliderP" blockIncrement="1.0" layoutX="193.0" layoutY="60.0" stylesheets="@../Styles/SliderP.css" value="100.0">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -194,6 +200,14 @@
                   <Insets bottom="250.0" />
                </padding>
             </ScrollPane>
+            <Button fx:id="Gestionar" layoutX="1087.0" layoutY="46.0" mnemonicParsing="false" onMouseClicked="#Admin" prefHeight="40.0" prefWidth="112.0" style="-fx-background-radius: 20; -fx-background-color: B10C43;" text="Gestionar" textFill="#ebdfcc">
+               <font>
+                  <Font name="Nirmala UI Bold" size="18.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
          </children>
          <BorderPane.margin>
             <Insets />

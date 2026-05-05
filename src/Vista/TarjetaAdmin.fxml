@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.ContextMenu?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="85.0" prefWidth="1300.0" style="-fx-background-color: transparent;" stylesheets="@../Styles/ContextMenu.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador.TarjetaAdminController">
+   <children>
+      <HBox layoutX="33.0" layoutY="3.0" prefHeight="80.0" prefWidth="1300.0">
+         <children>
+            <AnchorPane prefHeight="80.0" prefWidth="370.0" style="-fx-background-color: #021B2B; -fx-background-radius: 30;">
+               <children>
+                  <ImageView fx:id="Miniatura" fitHeight="57.0" fitWidth="112.0" layoutX="23.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Datos/Imagenes/Bloodborne/bloodborne.jpg" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="nombre" layoutX="151.0" layoutY="27.0" text="Bloodborne" textFill="#ebdfcc">
+                     <font>
+                        <Font name="Nirmala UI Bold" size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+               <HBox.margin>
+                  <Insets right="20.0" />
+               </HBox.margin>
+            </AnchorPane>
+            <AnchorPane prefHeight="80.0" prefWidth="339.0" style="-fx-background-color: #021B2B; -fx-background-radius: 30;">
+               <children>
+                  <Text fill="#ebdfcc" layoutX="14.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Plataforma:">
+                     <font>
+                        <Font name="Nirmala UI Bold" size="18.0" />
+                     </font>
+                  </Text>
+                  <ComboBox fx:id="plataforma" layoutX="126.0" layoutY="21.0" prefHeight="39.0" prefWidth="184.0" style="-fx-background-color: ebdfcc; -fx-background-radius: 25; -fx-font-size: 16; -fx-font-family: Nirmala UI; -fx-font-weight: bold; -fx-text-fill: #02031A;" stylesheets="@../Styles/ComboBoxP.css">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></ComboBox>
+               </children>
+               <HBox.margin>
+                  <Insets right="40.0" />
+               </HBox.margin>
+            </AnchorPane>
+            <AnchorPane prefHeight="80.0" prefWidth="205.0" style="-fx-background-color: #021B2B; -fx-background-radius: 30;">
+               <children>
+                  <Text fill="#ebdfcc" layoutX="14.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Stock:">
+                     <font>
+                        <Font name="Nirmala UI Bold" size="18.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="stock" alignment="CENTER" editable="false" layoutX="82.0" layoutY="7.0" prefHeight="67.0" prefWidth="91.0" style="-fx-background-radius: 30; -fx-background-color: ebdfcc;">
+                     <font>
+                        <Font name="Nirmala UI Bold" size="30.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="DEFAULT" />
+                     </cursor>
+                  </TextField>
+               </children>
+               <HBox.margin>
+                  <Insets right="40.0" />
+               </HBox.margin>
+            </AnchorPane>
+            <AnchorPane prefHeight="80.0" prefWidth="205.0" style="-fx-background-color: #021B2B; -fx-background-radius: 30;">
+               <children>
+                  <Text fill="#ebdfcc" layoutX="14.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Precio:">
+                     <font>
+                        <Font name="Nirmala UI Bold" size="18.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="precio" alignment="CENTER" editable="false" layoutX="82.0" layoutY="7.0" prefHeight="67.0" prefWidth="91.0" style="-fx-background-radius: 30; -fx-background-color: ebdfcc;">
+                     <font>
+                        <Font name="Nirmala UI" size="30.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="DEFAULT" />
+                     </cursor>
+                  </TextField>
+               </children>
+               <HBox.margin>
+                  <Insets right="40.0" />
+               </HBox.margin>
+            </AnchorPane>
+            <AnchorPane prefHeight="80.0" prefWidth="97.0" style="-fx-background-color: #021B2B; -fx-background-radius: 30;">
+               <children>
+                  <VBox layoutX="32.0" layoutY="12.0">
+                     <children>
+                        <Circle fill="#ebdfcc" radius="8.0" stroke="#ebdfcc" strokeType="INSIDE">
+                           <VBox.margin>
+                              <Insets bottom="2.5" />
+                           </VBox.margin>
+                        </Circle>
+                        <Circle fill="#ebdfcc" radius="8.0" stroke="#ebdfcc" strokeType="INSIDE">
+                           <VBox.margin>
+                              <Insets bottom="2.5" />
+                           </VBox.margin>
+                        </Circle>
+                        <Circle fill="#ebdfcc" radius="8.0" stroke="#ebdfcc" strokeType="INSIDE">
+                           <VBox.margin>
+                              <Insets bottom="2.5" />
+                           </VBox.margin>
+                        </Circle>
+                     </children>
+                  </VBox>
+                  <Button fx:id="extra" mnemonicParsing="false" prefHeight="80.0" prefWidth="81.0" style="-fx-background-color: transparent; -fx-background-radius: 30;">
+                     <contextMenu>
+                        <ContextMenu fx:id="menu">
+                          <items>
+                            <MenuItem fx:id="itemDetalles" mnemonicParsing="false" text="Detalles" />
+                              <MenuItem fx:id="itemEditar" mnemonicParsing="false" text="Editar" />
+                              <MenuItem fx:id="itemEliminar" mnemonicParsing="false" text="Eliminar" />
+                          </items>
+                        </ContextMenu>
+                     </contextMenu>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+               </children>
+               <HBox.margin>
+                  <Insets right="40.0" />
+               </HBox.margin>
+            </AnchorPane>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

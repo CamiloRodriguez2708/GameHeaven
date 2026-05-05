@@ -1,0 +1,30 @@
+/* Caja del ComboBox (cuando está cerrado) */
+#plataforma {
+    
+    -fx-background-radius: 20;
+    -fx-border-radius: 20;
+}
+
+/* SOLO la lista desplegable */
+#plataforma .list-view {
+    
+    -fx-background-radius: 15;
+}
+
+/* Ítems */
+#plataforma .list-cell {
+    
+    -fx-background-edge: 20;
+    -fx-text-fill: #02031A;
+}
+
+/* Hover */
+#plataforma .list-cell:hover {
+    -fx-background-color: #ff0841;
+    -fx-text-fill: white;
+    -fx-background-radius: 15;
+}
+
+#plataforma .cell {
+    -fx-background-color: transparent;
+}

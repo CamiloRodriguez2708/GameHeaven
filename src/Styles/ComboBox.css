@@ -1,0 +1,30 @@
+/* Caja del ComboBox (cuando está cerrado) */
+#platafomraC{
+    
+    -fx-background-radius: 20;
+    -fx-border-radius: 20;
+}
+
+/* SOLO la lista desplegable */
+#platafomraC .list-view {
+    
+    -fx-background-radius: 15;
+}
+
+/* Ítems */
+#platafomraC .list-cell {
+    
+    -fx-background-edge: 20;
+    -fx-text-fill: #02031A;
+}
+
+/* Hover */
+#platafomraC .list-cell:hover {
+    -fx-background-color: #ff0841;
+    -fx-text-fill: white;
+    -fx-background-radius: 15;
+}
+
+#platafomraC .cell {
+    -fx-background-color: transparent;
+}
