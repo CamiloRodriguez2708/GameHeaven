@@ -13,6 +13,11 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" style="-fx-background-color: #02031A;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador.PantallaLoginController">
    <children>
+      <ImageView fitHeight="768.0" fitWidth="1366.0">
+         <image>
+            <Image url="@../Imagenes/FondoSignUp.png" />
+         </image>
+      </ImageView>
       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="768.0" prefWidth="571.0" style="-fx-background-color: #021B2B;">
          <children>
             <AnchorPane layoutX="113.0" layoutY="123.0" prefHeight="462.0" prefWidth="344.0" style="-fx-background-color: #EBDFCC; -fx-background-radius: 20;">

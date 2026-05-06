@@ -139,7 +139,7 @@ public class PaginaPrincipalController implements Initializable {
             Buscar.setVisible(true);
             PaneCompra.setVisible(true);
             ComboBoxT.setVisible(true);
-            Gestionar.setVisible(true);
+            Gestionar.setVisible(false);
         }
         
         SliderP.valueProperty().addListener((obs, oldVal, newVal) -> {

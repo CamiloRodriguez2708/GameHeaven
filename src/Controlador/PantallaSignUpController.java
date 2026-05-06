@@ -1,7 +1,9 @@
 package Controlador;
 
 import Modelo.nodoUsuario;
+import Modelo.nodoVideojuego;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.ResourceBundle;
 import javafx.animation.FadeTransition;
@@ -17,6 +19,8 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -26,15 +30,16 @@ public class PantallaSignUpController implements Initializable {
     @FXML private TextField txtCorreo;
     @FXML private PasswordField txtContrasena;
     @FXML private PasswordField txtConfirmarContrasena;
-    @FXML private TextField txtId;
-    @FXML private ComboBox<String> cbTipo;
+    @FXML private Pane overlay;
+    @FXML private AnchorPane popupMensaje;
+    
+    
 
     private final listaUsuarios lista = new listaUsuarios();
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        cbTipo.getItems().setAll("Usuario", "Administrador");
-        cbTipo.getSelectionModel().selectFirst();
+        
     }
 
     @FXML
@@ -43,62 +48,65 @@ public class PantallaSignUpController implements Initializable {
         String correo = valor(txtCorreo);
         String clave = valor(txtContrasena);
         String confirmar = valor(txtConfirmarContrasena);
-        String idTexto = valor(txtId);
-        String tipoTexto = cbTipo.getValue();
+        
+        
 
-        if (nombre.isEmpty() || correo.isEmpty() || clave.isEmpty() || confirmar.isEmpty() || idTexto.isEmpty() || tipoTexto == null) {
-            alerta("Completa todos los campos básicos.");
+        if (nombre.isEmpty() || correo.isEmpty() || clave.isEmpty() || confirmar.isEmpty()) {
+            abrirMensaje("Completa todos los campos básicos.");
             return;
         }
         if (!clave.equals(confirmar)) {
-            alerta("Las contraseñas no coinciden.");
-            return;
-        }
-
-        int id;
-        try {
-            id = Integer.parseInt(idTexto);
-        } catch (NumberFormatException e) {
-            alerta("El ID debe ser numérico.");
+            abrirMensaje("Las contraseñas no coinciden.");
             return;
         }
 
         if (lista.buscarCorr(correo) != null) {
-            alerta("Ese correo ya está registrado.");
+            abrirMensaje("Ese correo ya está registrado.");
             return;
         }
 
-        int tipo = "Administrador".equals(tipoTexto) ? 1 : 0;
+        int tipo = 0;
+        ArrayList<String> ListaDeseados = new ArrayList();
+        ArrayList<String> historial = new ArrayList();
+        ListaDeseados.add("#");
+        historial.add("#");
         Date hoy = new Date();
+        int id = lista.calcularID();
         lista.agregarInicio(
                 nombre,
                 correo,
                 clave,
                 nombre,
                 "CC",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
+                "#",
+                "#",
+                "#",
+                "#",
+                "#",
+                "#",
+                "#",
+                "#",
+                "#",
                 hoy,
                 0,
                 id,
-                tipo
+                tipo,
+                ListaDeseados,
+                historial
         );
-
-        alerta("Usuario registrado correctamente.");
+        lista.guardarArchivo();
+        abrirMensaje("Usuario registrado correctamente.");
         cambiarVista(event, "/Vista/PantallaLogin.fxml");
     }
 
     @FXML
     public void Principal(MouseEvent event) throws Exception {
         cambiarVista(event, "/Vista/paginaPrincipal.fxml");
+    }
+    
+    @FXML
+    public void login(MouseEvent event) throws Exception{
+        cambiarVista(event, "/Vista/PantallaLogin.fxml");
     }
 
     private String valor(TextField campo) {
@@ -109,12 +117,7 @@ public class PantallaSignUpController implements Initializable {
         return campo.getText() == null ? "" : campo.getText().trim();
     }
 
-    private void alerta(String texto) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setHeaderText(null);
-        alert.setContentText(texto);
-        alert.showAndWait();
-    }
+   
 
     private void cambiarVista(Object evento, String ruta) {
         try {
@@ -131,7 +134,28 @@ public class PantallaSignUpController implements Initializable {
                
            
         } catch (Exception ex) {
-            alerta("No se pudo abrir la pantalla solicitada.");
+            abrirMensaje("No se pudo abrir la pantalla solicitada.");
         }
+    }
+    public void abrirMensaje(String mensaje) {
+    try {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/Alerta.fxml"));
+        Parent root = loader.load();
+
+        AlertaController controller = loader.getController();
+        controller.cargarDatos(mensaje, this);
+        
+
+        popupMensaje.getChildren().setAll(root);
+        overlay.setVisible(true);
+
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+    
+    
+}
+    public void cerrar(){
+        overlay.setVisible(false);
     }
 }

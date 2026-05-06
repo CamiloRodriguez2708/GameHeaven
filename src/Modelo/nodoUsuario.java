@@ -4,6 +4,7 @@
  */
 package Modelo;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -14,7 +15,7 @@ public class nodoUsuario {
     
     // DATOS DEL USUARIO
     public String nombreU, correo, contrasena, nombreR, tipoD
-            , numD, genero, telefono, pregunta, nomBanco, tipoMetodoP,
+            , numD, genero, telefono, nomBanco, tipoMetodoP,
             codigoP, departamento, municipio, dirrecion;
     
     public Date fechaNacimiento;
@@ -22,8 +23,14 @@ public class nodoUsuario {
     public int numTarjeta, iD, tipo;
     
     public nodoUsuario sig, at;
+    
+    // Lista
+    
+    public ArrayList<String> listaDeseados;
+    
+    public ArrayList<String> historial;
 
-    public nodoUsuario(String nombreU, String correo, String contrasena, String nombreR, String tipoD, String numD, String genero, String telefono, String pregunta, String nomBanco, String tipoMetodoP, String codigoP, String departamento, String municipio, String dirrecion, Date fechaNacimiento, int numTarjeta, int iD, int tipo) {
+    public nodoUsuario(String nombreU, String correo, String contrasena, String nombreR, String tipoD, String numD, String genero, String telefono, String nomBanco, String tipoMetodoP, String codigoP, String departamento, String municipio, String dirrecion, Date fechaNacimiento, int numTarjeta, int iD, int tipo, ArrayList<String> ListaDeseados, ArrayList<String> historial ) {
         this.nombreU = nombreU;
         this.correo = correo;
         this.contrasena = contrasena;
@@ -32,7 +39,6 @@ public class nodoUsuario {
         this.numD = numD;
         this.genero = genero;
         this.telefono = telefono;
-        this.pregunta = pregunta;
         this.nomBanco = nomBanco;
         this.tipoMetodoP = tipoMetodoP;
         this.codigoP = codigoP;
@@ -45,6 +51,9 @@ public class nodoUsuario {
         this.at = null;
         this.iD = iD;
         this.tipo = tipo;
+        this.listaDeseados = ListaDeseados;
+        this.historial = historial;
+        
     }
     
     
