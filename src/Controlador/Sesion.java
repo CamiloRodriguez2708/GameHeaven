@@ -10,4 +10,5 @@ import Modelo.nodoUsuario;
  */
 public class Sesion {
     public static nodoUsuario usuarioActual;
+    public static listaUsuarios lista = new listaUsuarios();
 }

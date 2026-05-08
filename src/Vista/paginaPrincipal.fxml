@@ -75,7 +75,7 @@
                   </Text>
                </children>
             </Pane>
-            <ComboBox fx:id="ComboBoxT" layoutX="1077.0" layoutY="19.0" prefHeight="45.0" prefWidth="141.0" promptText="Tienda" style="-fx-background-color: EBDFCC; -fx-background-radius: 20; -fx-font-size: 16; -fx-font-family: Nirmala UI; -fx-font-weight: bold; -fx-text-fill: #02031A;" stylesheets="@../Styles/ComboBoxT.css" visibleRowCount="3" />
+            <ComboBox fx:id="ComboBoxT" layoutX="1077.0" layoutY="19.0" prefHeight="45.0" prefWidth="141.0" promptText="Catalogo" style="-fx-background-color: EBDFCC; -fx-background-radius: 20; -fx-font-size: 16; -fx-font-family: Nirmala UI; -fx-font-weight: bold; -fx-text-fill: #02031A;" stylesheets="@../Styles/ComboBoxT.css" visibleRowCount="3" />
          </children>
       </Pane>
    </top>

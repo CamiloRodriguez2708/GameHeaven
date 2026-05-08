@@ -121,7 +121,7 @@
                               <Font name="Nirmala UI Bold" size="24.0" />
                            </font>
                         </Text>
-                        <ImageView fx:id="portada" fitHeight="253.0" fitWidth="495.0" layoutX="35.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="portada" fitHeight="253.0" fitWidth="512.0" layoutX="35.0" layoutY="13.0" pickOnBounds="true" />
                      </children>
                   </AnchorPane>
                   <VBox layoutX="100.0" layoutY="452.0">
@@ -235,5 +235,10 @@
             </Pane>
          </top>
       </BorderPane>
+      <Pane fx:id="overlay" prefHeight="612.0" prefWidth="1183.0" style="-fx-background-color: rgba(0,0,0,0.6);" visible="false">
+         <children>
+            <AnchorPane fx:id="popupMensaje" layoutX="435.0" layoutY="250.0" prefHeight="245.0" prefWidth="496.0" />
+         </children>
+      </Pane>
    </children>
 </StackPane>

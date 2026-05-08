@@ -32,10 +32,6 @@ public class PantallaSignUpController implements Initializable {
     @FXML private PasswordField txtConfirmarContrasena;
     @FXML private Pane overlay;
     @FXML private AnchorPane popupMensaje;
-    
-    
-
-    private final listaUsuarios lista = new listaUsuarios();
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -52,16 +48,16 @@ public class PantallaSignUpController implements Initializable {
         
 
         if (nombre.isEmpty() || correo.isEmpty() || clave.isEmpty() || confirmar.isEmpty()) {
-            abrirMensaje("Completa todos los campos básicos.");
+            abrirMensaje("Completa todos los campos básicos.", "cerrar");
             return;
         }
         if (!clave.equals(confirmar)) {
-            abrirMensaje("Las contraseñas no coinciden.");
+            abrirMensaje("Las contraseñas no coinciden.", "cerrar");
             return;
         }
 
-        if (lista.buscarCorr(correo) != null) {
-            abrirMensaje("Ese correo ya está registrado.");
+        if (Sesion.lista.buscarCorr(correo) != null) {
+            abrirMensaje("Ese correo ya está registrado.", "cerrar");
             return;
         }
 
@@ -71,8 +67,8 @@ public class PantallaSignUpController implements Initializable {
         ListaDeseados.add("#");
         historial.add("#");
         Date hoy = new Date();
-        int id = lista.calcularID();
-        lista.agregarInicio(
+        int id = Sesion.lista.calcularID();
+        Sesion.lista.agregarInicio(
                 nombre,
                 correo,
                 clave,
@@ -94,9 +90,8 @@ public class PantallaSignUpController implements Initializable {
                 ListaDeseados,
                 historial
         );
-        lista.guardarArchivo();
-        abrirMensaje("Usuario registrado correctamente.");
-        cambiarVista(event, "/Vista/PantallaLogin.fxml");
+        Sesion.lista.guardarArchivo();
+        abrirMensaje("Usuario registrado correctamente.", "/Vista/PantallaLogin.fxml");
     }
 
     @FXML
@@ -134,16 +129,17 @@ public class PantallaSignUpController implements Initializable {
                
            
         } catch (Exception ex) {
-            abrirMensaje("No se pudo abrir la pantalla solicitada.");
+            abrirMensaje("No se pudo abrir la pantalla solicitada.", "cerrar");
         }
     }
-    public void abrirMensaje(String mensaje) {
+    public void abrirMensaje(String mensaje, String accion) {
     try {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/Alerta.fxml"));
         Parent root = loader.load();
 
         AlertaController controller = loader.getController();
-        controller.cargarDatos(mensaje, this);
+        controller.cargarDatos(mensaje, accion);
+        controller.setOverlay(overlay);
         
 
         popupMensaje.getChildren().setAll(root);
@@ -155,7 +151,5 @@ public class PantallaSignUpController implements Initializable {
     
     
 }
-    public void cerrar(){
-        overlay.setVisible(false);
-    }
+    
 }

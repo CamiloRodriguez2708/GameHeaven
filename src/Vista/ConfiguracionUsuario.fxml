@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" style="-fx-background-color: #02031A;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador.ConfiguracionUsuarioController">
+   <top>
+      <Pane prefHeight="85.0" prefWidth="1366.0" style="-fx-background-color: #021B2B;" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="63.0" fitWidth="73.0" layoutX="21.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Imagenes/logo%2080x60%20PX.png" />
+               </image>
+            </ImageView>
+            <AnchorPane fx:id="Buscar" layoutX="480.0" layoutY="20.0">
+               <children>
+                  <TextField prefHeight="45.0" prefWidth="406.0" promptText="Buscar..." style="-fx-background-radius: 20; -fx-background-color: #EBDFCC; -fx-padding: 8 50;">
+                     <font>
+                        <Font name="Nirmala UI Bold" size="16.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="TEXT" />
+                     </cursor>
+                  </TextField>
+                  <ImageView fitHeight="38.0" fitWidth="38.0" layoutX="6.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Imagenes/Lupa%2050%20PX.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+            <ImageView fitHeight="64.0" fitWidth="64.0" layoutX="128.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Imagenes/User%2064%20PX.png" />
+               </image>
+            </ImageView>
+            <Text fx:id="txtUsuario" fill="#ebdfcc" layoutX="205.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Invitado">
+               <font>
+                  <Font name="Nirmala UI Bold" size="16.0" />
+               </font>
+            </Text>
+            <Text fx:id="txtAccion" fill="#ff0841" layoutX="205.0" layoutY="37.0" onMouseClicked="#principal" strokeType="OUTSIDE" strokeWidth="0.0" text="Ingresar">
+               <font>
+                  <Font name="Nirmala UI Bold" size="16.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Text>
+            <Pane fx:id="PaneCompra" layoutX="1235.0" layoutY="19.0" prefHeight="45.0" prefWidth="99.0" style="-fx-background-color: EBDFCC; -fx-background-radius: 20;">
+               <children>
+                  <ImageView fitHeight="28.0" fitWidth="29.0" layoutX="14.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Imagenes/Carrito%2050%20PX.png" />
+                     </image>
+                  </ImageView>
+                  <Text fill="#02031a" layoutX="62.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                     <font>
+                        <Font name="Nirmala UI Bold" size="24.0" />
+                     </font>
+                  </Text>
+               </children>
+            </Pane>
+            <ComboBox fx:id="ComboBoxT" layoutX="1077.0" layoutY="19.0" prefHeight="45.0" prefWidth="141.0" promptText="Catalogo" style="-fx-background-color: EBDFCC; -fx-background-radius: 20; -fx-font-size: 16; -fx-font-family: Nirmala UI; -fx-font-weight: bold; -fx-text-fill: #02031A;" stylesheets="@../Styles/ComboBoxT.css" visibleRowCount="3" />
+         </children>
+      </Pane>
+   </top>
+   <left>
+      <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="261.0" BorderPane.alignment="CENTER">
+         <children>
+            <AnchorPane onMouseClicked="#infoP" prefHeight="59.0" prefWidth="304.0" style="-fx-background-color: #021B2B; -fx-background-radius: 0 20 20 0;">
+               <children>
+                  <Text fill="#ebdfcc" layoutX="26.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Información personal">
+                     <font>
+                        <Font name="Nirmala UI Bold" size="18.0" />
+                     </font>
+                  </Text>
+               </children>
+               <VBox.margin>
+                  <Insets top="50.0" />
+               </VBox.margin>
+               <padding>
+                  <Insets top="15.0" />
+               </padding>
+            </AnchorPane>
+            <AnchorPane layoutX="10.0" layoutY="10.0" onMouseClicked="#datosC" prefHeight="59.0" prefWidth="304.0" style="-fx-background-color: #021B2B; -fx-background-radius: 0 20 20 0;">
+               <children>
+                  <Text fill="#ebdfcc" layoutX="26.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Datos de cuenta">
+                     <font>
+                        <Font name="Nirmala UI Bold" size="18.0" />
+                     </font>
+                  </Text>
+               </children>
+               <VBox.margin>
+                  <Insets top="30.0" />
+               </VBox.margin>
+               <padding>
+                  <Insets top="15.0" />
+               </padding>
+            </AnchorPane>
+            <AnchorPane layoutX="10.0" layoutY="69.0" onMouseClicked="#seguridad" prefHeight="59.0" prefWidth="304.0" style="-fx-background-color: #021B2B; -fx-background-radius: 0 20 20 0;">
+               <children>
+                  <Text fill="#ebdfcc" layoutX="26.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Seguridad">
+                     <font>
+                        <Font name="Nirmala UI Bold" size="18.0" />
+                     </font>
+                  </Text>
+               </children>
+               <VBox.margin>
+                  <Insets top="30.0" />
+               </VBox.margin>
+               <padding>
+                  <Insets top="15.0" />
+               </padding>
+            </AnchorPane>
+            <AnchorPane layoutX="10.0" layoutY="128.0" onMouseClicked="#metodoP" prefHeight="59.0" prefWidth="304.0" style="-fx-background-color: #021B2B; -fx-background-radius: 0 20 20 0;">
+               <children>
+                  <Text fill="#ebdfcc" layoutX="26.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Metodos de pago">
+                     <font>
+                        <Font name="Nirmala UI Bold" size="18.0" />
+                     </font>
+                  </Text>
+               </children>
+               <VBox.margin>
+                  <Insets top="30.0" />
+               </VBox.margin>
+               <padding>
+                  <Insets top="15.0" />
+               </padding>
+            </AnchorPane>
+            <AnchorPane layoutX="10.0" layoutY="160.0" onMouseClicked="#dirrecion" prefHeight="59.0" prefWidth="304.0" style="-fx-background-color: #021B2B; -fx-background-radius: 0 20 20 0;">
+               <children>
+                  <Text fill="#ebdfcc" layoutX="26.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dirrección">
+                     <font>
+                        <Font name="Nirmala UI Bold" size="18.0" />
+                     </font>
+                  </Text>
+               </children>
+               <VBox.margin>
+                  <Insets top="30.0" />
+               </VBox.margin>
+               <padding>
+                  <Insets top="15.0" />
+               </padding>
+            </AnchorPane>
+         </children>
+      </VBox>
+   </left>
+   <bottom>
+      <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="40.0" BorderPane.alignment="CENTER_RIGHT">
+         <children>
+            <Button mnemonicParsing="false" onAction="#guardar" prefHeight="40.0" prefWidth="160.0" style="-fx-background-color: #B10C43; -fx-background-radius: 20;" text="Guardar" textFill="#ebdfcc">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font name="Nirmala UI Bold" size="16.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#cerrar" prefHeight="40.0" prefWidth="160.0" style="-fx-background-color: #B10C43; -fx-background-radius: 20;" text="Cerrar sesión" textFill="#ebdfcc">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font name="Nirmala UI Bold" size="16.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#borrar" prefHeight="40.0" prefWidth="160.0" style="-fx-background-color: #B10C43; -fx-background-radius: 20;" text="Borrar cuenta" textFill="#ebdfcc">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font name="Nirmala UI Bold" size="16.0" />
+               </font>
+            </Button>
+         </children>
+         <padding>
+            <Insets right="30.0" />
+         </padding>
+      </HBox>
+   </bottom>
+   <center>
+      <StackPane prefHeight="583.0" prefWidth="783.0" BorderPane.alignment="CENTER">
+         <children>
+            <AnchorPane fx:id="informacionPersonal" prefHeight="467.0" prefWidth="885.0" style="-fx-background-color: #021B2B; -fx-background-radius: 20 0 0 20;">
+               <children>
+                  <TextField fx:id="nombreR" layoutX="21.0" layoutY="98.0" prefHeight="38.0" prefWidth="343.0" style="-fx-background-radius: 20; -fx-background-color: #EBDFCC;" />
+                  <Text fill="#ebdfcc" layoutX="21.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Información personal">
+                     <font>
+                        <Font name="Nirmala UI Bold" size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fill="#ebdfcc" layoutX="21.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre real:">
+                     <font>
+                        <Font name="Nirmala UI Bold" size="18.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="documento" layoutX="202.0" layoutY="184.0" prefHeight="38.0" prefWidth="343.0" style="-fx-background-radius: 20; -fx-background-color: #EBDFCC;" />
+                  <Text fill="#ebdfcc" layoutX="21.0" layoutY="168.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Documento:">
+                     <font>
+                        <Font name="Nirmala UI Bold" size="18.0" />
+                     </font>
+                  </Text>
+                  <ComboBox fx:id="tipoDoc" layoutX="21.0" layoutY="184.0" prefHeight="38.0" prefWidth="165.0" style="-fx-background-color: #EBDFCC; -fx-background-radius: 20;" />
+                  <DatePicker fx:id="nacimiento" editable="true" layoutX="24.0" layoutY="275.0" prefHeight="38.0" prefWidth="209.0" style="-fx-background-color: #EBDFCC;" />
+                  <Text fill="#ebdfcc" layoutX="22.0" layoutY="260.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fecha de nacimiento:">
+                     <font>
+                        <Font name="Nirmala UI Bold" size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fill="#ebdfcc" layoutX="22.0" layoutY="354.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Genero:">
+                     <font>
+                        <Font name="Nirmala UI Bold" size="18.0" />
+                     </font>
+                  </Text>
+                  <ComboBox fx:id="genero" layoutX="21.0" layoutY="368.0" prefHeight="38.0" prefWidth="165.0" style="-fx-background-color: #EBDFCC; -fx-background-radius: 20;" />
+               </children>
+               <padding>
+                  <Insets bottom="20.0" />
+               </padding>
+            </AnchorPane>
+            <AnchorPane fx:id="datosDeCuenta" layoutX="10.0" layoutY="10.0" prefHeight="467.0" prefWidth="885.0" style="-fx-background-color: #021B2B; -fx-background-radius: 20 0 0 20;">
+               <children>
+                  <TextField fx:id="nombreU" layoutX="21.0" layoutY="98.0" prefHeight="38.0" prefWidth="343.0" style="-fx-background-radius: 20; -fx-background-color: #EBDFCC;" />
+                  <Text fill="#ebdfcc" layoutX="21.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Datos de cuenta">
+                     <font>
+                        <Font name="Nirmala UI Bold" size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fill="#ebdfcc" layoutX="21.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre usuario:">
+                     <font>
+                        <Font name="Nirmala UI Bold" size="18.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="correo" layoutX="21.0" layoutY="184.0" prefHeight="38.0" prefWidth="343.0" style="-fx-background-radius: 20; -fx-background-color: #EBDFCC;" />
+                  <Text fill="#ebdfcc" layoutX="21.0" layoutY="168.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Correo:">
+                     <font>
+                        <Font name="Nirmala UI Bold" size="18.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="telefono" layoutX="21.0" layoutY="273.0" prefHeight="38.0" prefWidth="343.0" style="-fx-background-radius: 20; -fx-background-color: #EBDFCC;" />
+                  <Text fill="#ebdfcc" layoutX="21.0" layoutY="257.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Telefono:">
+                     <font>
+                        <Font name="Nirmala UI Bold" size="18.0" />
+                     </font>
+                  </Text>
+               </children>
+               <padding>
+                  <Insets bottom="20.0" />
+               </padding>
+            </AnchorPane>
+            <AnchorPane fx:id="seguridad" layoutX="10.0" layoutY="10.0" prefHeight="467.0" prefWidth="885.0" style="-fx-background-color: #021B2B; -fx-background-radius: 20 0 0 20;">
+               <children>
+                  <TextField fx:id="contrasena" layoutX="21.0" layoutY="98.0" prefHeight="38.0" prefWidth="343.0" style="-fx-background-radius: 20; -fx-background-color: #EBDFCC;" />
+                  <Text fill="#ebdfcc" layoutX="21.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Seguridad">
+                     <font>
+                        <Font name="Nirmala UI Bold" size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fill="#ebdfcc" layoutX="21.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contraseña:">
+                     <font>
+                        <Font name="Nirmala UI Bold" size="18.0" />
+                     </font>
+                  </Text>
+               </children>
+               <padding>
+                  <Insets bottom="20.0" />
+               </padding>
+            </AnchorPane>
+            <AnchorPane fx:id="metodoDePago" layoutX="10.0" layoutY="10.0" prefHeight="467.0" prefWidth="885.0" style="-fx-background-color: #021B2B; -fx-background-radius: 20 0 0 20;">
+               <children>
+                  <TextField fx:id="banco" layoutX="21.0" layoutY="98.0" prefHeight="38.0" prefWidth="343.0" style="-fx-background-radius: 20; -fx-background-color: #EBDFCC;" />
+                  <Text fill="#ebdfcc" layoutX="21.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Metodos de pago">
+                     <font>
+                        <Font name="Nirmala UI Bold" size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fill="#ebdfcc" layoutX="21.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Banco:">
+                     <font>
+                        <Font name="Nirmala UI Bold" size="18.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="metodo" layoutX="21.0" layoutY="184.0" prefHeight="38.0" prefWidth="343.0" style="-fx-background-radius: 20; -fx-background-color: #EBDFCC;" />
+                  <Text fill="#ebdfcc" layoutX="21.0" layoutY="168.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tipo de metodo de pago:">
+                     <font>
+                        <Font name="Nirmala UI Bold" size="18.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="cuenta" layoutX="21.0" layoutY="273.0" prefHeight="38.0" prefWidth="343.0" style="-fx-background-radius: 20; -fx-background-color: #EBDFCC;" />
+                  <Text fill="#ebdfcc" layoutX="21.0" layoutY="257.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Numero de cuenta o tarjeta:">
+                     <font>
+                        <Font name="Nirmala UI Bold" size="18.0" />
+                     </font>
+                  </Text>
+               </children>
+               <padding>
+                  <Insets bottom="20.0" />
+               </padding>
+            </AnchorPane>
+            <AnchorPane fx:id="dirrecion" layoutX="10.0" layoutY="10.0" prefHeight="467.0" prefWidth="885.0" style="-fx-background-color: #021B2B; -fx-background-radius: 20 0 0 20;">
+               <children>
+                  <TextField fx:id="codigo" layoutX="21.0" layoutY="98.0" prefHeight="38.0" prefWidth="343.0" style="-fx-background-radius: 20; -fx-background-color: #EBDFCC;" />
+                  <Text fill="#ebdfcc" layoutX="21.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dirrección">
+                     <font>
+                        <Font name="Nirmala UI Bold" size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fill="#ebdfcc" layoutX="21.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Codigo Postal:">
+                     <font>
+                        <Font name="Nirmala UI Bold" size="18.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="departamento" layoutX="21.0" layoutY="184.0" prefHeight="38.0" prefWidth="343.0" style="-fx-background-radius: 20; -fx-background-color: #EBDFCC;" />
+                  <Text fill="#ebdfcc" layoutX="21.0" layoutY="168.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Departamento:">
+                     <font>
+                        <Font name="Nirmala UI Bold" size="18.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="municipio" layoutX="21.0" layoutY="273.0" prefHeight="38.0" prefWidth="343.0" style="-fx-background-radius: 20; -fx-background-color: #EBDFCC;" />
+                  <Text fill="#ebdfcc" layoutX="21.0" layoutY="257.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Municipio:">
+                     <font>
+                        <Font name="Nirmala UI Bold" size="18.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="dirrecciontxt" layoutX="21.0" layoutY="362.0" prefHeight="38.0" prefWidth="343.0" style="-fx-background-radius: 20; -fx-background-color: #EBDFCC;" />
+                  <Text fill="#ebdfcc" layoutX="21.0" layoutY="346.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dirrección:">
+                     <font>
+                        <Font name="Nirmala UI Bold" size="18.0" />
+                     </font>
+                  </Text>
+               </children>
+               <padding>
+                  <Insets bottom="20.0" />
+               </padding>
+            </AnchorPane>
+         </children>
+         <BorderPane.margin>
+            <Insets bottom="80.0" left="250.0" top="80.0" />
+         </BorderPane.margin>
+      </StackPane>
+   </center>
+</BorderPane>

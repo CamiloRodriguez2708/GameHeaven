@@ -159,7 +159,7 @@ public class PaginaPrincipalController implements Initializable {
             txtAccion.setText("Ingresar");
         } else {
             txtUsuario.setText(Sesion.usuarioActual.nombreU);
-            txtAccion.setText("Cerrar sesión");
+            txtAccion.setText("Configuración");
         }
     }
     
@@ -265,12 +265,10 @@ public class PaginaPrincipalController implements Initializable {
     @FXML
     public void Login(MouseEvent event) throws Exception {
         if (Sesion.usuarioActual != null) {
-            Sesion.usuarioActual = null;
-            actualizarUsuario();
-            Buscar.setVisible(true);
-            PaneCompra.setVisible(true);
-            ComboBoxT.setVisible(true);
-            Gestionar.setVisible(false);
+            Parent root = FXMLLoader.load(getClass().getResource("/Vista/ConfiguracionUsuario.fxml"));
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Scene scene = stage.getScene();
+            scene.setRoot(root);
             return;
         }
         Parent root = FXMLLoader.load(getClass().getResource("/Vista/PantallaLogin.fxml"));

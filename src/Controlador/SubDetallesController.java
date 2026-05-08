@@ -14,6 +14,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import Modelo.nodoVideojuego;
+import java.io.FileInputStream;
 import java.io.InputStream;
 import javafx.scene.image.Image;
 import javafx.scene.shape.Rectangle;
@@ -90,7 +91,7 @@ public class SubDetallesController implements Initializable {
         String descripcion = "";
         try {
        
-            InputStream is = TarjetaController.class.getResourceAsStream("/Datos/Imagenes/" + juego.nombre+"/"+juego.portada);
+            InputStream is = new FileInputStream(System.getProperty("user.dir")+ "/src/datos/imagenes/" + juego.portada);
             if (is != null) {
                 portada.setImage(new Image(is));
             }
@@ -100,7 +101,7 @@ public class SubDetallesController implements Initializable {
         }
         try {
        
-            InputStream is = TarjetaController.class.getResourceAsStream("/Datos/Imagenes/" + juego.nombre+"/"+juego.capturas.get(0));
+            InputStream is = new FileInputStream(System.getProperty("user.dir")+ "/src/datos/imagenes/" +juego.capturas.get(0));
             if (is != null) {
                 captura1.setImage(new Image(is));
             }
@@ -110,7 +111,7 @@ public class SubDetallesController implements Initializable {
         }
         try {
        
-            InputStream is = TarjetaController.class.getResourceAsStream("/Datos/Imagenes/" + juego.nombre+"/"+juego.capturas.get(1));
+            InputStream is = new FileInputStream(System.getProperty("user.dir")+ "/src/datos/imagenes/"+juego.capturas.get(1));
             if (is != null) {
                 captura2.setImage(new Image(is));
             }
@@ -120,7 +121,7 @@ public class SubDetallesController implements Initializable {
         }
         try {
        
-            InputStream is = TarjetaController.class.getResourceAsStream("/Datos/Imagenes/" + juego.nombre+"/"+juego.capturas.get(2));
+            InputStream is = new FileInputStream(System.getProperty("user.dir")+ "/src/datos/imagenes/"+juego.capturas.get(2));
             if (is != null) {
                 captura3.setImage(new Image(is));
             }

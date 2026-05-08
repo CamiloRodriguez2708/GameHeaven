@@ -247,4 +247,10 @@ public class listaUsuarios {
     if (lista == null) return "";
     return String.join(",", lista);
 }
+    
+    
+    public void modificar(nodoUsuario nuevo){
+       nodoUsuario aux = buscarID(String.valueOf(nuevo.iD));
+       aux = nuevo;
+    }
 }

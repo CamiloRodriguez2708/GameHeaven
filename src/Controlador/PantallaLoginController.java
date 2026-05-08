@@ -20,6 +20,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import Modelo.nodoUsuario;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 
 public class PantallaLoginController implements Initializable {
 
@@ -32,8 +34,9 @@ public class PantallaLoginController implements Initializable {
     @FXML
     private PasswordField PasswordFieldP;
 
-    private final listaUsuarios lista = new listaUsuarios();
-
+    @FXML private Pane overlay;
+    @FXML private AnchorPane popupMensaje;
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         ArrayList<String> list = new ArrayList<>();
@@ -49,22 +52,22 @@ public class PantallaLoginController implements Initializable {
         String tipoSeleccionado = ComboBoxU.getValue();
 
         if (correo.isEmpty() || clave.isEmpty() || tipoSeleccionado == null) {
-            mostrarAlerta("Completa todos los campos.");
+            abrirMensaje("Completa todos los campos.", "cerrar");
             return;
         }
 
-        nodoUsuario usuario = lista.iniciarSesion(correo, clave);
+        nodoUsuario usuario = Sesion.lista.iniciarSesion(correo, clave);
         if (usuario == null) {
-            mostrarAlerta("Correo o contraseña incorrectos.");
+            abrirMensaje("Correo o contraseña incorrectos.", "cerrar");
             return;
         }
 
         if ("Usuario".equals(tipoSeleccionado) && usuario.tipo != 0) {
-            mostrarAlerta("Ese usuario no corresponde al tipo seleccionado.");
+            abrirMensaje("Ese usuario no corresponde al tipo seleccionado.", "cerrar");
             return;
         }
         if ("Administrador".equals(tipoSeleccionado) && usuario.tipo != 1) {
-            mostrarAlerta("Ese usuario no corresponde al tipo seleccionado.");
+            abrirMensaje("Ese usuario no corresponde al tipo seleccionado.", "cerrar");
             return;
         }
 
@@ -97,14 +100,27 @@ public class PantallaLoginController implements Initializable {
                 scene.setRoot(root);
                
         } catch (Exception ex) {
-            mostrarAlerta("No se pudo abrir la pantalla solicitada.");
+            abrirMensaje("No se pudo abrir la pantalla solicitada.", "cerrar");
         }
     }
 
-    private void mostrarAlerta(String mensaje) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setHeaderText(null);
-        alert.setContentText(mensaje);
-        alert.showAndWait();
+    public void abrirMensaje(String mensaje, String accion) {
+    try {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/Alerta.fxml"));
+        Parent root = loader.load();
+
+        AlertaController controller = loader.getController();
+        controller.cargarDatos(mensaje, accion);
+        controller.setOverlay(overlay);
+        
+
+        popupMensaje.getChildren().setAll(root);
+        overlay.setVisible(true);
+
+    } catch (Exception e) {
+        e.printStackTrace();
     }
+    
+    
+}
 }

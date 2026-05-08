@@ -30,6 +30,8 @@ import javafx.scene.input.Dragboard;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.TransferMode;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -56,6 +58,9 @@ public class PantallaAgregarElementoController implements Initializable {
     
     @FXML
     private TextArea TextAreaD;
+    
+    @FXML private Pane overlay;
+    @FXML private AnchorPane popupMensaje;
     
     
     public int id = Sistema.listaJuegos.generarID();
@@ -90,7 +95,47 @@ public class PantallaAgregarElementoController implements Initializable {
         
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        calificaciones.add(5f);
+        actualizarUsuario();
+        Rectangle clip0 = new Rectangle();
+        Rectangle clip1 = new Rectangle();
+        Rectangle clip2 = new Rectangle();
+        Rectangle clip3 = new Rectangle();
+        
+        clip0.widthProperty().bind(portada.fitWidthProperty());
+        clip0.heightProperty().bind(portada.fitHeightProperty());
+        portada.setPreserveRatio(false); 
+        
+        clip1.widthProperty().bind(captura1.fitWidthProperty());
+        clip1.heightProperty().bind(captura1.fitHeightProperty());
+        captura1.setPreserveRatio(false); 
+        
+        clip2.widthProperty().bind(captura2.fitWidthProperty());
+        clip2.heightProperty().bind(captura2.fitHeightProperty());
+        captura2.setPreserveRatio(false); 
+        
+        clip3.widthProperty().bind(captura3.fitWidthProperty());
+        clip3.heightProperty().bind(captura3.fitHeightProperty());
+        captura3.setPreserveRatio(false); 
+
+    
+        clip0.setArcWidth(30);
+        clip0.setArcHeight(30);
+        
+        clip1.setArcWidth(30);
+        clip1.setArcHeight(30);
+        
+        clip2.setArcWidth(30);
+        clip2.setArcHeight(30);
+        
+        clip3.setArcWidth(30);
+        clip3.setArcHeight(30);
+        
+        portada.setClip(clip0);
+        captura1.setClip(clip1);
+        captura2.setClip(clip2);
+        captura3.setClip(clip3);
+        
+        calificaciones.add(0f);
         //PORTADA
        portada.setOnDragOver(event -> {
     if (event.getGestureSource() != portada && event.getDragboard().hasFiles()) {
@@ -109,7 +154,7 @@ public class PantallaAgregarElementoController implements Initializable {
         for (File file : db.getFiles()) {
         if (file.getName().endsWith(".jpg")) {
              guardarPortada(file);
-            portada.setImage(new Image(new File(portadaDir).toURI().toString()));
+            portada.setImage(new Image(new File(System.getProperty("user.dir")+ "/src/datos/imagenes/"+ portadaDir).toURI().toString()));
          }
         }
     }
@@ -191,28 +236,47 @@ public class PantallaAgregarElementoController implements Initializable {
     event.setDropCompleted(success);
     event.consume();
 });
-       nombreTF.textProperty().addListener((obs, oldVal, newVal) -> {
-            nombre = newVal;
+       
+       // NOMBRE JUEGO
+       nombreTF.focusedProperty().addListener((obs, oldVal, newVal) -> {
+           if(!newVal){
+               String texto = nombreTF.getText();
+
+               nodoVideojuego v = Sistema.listaJuegos.buscarPorNombre(texto);
+
+               if (v != null) {
+
+               abrirMensaje("El nombre ya está registrado", "cerrar");
+               nombreTF.setText("");
+
+            }else {
+
+            nombre = texto;
+            }
+           }
+            
         });
-       plataformasTF.textProperty().addListener((obs, oldVal, newVal) -> {
+       
+       // AGREGAR PLATAFORMA
+       plataformasTF.focusedProperty().addListener((obs, oldVal, newVal) -> {
            
              plataforma.clear(); 
 
-        if (!newVal.isEmpty()) {
-        String[] partes = newVal.split(",");
+        if (!newVal) {
+        String[] partes = plataformasTF.getText().split(",");
 
         for (String p : partes) {
             plataforma.add(p.trim()); 
         }
         plataformaC.getItems().clear();
-        plataformaC.getSelectionModel().selectFirst();
+        
         plataformaC.getItems().addAll(plataforma);
         stockDigital.clear();
         stockFisico.clear();
         for (int i = 0; i < plataforma.size(); i++) {
-   stockDigital.add(0);
-   stockFisico.add(0);
-}
+        stockDigital.add(0);
+        stockFisico.add(0);
+        }
     }
         });
        
@@ -251,10 +315,11 @@ public class PantallaAgregarElementoController implements Initializable {
         String rutaCarpeta;
         
         if(nombre.equals("")){
-            rutaCarpeta = System.getProperty("user.home") + "/GameHeaven/datos/imagenes/Unamed" ; 
+            abrirMensaje("Primero digite el nombre", "cerrar");
+            return; 
         }
         else{
-        rutaCarpeta = System.getProperty("user.home")+ "/GameHeaven/datos/imagenes/" + nombre; 
+        rutaCarpeta = System.getProperty("user.dir")+ "/src/datos/imagenes/" + nombre; 
         }
         
         File carpeta = new File(rutaCarpeta);
@@ -275,7 +340,7 @@ public class PantallaAgregarElementoController implements Initializable {
         );
 
         System.out.println("Archivo guardado en: " + archivoDestino.getAbsolutePath());
-        portadaDir = archivoDestino.getAbsolutePath();
+        portadaDir = archivoDestino.getParentFile().getName() +"/" + archivoDestino.getName();
     } catch (IOException e) {
         e.printStackTrace();
     }
@@ -287,10 +352,11 @@ public class PantallaAgregarElementoController implements Initializable {
         String rutaCarpeta;
         
         if(nombre.equals("")){
-            rutaCarpeta = System.getProperty("user.home") + "/GameHeaven/datos/imagenes/Unamed" ; 
+            abrirMensaje("Primero digite el nombre", "cerrar");
+            return null;
         }
         else{
-        rutaCarpeta = System.getProperty("user.home")+ "/GameHeaven/datos/imagenes/" + nombre; 
+        rutaCarpeta = System.getProperty("user.dir")+ "/src/datos/imagenes/" + nombre; 
         }
         
         File carpeta = new File(rutaCarpeta);
@@ -311,8 +377,8 @@ public class PantallaAgregarElementoController implements Initializable {
         );
 
         System.out.println("Archivo guardado en: " + archivoDestino.getAbsolutePath());
-        capturas.add(archivoDestino.getAbsolutePath());
-        return archivoDestino.getAbsolutePath();
+        capturas.add(archivoDestino.getParentFile().getName() +"/" + archivoDestino.getName());
+        return System.getProperty("user.dir")+ "/src/datos/imagenes/" + archivoDestino.getParentFile().getName() +"/" + archivoDestino.getName();
     } catch (IOException e) {
         e.printStackTrace();
     }
@@ -382,14 +448,13 @@ public class PantallaAgregarElementoController implements Initializable {
                           capturas, precioDigital, precioFisico,
                           stockDigital, stockFisico, calificaciones));
         Sistema.listaJuegos.guardarArchivo();
-        Parent root = FXMLLoader.load(getClass().getResource("/Vista/PantallaGestion.fxml"));
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Scene scene = stage.getScene();
-        scene.setRoot(root);
+        abrirMensaje("Se ha creador correctamente el elemento", "/Vista/PantallaGestion.fxml");
+        
         
     }
     @FXML
     public void gestion(MouseEvent event) throws Exception {
+        eliminarCarpeta();
         Parent root = FXMLLoader.load(getClass().getResource("/Vista/PantallaGestion.fxml"));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = stage.getScene();
@@ -401,6 +466,7 @@ public class PantallaAgregarElementoController implements Initializable {
         if (Sesion.usuarioActual != null) {
             Sesion.usuarioActual = null;
             actualizarUsuario();
+            eliminarCarpeta();
             Parent root = FXMLLoader.load(getClass().getResource("/Vista/paginaPrincipal.fxml"));
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             Scene scene = stage.getScene();
@@ -422,4 +488,40 @@ public class PantallaAgregarElementoController implements Initializable {
             txtAccion.setText("Cerrar sesión");
         }
     }
+    
+    public void abrirMensaje(String mensaje, String accion) {
+    try {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/Alerta.fxml"));
+        Parent root = loader.load();
+
+        AlertaController controller = loader.getController();
+        controller.cargarDatos(mensaje, accion);
+        controller.setOverlay(overlay);
+        
+
+        popupMensaje.getChildren().setAll(root);
+        overlay.setVisible(true);
+
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+    
+    }
+    public void eliminarCarpeta(){
+        File portadaA = new File(System.getProperty("user.dir")+ "/src/datos/imagenes/"+portadaDir);
+        File cap1A = new File(System.getProperty("user.dir")+ "/src/datos/imagenes/"+capturas.get(0));
+        File cap2A = new File(System.getProperty("user.dir")+ "/src/datos/imagenes/"+capturas.get(1));
+        File cap3A = new File(System.getProperty("user.dir")+ "/src/datos/imagenes/"+capturas.get(2));
+        File carpeta = new File(System.getProperty("user.dir")+ "/src/datos/imagenes/" + nombre);
+        
+        portada.setImage(null);
+        captura1.setImage(null);
+        captura2.setImage(null);
+        captura3.setImage(null);
+        portadaA.delete();
+        cap1A.delete();
+        cap2A.delete();
+        cap3A.delete();
+        carpeta.delete();
+}   
 }

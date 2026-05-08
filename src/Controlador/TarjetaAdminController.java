@@ -22,12 +22,14 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.shape.Rectangle;
 import Controlador.PantallaGestionController;
+import java.io.FileInputStream;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.MenuItem;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import java.io.File;
 
 /**
  * FXML Controller class
@@ -117,7 +119,7 @@ public class TarjetaAdminController implements Initializable {
         this.juego =juego;
         try {
        
-            InputStream is = TarjetaController.class.getResourceAsStream("/Datos/Imagenes/" + juego.nombre+"/"+juego.portada);
+            InputStream is = new FileInputStream(System.getProperty("user.dir")+ "/src/datos/imagenes/"+juego.portada);
             if (is != null) {
                 Miniatura.setImage(new Image(is));
             }
@@ -141,6 +143,7 @@ public class TarjetaAdminController implements Initializable {
     }
     
     public void eliminar(){
+        eliminarCarpeta();
         Sistema.listaJuegos.eliminar(juego.id);
         if(buscar != null){
             control.filtrarTodo(buscar);
@@ -150,6 +153,22 @@ public class TarjetaAdminController implements Initializable {
         }
         Sistema.listaJuegos.guardarArchivo();
     }
+    
+    public void eliminarCarpeta(){
+        File portada = new File(System.getProperty("user.dir")+ "/src/datos/imagenes/"+juego.portada);
+        File cap1 = new File(System.getProperty("user.dir")+ "/src/datos/imagenes/"+juego.capturas.get(0));
+        File cap2 = new File(System.getProperty("user.dir")+ "/src/datos/imagenes/"+juego.capturas.get(1));
+        File cap3 = new File(System.getProperty("user.dir")+ "/src/datos/imagenes/"+juego.capturas.get(2));
+        File carpeta = new File(System.getProperty("user.dir")+ "/src/datos/imagenes/" + juego.nombre);
+        
+        Miniatura.setImage(null);
+        portada.delete();
+        cap1.delete();
+        cap2.delete();
+        cap3.delete();
+        carpeta.delete();
+    
+}   
     
     
 }

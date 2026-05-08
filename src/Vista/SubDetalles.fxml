@@ -13,12 +13,11 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
 <AnchorPane id="AnchorPane" prefHeight="519.0" prefWidth="747.0" style="-fx-background-color: #02031A; -fx-background-radius: 30; -fx-border-color: #FF0841; -fx-border-radius: 30; -fx-border-width: 3; -fx-border-insets: -1;" stylesheets="@../Styles/Detalles.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador.SubDetallesController">
    <children>
       <Pane layoutX="38.0" layoutY="233.0" prefHeight="54.0" prefWidth="318.0" style="-fx-background-color: #021B2B; -fx-background-radius: 30;">
          <children>
-            <HBox alignment="CENTER" layoutX="37.0" layoutY="8.0">
+            <HBox alignment="CENTER" layoutX="36.0" layoutY="8.0">
                <children>
                   <ImageView fx:id="captura1" fitHeight="43.0" fitWidth="69.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -41,7 +40,7 @@
                         <Image url="@../Datos/Imagenes/Factorio/factorio.jpg" />
                      </image>
                      <HBox.margin>
-                        <Insets right="20.0" />
+                        <Insets />
                      </HBox.margin>
                   </ImageView>
                </children>

@@ -13,6 +13,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.shape.Rectangle;
 import Modelo.nodoVideojuego;
+import java.io.FileInputStream;
 import javafx.scene.text.Text;
 
 /**
@@ -52,12 +53,14 @@ public class TarjetaController implements Initializable {
     public void anadirDatos(nodoVideojuego juego){
         try {
        
-            InputStream is = TarjetaController.class.getResourceAsStream("/Datos/Imagenes/" + juego.nombre+"/"+juego.portada);
+            InputStream is = new FileInputStream(System.getProperty("user.dir")+ "/src/datos/imagenes/" + juego.portada);
+            
             if (is != null) {
                 portada.setImage(new Image(is));
             }
         } catch (Exception e) {
             System.out.println("Error cargando imagen");
+            System.out.println(System.getProperty("user.dir")+ "/src/datos/imagenes/" + juego.portada);
         }
         
         precio.setText("$" + (int) juego.precioDigital);
