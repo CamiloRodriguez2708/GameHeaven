@@ -14,12 +14,13 @@ import javafx.scene.image.ImageView;
 import javafx.scene.shape.Rectangle;
 import Modelo.nodoVideojuego;
 import java.io.FileInputStream;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 
 /**
  * FXML Controller class
  *
- * @author USUARIO
+ * @author Camilo Rodriguez
  */
 public class TarjetaController implements Initializable {
 
@@ -29,6 +30,8 @@ public class TarjetaController implements Initializable {
     
     @FXML private ImageView portada;
     @FXML private Text precio, nombre;
+    
+    private nodoVideojuego juego;
     
     
     
@@ -52,7 +55,7 @@ public class TarjetaController implements Initializable {
     }
     public void anadirDatos(nodoVideojuego juego){
         try {
-       
+            this.juego = juego;
             InputStream is = new FileInputStream(System.getProperty("user.dir")+ "/src/datos/imagenes/" + juego.portada);
             
             if (is != null) {
@@ -65,5 +68,10 @@ public class TarjetaController implements Initializable {
         
         precio.setText("$" + (int) juego.precioDigital);
         nombre.setText(juego.nombre);
+    }
+    
+    public void entrar(MouseEvent event) throws Exception{
+        Sistema.seleccionado = this.juego;
+        System.out.println("JUEGO SELECCIONADO: "+ Sistema.seleccionado.nombre);
     }
 }

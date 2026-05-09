@@ -21,13 +21,14 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 /**
  * FXML Controller class
  *
- * @author USUARIO
+ * @author Camilo Rodriguez
  */
 public class ConfiguracionUsuarioController implements Initializable {
 
@@ -47,6 +48,9 @@ public class ConfiguracionUsuarioController implements Initializable {
     
     @FXML
     private DatePicker nacimiento;
+    
+    @FXML private Pane overlay;
+    @FXML private AnchorPane popupMensaje;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -152,8 +156,9 @@ public class ConfiguracionUsuarioController implements Initializable {
         Sesion.usuarioActual.nombreR = nombreR.getText();
         Sesion.usuarioActual.numD = documento.getText();
         Sesion.usuarioActual.nombreU = nombreU.getText();
-        if(correo.getText().equals(Sesion.lista.buscarCorr(correo.getText()).correo)){
-            
+        if(Sesion.lista.buscarCorr(correo.getText()) != null && correo.getText().equals(Sesion.lista.buscarCorr(correo.getText()).correo)){
+            abrirMensaje("El correo ya se encuentra registrado", "cerrar");
+            correo.setText(Sesion.usuarioActual.correo);
         }
         else{
            Sesion.usuarioActual.correo = correo.getText(); 
@@ -212,4 +217,21 @@ public class ConfiguracionUsuarioController implements Initializable {
         scene.setRoot(root);
     }
     
+    public void abrirMensaje(String mensaje, String accion) {
+    try {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/Alerta.fxml"));
+        Parent root = loader.load();
+
+        AlertaController controller = loader.getController();
+        controller.cargarDatos(mensaje, accion);
+        controller.setOverlay(overlay);
+        
+
+        popupMensaje.getChildren().setAll(root);
+        overlay.setVisible(true);
+
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+    }
 }

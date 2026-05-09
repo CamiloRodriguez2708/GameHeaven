@@ -6,9 +6,10 @@ package Controlador;
 import Modelo.nodoUsuario;
 /**
  *
- * @author USUARIO
+ * @author Camilo Rodriguez
  */
 public class Sesion {
     public static nodoUsuario usuarioActual;
     public static listaUsuarios lista = new listaUsuarios();
+    public static PilaCarrito carrito = new PilaCarrito();
 }

@@ -24,7 +24,7 @@ import javafx.scene.shape.Rectangle;
  *
  * @author Camilo Rodriguez
  */
-public class SubDetallesController implements Initializable {
+public class SubModificarController implements Initializable {
 
     @FXML private ImageView portada, captura1, captura2, captura3;
     @FXML private ComboBox<String> plataformaC, edicionC;
@@ -82,7 +82,50 @@ public class SubDetallesController implements Initializable {
         plataformaC.getSelectionModel().selectedIndexProperty().addListener((obs, oldVal, newVal) -> {
             seleccionado();
                                                                                                   });
-         
+        edicionC.getSelectionModel().selectFirst();
+        plataformaC.getSelectionModel().selectFirst();
+        
+        stockT.textProperty().addListener((obs, oldVal, newVal) -> {
+
+        if(!newVal.isEmpty()){
+
+        try{
+
+            int stock = Integer.parseInt(newVal);
+
+            if(edicionC.getSelectionModel().getSelectedIndex() == 0){
+                juego.stockDigital.set(plataformaC.getSelectionModel().getSelectedIndex(),stock);
+            }
+            else{
+                juego.stockFisico.set(plataformaC.getSelectionModel().getSelectedIndex(),stock);
+            }
+
+        }catch(NumberFormatException e){
+            System.out.println("Stock inválido");
+        }
+    }
+        
+});
+        precioT.textProperty().addListener((obs, oldVal, newVal) -> {
+
+        if(!newVal.isEmpty()){
+
+        try{
+
+            int precio = Integer.parseInt(newVal);
+
+            if(edicionC.getSelectionModel().getSelectedIndex() == 0){
+                juego.precioDigital= precio;
+            }
+            else{
+                juego.precioFisico = precio;
+            }
+
+        }catch(NumberFormatException e){
+            System.out.println("Stock inválido");
+        }
+    }
+        });
     
     }
     
@@ -141,11 +184,11 @@ public class SubDetallesController implements Initializable {
         
         if(edicionC.getSelectionModel().getSelectedIndex() == 0){
             stockT.setText(juego.stockDigital.get(plataformaC.getSelectionModel().getSelectedIndex()).toString());
-            precioT.setText("$"+ (int) juego.precioDigital);
+            precioT.setText(""+ (int) juego.precioDigital);
         }
         else if(edicionC.getSelectionModel().getSelectedIndex() == 1){
             stockT.setText(juego.stockFisico.get(plataformaC.getSelectionModel().getSelectedIndex()).toString());
-            precioT.setText("$"+ (int) juego.precioFisico);
+            precioT.setText(""+ (int) juego.precioFisico);
         }
         
         descripcion += juego.descripcion + "\n\n";
@@ -165,11 +208,12 @@ public class SubDetallesController implements Initializable {
         if(juego == null) return;
             if(edicionC.getSelectionModel().getSelectedIndex() == 0){
             stockT.setText(juego.stockDigital.get(plataformaC.getSelectionModel().getSelectedIndex()).toString());
-            precioT.setText("$"+ (int) juego.precioDigital);
+            precioT.setText(""+ (int) juego.precioDigital);
         }
         else if(edicionC.getSelectionModel().getSelectedIndex() == 1){
             stockT.setText(juego.stockFisico.get(plataformaC.getSelectionModel().getSelectedIndex()).toString());
-            precioT.setText("$"+(int) juego.precioFisico);
+            precioT.setText(""+(int) juego.precioFisico);
         }
     }
+    
 }

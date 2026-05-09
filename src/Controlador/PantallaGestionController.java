@@ -26,7 +26,7 @@ import javafx.stage.Stage;
 /**
  * FXML Controller class
  *
- * @author USUARIO
+ * @author Camilo Rodriguez
  */
 public class PantallaGestionController implements Initializable {
 
@@ -61,6 +61,8 @@ public class PantallaGestionController implements Initializable {
         
         overlay.setOnMouseClicked(e -> {
         overlay.setVisible(false);
+        Sistema.listaJuegos.guardarArchivo();
+        mostrarTodos();   
                                        });
     }
     
@@ -189,5 +191,23 @@ public class PantallaGestionController implements Initializable {
     } catch (Exception e) {
         e.printStackTrace();
     }
+    
+    
 }
+    public void abrirModificar(nodoVideojuego juego) {
+    try {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/SubModificar.fxml"));
+        Parent root = loader.load();
+
+        SubModificarController controller = loader.getController();
+        controller.cargarDatos(juego);
+        
+
+        popupDetalles.getChildren().setAll(root);
+        overlay.setVisible(true);
+
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+    }
 }

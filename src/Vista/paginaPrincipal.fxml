@@ -191,7 +191,7 @@
             </Text>
             <ScrollPane fx:id="Scroll" fitToWidth="true" layoutY="123.0" style="-fx-background-color: transparent;">
               <content>
-                        <FlowPane fx:id="panelCatalogo" alignment="TOP_CENTER" hgap="20.0" layoutX="-8.0" layoutY="8.0" prefHeight="804.0" prefWidth="1355.0" style="-fx-background-color: #02031A;" stylesheets="@../Styles/ScrollPane.css" vgap="20.0">
+                        <FlowPane fx:id="panelCatalogo" alignment="TOP_CENTER" hgap="20.0" layoutX="-8.0" layoutY="8.0" prefHeight="768.0" prefWidth="1366.0" style="-fx-background-color: #02031A;" stylesheets="@../Styles/ScrollPane.css" vgap="20.0">
                      <padding>
                         <Insets bottom="250.0" />
                      </padding></FlowPane>

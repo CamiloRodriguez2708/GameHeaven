@@ -34,7 +34,7 @@ import java.io.File;
 /**
  * FXML Controller class
  *
- * @author USUARIO
+ * @author Camilo Rodriguez
  */
 public class TarjetaAdminController implements Initializable {
 
@@ -106,6 +106,10 @@ public class TarjetaAdminController implements Initializable {
     itemDetalles.setOnAction(e -> {
     control.abrirDetalles(juego);
     });
+    
+    itemEditar.setOnAction(e -> {
+    control.abrirModificar(juego);
+    });
     menu.setOnShowing(e -> {
     String css = getClass().getResource("/Styles/ContextMenu.css").toExternalForm();
     
@@ -155,21 +159,43 @@ public class TarjetaAdminController implements Initializable {
     }
     
     public void eliminarCarpeta(){
-        File portada = new File(System.getProperty("user.dir")+ "/src/datos/imagenes/"+juego.portada);
-        File cap1 = new File(System.getProperty("user.dir")+ "/src/datos/imagenes/"+juego.capturas.get(0));
-        File cap2 = new File(System.getProperty("user.dir")+ "/src/datos/imagenes/"+juego.capturas.get(1));
-        File cap3 = new File(System.getProperty("user.dir")+ "/src/datos/imagenes/"+juego.capturas.get(2));
-        File carpeta = new File(System.getProperty("user.dir")+ "/src/datos/imagenes/" + juego.nombre);
-        
-        Miniatura.setImage(null);
-        portada.delete();
-        cap1.delete();
-        cap2.delete();
-        cap3.delete();
-        carpeta.delete();
-    
+
+    File portada = new File(System.getProperty("user.dir")
+            + "/src/datos/imagenes/" + juego.portada);
+
+    File cap1 = new File(System.getProperty("user.dir")
+            + "/src/datos/imagenes/" + juego.capturas.get(0));
+
+    File cap2 = new File(System.getProperty("user.dir")
+            + "/src/datos/imagenes/" + juego.capturas.get(1));
+
+    File cap3 = new File(System.getProperty("user.dir")
+            + "/src/datos/imagenes/" + juego.capturas.get(2));
+
+    File carpeta = new File(System.getProperty("user.dir")
+            + "/src/datos/imagenes/" + juego.nombre);
+
+    Miniatura.setImage(null);
+
+    System.gc();
+
+    try{
+        Thread.sleep(100);
+    }
+    catch(Exception e){
+        e.printStackTrace();
+    }
+
+    System.out.println(portada.delete());
+
+    cap1.delete();
+    cap2.delete();
+    cap3.delete();
+
+    carpeta.delete();
+}
 }   
     
     
-}
+
 

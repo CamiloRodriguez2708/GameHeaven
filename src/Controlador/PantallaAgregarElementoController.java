@@ -13,6 +13,7 @@ import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -38,12 +39,10 @@ import javafx.stage.Stage;
 /**
  * FXML Controller class
  *
- * @author Sofia Ramos
+ * @author Camilo Rodriguez
  */
 public class PantallaAgregarElementoController implements Initializable {
-    
-    
-
+   
     @FXML
     private ImageView portada, captura1, captura2, captura3;
     
@@ -61,7 +60,6 @@ public class PantallaAgregarElementoController implements Initializable {
     
     @FXML private Pane overlay;
     @FXML private AnchorPane popupMensaje;
-    
     
     public int id = Sistema.listaJuegos.generarID();
     public String nombre = "";
@@ -306,6 +304,14 @@ public class PantallaAgregarElementoController implements Initializable {
         obtenerTexto();
     }
                                                                      });
+       
+       Platform.runLater(()->{
+           Stage stage = (Stage) overlay.getScene().getWindow();
+           stage.setOnCloseRequest(event -> {
+
+            eliminarCarpeta();
+           });
+       });
     }
     
     
@@ -507,21 +513,66 @@ public class PantallaAgregarElementoController implements Initializable {
     }
     
     }
+    
     public void eliminarCarpeta(){
-        File portadaA = new File(System.getProperty("user.dir")+ "/src/datos/imagenes/"+portadaDir);
-        File cap1A = new File(System.getProperty("user.dir")+ "/src/datos/imagenes/"+capturas.get(0));
-        File cap2A = new File(System.getProperty("user.dir")+ "/src/datos/imagenes/"+capturas.get(1));
-        File cap3A = new File(System.getProperty("user.dir")+ "/src/datos/imagenes/"+capturas.get(2));
-        File carpeta = new File(System.getProperty("user.dir")+ "/src/datos/imagenes/" + nombre);
-        
-        portada.setImage(null);
-        captura1.setImage(null);
-        captura2.setImage(null);
-        captura3.setImage(null);
-        portadaA.delete();
-        cap1A.delete();
-        cap2A.delete();
-        cap3A.delete();
+
+    File carpeta = new File(
+        System.getProperty("user.dir")
+        + "/src/datos/imagenes/" + nombre
+    );
+
+    portada.setImage(null);
+    captura1.setImage(null);
+    captura2.setImage(null);
+    captura3.setImage(null);
+
+    System.gc();
+
+    try{
+
+        if(portadaDir != null && !portadaDir.isEmpty()){
+
+            File portadaA = new File(
+                System.getProperty("user.dir")+ "/src/datos/imagenes/" + portadaDir
+            );
+
+            portadaA.delete();
+        }
+
+        if(capturas.size() > 0){
+
+            File cap1A = new File(
+                System.getProperty("user.dir")+ "/src/datos/imagenes/" + capturas.get(0)
+            );
+
+            cap1A.delete();
+        }
+
+        if(capturas.size() > 1){
+
+            File cap2A = new File(
+                System.getProperty("user.dir")+ "/src/datos/imagenes/" + capturas.get(1)
+            );
+
+            cap2A.delete();
+        }
+
+        if(capturas.size() > 2){
+
+            File cap3A = new File(
+                System.getProperty("user.dir")+ "/src/datos/imagenes/" + capturas.get(2)
+            );
+
+            cap3A.delete();
+        }
+
         carpeta.delete();
-}   
+
+    }
+    catch(Exception e){
+
+        e.printStackTrace();
+
+    }
+}
 }

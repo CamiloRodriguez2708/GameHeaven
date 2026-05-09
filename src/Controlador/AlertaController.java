@@ -22,7 +22,7 @@ import javafx.stage.Stage;
 /**
  * FXML Controller class
  *
- * @author USUARIO
+ * @author Camilo Rodriguez
  */
 public class AlertaController implements Initializable {
 

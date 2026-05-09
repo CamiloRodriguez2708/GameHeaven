@@ -7,7 +7,7 @@
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.text.TextFlow?>
 
-<AnchorPane id="AnchorPane" prefHeight="208.0" prefWidth="266.0" style="-fx-background-radius: 25; -fx-background-color: #021B2B;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador.TarjetaController">
+<AnchorPane id="AnchorPane" onMouseClicked="#entrar" prefHeight="208.0" prefWidth="266.0" style="-fx-background-radius: 25; -fx-background-color: #021B2B;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador.TarjetaController">
    <children>
       <ImageView fx:id="portada" fitHeight="150.0" fitWidth="266.0" pickOnBounds="true" preserveRatio="true">
          <image>
