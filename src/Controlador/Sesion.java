@@ -12,4 +12,5 @@ public class Sesion {
     public static nodoUsuario usuarioActual;
     public static listaUsuarios lista = new listaUsuarios();
     public static PilaCarrito carrito = new PilaCarrito();
+    public static String buscar = "";
 }

@@ -26,9 +26,9 @@
                   <Image url="@../Imagenes/logo%2080x60%20PX.png" />
                </image>
             </ImageView>
-            <AnchorPane fx:id="Buscar" layoutX="480.0" layoutY="20.0">
+            <AnchorPane fx:id="BuscarP" layoutX="480.0" layoutY="20.0">
                <children>
-                  <TextField prefHeight="45.0" prefWidth="406.0" promptText="Buscar..." style="-fx-background-radius: 20; -fx-background-color: #EBDFCC; -fx-padding: 8 50;">
+                  <TextField fx:id="buscar" prefHeight="45.0" prefWidth="406.0" promptText="Buscar..." style="-fx-background-radius: 20; -fx-background-color: #EBDFCC; -fx-padding: 8 50;">
                      <font>
                         <Font name="Nirmala UI Bold" size="16.0" />
                      </font>
@@ -189,17 +189,6 @@
                   <Font name="Nirmala UI Bold" size="16.0" />
                </font>
             </Text>
-            <ScrollPane fx:id="Scroll" fitToWidth="true" layoutY="123.0" style="-fx-background-color: transparent;">
-              <content>
-                        <FlowPane fx:id="panelCatalogo" alignment="TOP_CENTER" hgap="20.0" layoutX="-8.0" layoutY="8.0" prefHeight="768.0" prefWidth="1366.0" style="-fx-background-color: #02031A;" stylesheets="@../Styles/ScrollPane.css" vgap="20.0">
-                     <padding>
-                        <Insets bottom="250.0" />
-                     </padding></FlowPane>
-              </content>
-               <padding>
-                  <Insets bottom="250.0" />
-               </padding>
-            </ScrollPane>
             <Button fx:id="Gestionar" layoutX="1087.0" layoutY="46.0" mnemonicParsing="false" onMouseClicked="#Admin" prefHeight="40.0" prefWidth="112.0" style="-fx-background-radius: 20; -fx-background-color: B10C43;" text="Gestionar" textFill="#ebdfcc">
                <font>
                   <Font name="Nirmala UI Bold" size="18.0" />
@@ -208,6 +197,11 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
+            <ScrollPane fx:id="Scroll" hbarPolicy="NEVER" hmax="0.0" layoutX="-1.0" layoutY="97.0" prefHeight="584.0" prefWidth="1370.0" style="-fx-background-color: transparent;">
+               <content>
+                  <FlowPane fx:id="panelCatalogo" alignment="TOP_CENTER" prefHeight="584.0" prefWidth="1370.0" style="-fx-background-color: transparent;" />
+               </content>
+            </ScrollPane>
          </children>
          <BorderPane.margin>
             <Insets />

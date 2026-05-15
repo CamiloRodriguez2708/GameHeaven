@@ -1,0 +1,32 @@
+#ScrollR .scroll-bar:horizontal {
+    -fx-background-color: #1a1a2e;
+    -fx-background-radius: 20;
+}
+
+#ScrollR .scroll-bar:horizontal .thumb {
+    -fx-background-color: #ff0841;
+    -fx-background-radius: 5px;
+}
+
+#ScrollR .scroll-bar:horizontal .increment-button,
+#ScrollR .scroll-bar:horizontal .decrement-button {
+    -fx-background-color: transparent;
+}
+
+#ScrollR .scroll-bar:horizontal .increment-arrow,
+#ScrollR .scroll-bar:horizontal .decrement-arrow {
+    -fx-shape: "";
+    -fx-padding: 0;
+}
+#ScrollR .scroll-bar:horizontal {
+    -fx-pref-height: 12px; /* grosor de la barra */
+}
+
+#ScrollR .scroll-bar:horizontal .thumb {
+    -fx-background-color: #ff0841;
+    -fx-background-radius: 5px;
+}
+
+#ScrollR .viewport {
+    -fx-background-color: transparent;
+}

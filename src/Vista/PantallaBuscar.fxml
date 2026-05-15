@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane fx:id="Pantalla" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" style="-fx-background-color: #02031A;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador.PantallaBuscarController">
+   <top>
+      <Pane prefHeight="85.0" prefWidth="1366.0" style="-fx-background-color: #021B2B;" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="63.0" fitWidth="73.0" layoutX="21.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Imagenes/logo%2080x60%20PX.png" />
+               </image>
+            </ImageView>
+            <AnchorPane layoutX="480.0" layoutY="20.0">
+               <children>
+                  <TextField fx:id="buscar" prefHeight="45.0" prefWidth="406.0" promptText="Buscar..." style="-fx-background-radius: 20; -fx-background-color: #EBDFCC; -fx-padding: 8 50;">
+                     <font>
+                        <Font name="Nirmala UI Bold" size="16.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="TEXT" />
+                     </cursor>
+                  </TextField>
+                  <ImageView fitHeight="38.0" fitWidth="38.0" layoutX="6.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Imagenes/Lupa%2050%20PX.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+            <ImageView fitHeight="64.0" fitWidth="64.0" layoutX="128.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Imagenes/User%2064%20PX.png" />
+               </image>
+            </ImageView>
+            <Text fx:id="txtUsuario" fill="#ebdfcc" layoutX="205.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Invitado">
+               <font>
+                  <Font name="Nirmala UI Bold" size="16.0" />
+               </font>
+            </Text>
+            <Text fx:id="txtAccion" fill="#ff0841" layoutX="205.0" layoutY="37.0" onMouseClicked="#Login" strokeType="OUTSIDE" strokeWidth="0.0" text="Ingresar">
+               <font>
+                  <Font name="Nirmala UI Bold" size="16.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Text>
+            <Pane fx:id="PaneCompra" layoutX="1235.0" layoutY="19.0" prefHeight="45.0" prefWidth="99.0" style="-fx-background-color: EBDFCC; -fx-background-radius: 20;">
+               <children>
+                  <ImageView fitHeight="28.0" fitWidth="29.0" layoutX="14.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Imagenes/Carrito%2050%20PX.png" />
+                     </image>
+                  </ImageView>
+                  <Text fill="#02031a" layoutX="62.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                     <font>
+                        <Font name="Nirmala UI Bold" size="24.0" />
+                     </font>
+                  </Text>
+               </children>
+            </Pane>
+            <ComboBox fx:id="ComboBoxT" layoutX="1077.0" layoutY="19.0" prefHeight="45.0" prefWidth="141.0" promptText="Catalogo" style="-fx-background-color: EBDFCC; -fx-background-radius: 20; -fx-font-size: 16; -fx-font-family: Nirmala UI; -fx-font-weight: bold; -fx-text-fill: #02031A;" stylesheets="@../Styles/ComboBoxT.css" visibleRowCount="3" />
+         </children>
+      </Pane>
+   </top>
+   <center>
+      <AnchorPane prefHeight="768.0" prefWidth="1366.0" styleClass="mi-slider" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+         <children>
+            <Text fill="#ebdfcc" layoutX="24.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Resultados relacionados:">
+               <font>
+                  <Font name="Nirmala UI Bold" size="42.0" />
+               </font>
+            </Text>
+            <ScrollPane fx:id="ScrollB" hbarPolicy="ALWAYS" layoutX="24.0" layoutY="83.0" prefHeight="258.0" prefWidth="1334.0" style="-fx-background-color: transparent;" vbarPolicy="NEVER">
+               <content>
+                  <HBox fx:id="buscarPant" prefHeight="214.0" prefWidth="1333.0" style="-fx-background-color: transparent;" />
+               </content>
+            </ScrollPane>
+            <Text fill="#ebdfcc" layoutX="25.0" layoutY="396.0" strokeType="OUTSIDE" strokeWidth="0.0" text="También te podrian gustar:">
+               <font>
+                  <Font name="Nirmala UI Bold" size="42.0" />
+               </font>
+            </Text>
+            <ScrollPane fx:id="ScrollR" hbarPolicy="ALWAYS" layoutX="24.0" layoutY="413.0" prefHeight="258.0" prefWidth="1334.0" style="-fx-background-color: transparent;" vbarPolicy="NEVER">
+               <content>
+                  <HBox fx:id="relPant" prefHeight="214.0" prefWidth="1333.0" style="-fx-background-color: transparent;" />
+               </content>
+            </ScrollPane>
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>

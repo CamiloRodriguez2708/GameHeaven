@@ -2,6 +2,7 @@ package Controlador;
 
 import Modelo.nodoVideojuego;
 import Controlador.TarjetaController;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -24,6 +25,7 @@ import javafx.geometry.Insets;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
@@ -47,7 +49,7 @@ public class PaginaPrincipalController implements Initializable {
     private Text txtUsuario, FiltroPrecio, txtAccion;
     
     @FXML
-    private AnchorPane Buscar;
+    private AnchorPane BuscarP;
     
     @FXML
     private Pane PaneCompra;
@@ -60,6 +62,9 @@ public class PaginaPrincipalController implements Initializable {
     
     @FXML
     private BorderPane Pantalla;
+    
+    @FXML
+    private TextField buscar;
     
     @FXML
     private Button Gestionar;
@@ -136,7 +141,7 @@ public class PaginaPrincipalController implements Initializable {
         Mostrar();
         }
         else{
-            Buscar.setVisible(true);
+            BuscarP.setVisible(true);
             PaneCompra.setVisible(true);
             ComboBoxT.setVisible(true);
             Gestionar.setVisible(false);
@@ -151,6 +156,16 @@ public class PaginaPrincipalController implements Initializable {
           mostrarTodos();
           activarBoton(btnMostrarTodo); 
        });
+        
+        buscar.textProperty().addListener((obj, oldVal, newVal) ->{
+            if(newVal != ""){
+                Sesion.buscar = newVal;
+                Buscar();
+            }
+            else{
+                
+            }
+        });
     }
 
     private void actualizarUsuario() {
@@ -195,7 +210,7 @@ public class PaginaPrincipalController implements Initializable {
                     TarjetaController controller = loader.getController();
                     controller.anadirDatos(temp);
                     panelCatalogo.getChildren().add(tarjeta);
-                    FlowPane.setMargin(tarjeta, new javafx.geometry.Insets(10));
+                    FlowPane.setMargin(tarjeta, new javafx.geometry.Insets(15));
                 }
                 catch(Exception e){
                     e.printStackTrace();
@@ -208,7 +223,7 @@ public class PaginaPrincipalController implements Initializable {
                     TarjetaController controller = loader.getController();
                     controller.anadirDatos(temp);
                     panelCatalogo.getChildren().add(tarjeta);
-                    FlowPane.setMargin(tarjeta, new javafx.geometry.Insets(10));
+                    FlowPane.setMargin(tarjeta, new javafx.geometry.Insets(15));
                 }
                 catch(Exception e){
                     e.printStackTrace();
@@ -234,7 +249,7 @@ public class PaginaPrincipalController implements Initializable {
             controller.anadirDatos(temp);
 
             panelCatalogo.getChildren().add(tarjeta);
-            FlowPane.setMargin(tarjeta, new javafx.geometry.Insets(10));
+            FlowPane.setMargin(tarjeta, new javafx.geometry.Insets(15));
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -248,13 +263,13 @@ public class PaginaPrincipalController implements Initializable {
     @FXML
     public void Mostrar(){
         if(Sesion.usuarioActual.tipo == 1){
-            Buscar.setVisible(false);
+            BuscarP.setVisible(false);
             PaneCompra.setVisible(false);
             ComboBoxT.setVisible(false);
             Gestionar.setVisible(true);
         }
         else if(Sesion.usuarioActual.tipo == 0){
-            Buscar.setVisible(true);
+            BuscarP.setVisible(true);
             PaneCompra.setVisible(true);
             ComboBoxT.setVisible(true);
             Gestionar.setVisible(false);
@@ -283,6 +298,18 @@ public class PaginaPrincipalController implements Initializable {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = stage.getScene();
         scene.setRoot(root);
+    }
+    
+    public void Buscar() {
+        try{
+        Parent root = FXMLLoader.load(getClass().getResource("/Vista/PantallaBuscar.fxml"));
+        Stage stage = (Stage) BuscarP.getScene().getWindow();
+        Scene scene = stage.getScene();
+        scene.setRoot(root);
+        }
+        catch (IOException e){
+            e.printStackTrace();
+        }
     }
    
 }

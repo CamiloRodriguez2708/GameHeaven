@@ -26,3 +26,7 @@
     -fx-background-color: #ff0841;
     -fx-background-radius: 5px;
 }
+
+#Scroll .viewport {
+    -fx-background-color: transparent;
+}
