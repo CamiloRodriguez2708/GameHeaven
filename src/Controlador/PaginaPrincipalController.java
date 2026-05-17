@@ -46,7 +46,7 @@ public class PaginaPrincipalController implements Initializable {
     private Slider SliderP;
 
     @FXML
-    private Text txtUsuario, FiltroPrecio, txtAccion;
+    private Text txtUsuario, FiltroPrecio, txtAccion, carritoTxt;
     
     @FXML
     private AnchorPane BuscarP;
@@ -136,6 +136,7 @@ public class PaginaPrincipalController implements Initializable {
         Collections.addAll(list, "Catalogo", "Historial", "Favoritos");
         ComboBoxT.getItems().setAll(list);
         actualizarUsuario();
+        carritoTxt.setText(String.valueOf(Sesion.carrito.cantidadJuegos()));
         Scroll.getStylesheets().add(getClass().getResource("/Styles/ScrollPane.css").toExternalForm());
         if(Sesion.usuarioActual != null){
         Mostrar();

@@ -7,7 +7,6 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,25 +15,13 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.Slider;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import javafx.animation.FadeTransition;
 import javafx.application.Platform;
-import javafx.geometry.Insets;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
-import javafx.scene.control.TextInputDialog;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
-import javafx.util.Duration;
 
 
 public class PantallaBuscarController implements Initializable {
@@ -43,7 +30,7 @@ public class PantallaBuscarController implements Initializable {
     private ComboBox<String> ComboBoxT;
 
     @FXML
-    private Text txtUsuario, txtAccion;
+    private Text txtUsuario, txtAccion, carritoTxt;
     
     @FXML
     private ScrollPane ScrollB, ScrollR;
@@ -59,6 +46,7 @@ public class PantallaBuscarController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         buscar.setText(Sesion.buscar);
+        carritoTxt.setText(String.valueOf(Sesion.carrito.cantidadJuegos()));
         ArrayList<String> list = new ArrayList<>();
         Collections.addAll(list, "Catalogo", "Historial", "Favoritos");
         ComboBoxT.getItems().setAll(list);

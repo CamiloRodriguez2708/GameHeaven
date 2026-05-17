@@ -70,7 +70,7 @@
                               <Image url="@../Imagenes/Carrito%2050%20PX.png" />
                            </image>
                         </ImageView>
-                        <Text fill="#02031a" layoutX="62.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                        <Text fx:id="carritoTxt" fill="#02031a" layoutX="62.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
                            <font>
                               <Font name="Nirmala UI Bold" size="24.0" />
                            </font>

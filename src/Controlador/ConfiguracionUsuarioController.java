@@ -38,7 +38,7 @@ public class ConfiguracionUsuarioController implements Initializable {
     @FXML private AnchorPane informacionPersonal, datosDeCuenta, seguridad, metodoDePago, dirrecion;
     
     @FXML
-    private Text txtUsuario, txtAccion;
+    private Text txtUsuario, txtAccion, carritoTxt;
     
     @FXML
     private ComboBox<String> ComboBoxT, tipoDoc, genero;
@@ -61,6 +61,7 @@ public class ConfiguracionUsuarioController implements Initializable {
         metodoDePago.setVisible(false);
         dirrecion.setVisible(false);
         actualizarUsuario();
+        carritoTxt.setText(String.valueOf(Sesion.carrito.cantidadJuegos()));
         
         ArrayList<String> list = new ArrayList<>();
         Collections.addAll(list, "Catalogo", "Historial", "Favoritos");

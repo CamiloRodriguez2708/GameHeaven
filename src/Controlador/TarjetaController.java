@@ -14,8 +14,13 @@ import javafx.scene.image.ImageView;
 import javafx.scene.shape.Rectangle;
 import Modelo.nodoVideojuego;
 import java.io.FileInputStream;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -73,5 +78,9 @@ public class TarjetaController implements Initializable {
     public void entrar(MouseEvent event) throws Exception{
         Sistema.seleccionado = this.juego;
         System.out.println("JUEGO SELECCIONADO: "+ Sistema.seleccionado.nombre);
+        Parent root = FXMLLoader.load(getClass().getResource("/Vista/PantallaCompra.fxml"));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = stage.getScene();
+        scene.setRoot(root);
     }
 }
