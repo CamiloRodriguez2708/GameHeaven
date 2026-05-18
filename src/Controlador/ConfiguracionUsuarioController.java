@@ -9,6 +9,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.ResourceBundle;
+import javafx.application.Platform;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -91,6 +92,14 @@ public class ConfiguracionUsuarioController implements Initializable {
         genero.getItems().add("F");
         
         nacimiento.setPromptText(Sesion.usuarioActual.fechaNacimiento.toString());
+        
+        Platform.runLater(()->{
+           Stage stage = (Stage) overlay.getScene().getWindow();
+           stage.setOnCloseRequest(event -> {
+
+            Sesion.carrito.vaciar();
+           });
+       });
     }    
     
     public void infoP (MouseEvent event) {
@@ -212,10 +221,12 @@ public class ConfiguracionUsuarioController implements Initializable {
     
     public void cerrar(Event event) throws IOException{
         Sesion.usuarioActual = null;
+        Sesion.carrito.vaciar();
         Parent root = FXMLLoader.load(getClass().getResource("/Vista/paginaPrincipal.fxml"));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = stage.getScene();
         scene.setRoot(root);
+        
     }
     
     public void abrirMensaje(String mensaje, String accion) {

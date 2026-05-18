@@ -48,5 +48,32 @@ public class PilaCarrito {
     return carrito.size();
 }
     
+    public void vaciar(){
+        while(!carrito.isEmpty()){
+            nodoVideojuego juego = carrito.pop();
+            nodoVideojuego aux = Sistema.listaJuegos.buscarPorNombre(juego.nombre);
+            try{
+            if(aux != null){
+                    for(int i = 0; i < aux.plataforma.size(); i++){
+                        if(juego.plataforma.get(0).equalsIgnoreCase(aux.plataforma.get(i))){
+                            if(juego.edicion.equals("Digital")){
+                                aux.stockDigital.set(i, aux.stockDigital.get(i)+1);
+                                Sistema.listaJuegos.guardarArchivo();
+                            }
+                            else if (juego.edicion.equals("Fisico")){
+                                aux.stockFisico.set(i, aux.stockFisico.get(i)+1);
+                                Sistema.listaJuegos.guardarArchivo();
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception e){
+                e.printStackTrace();
+            }
+        }
     
+    
+    
+}
 }

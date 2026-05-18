@@ -69,6 +69,9 @@ public class PaginaPrincipalController implements Initializable {
     @FXML
     private Button Gestionar;
     
+    @FXML private Pane overlay;
+    @FXML private AnchorPane popupMensaje;
+    
    
     
       @FXML
@@ -156,17 +159,30 @@ public class PaginaPrincipalController implements Initializable {
         Platform.runLater(() -> {
           mostrarTodos();
           activarBoton(btnMostrarTodo); 
+          Stage stage = (Stage) buscar.getScene().getWindow();
+           stage.setOnCloseRequest(event -> {
+
+            Sesion.carrito.vaciar();
+           });
        });
         
         buscar.textProperty().addListener((obj, oldVal, newVal) ->{
             if(newVal != ""){
+                if(Sesion.usuarioActual != null){
                 Sesion.buscar = newVal;
                 Buscar();
+                }
+                else{
+                    Sesion.buscar = "";
+                    buscar.setText("");
+                    abrirMensaje("POR FAVOR INICIE SESIÓN PRIMERO", "cerrar");
+                }
             }
             else{
                 
             }
         });
+        
     }
 
     private void actualizarUsuario() {
@@ -210,6 +226,7 @@ public class PaginaPrincipalController implements Initializable {
                     Parent tarjeta = loader.load();
                     TarjetaController controller = loader.getController();
                     controller.anadirDatos(temp);
+                    controller.getControlador(this);
                     panelCatalogo.getChildren().add(tarjeta);
                     FlowPane.setMargin(tarjeta, new javafx.geometry.Insets(15));
                 }
@@ -223,6 +240,7 @@ public class PaginaPrincipalController implements Initializable {
                     Parent tarjeta = loader.load();
                     TarjetaController controller = loader.getController();
                     controller.anadirDatos(temp);
+                    controller.getControlador(this);
                     panelCatalogo.getChildren().add(tarjeta);
                     FlowPane.setMargin(tarjeta, new javafx.geometry.Insets(15));
                 }
@@ -248,6 +266,7 @@ public class PaginaPrincipalController implements Initializable {
 
             TarjetaController controller = loader.getController();
             controller.anadirDatos(temp);
+            controller.getControlador(this);
 
             panelCatalogo.getChildren().add(tarjeta);
             FlowPane.setMargin(tarjeta, new javafx.geometry.Insets(15));
@@ -312,6 +331,26 @@ public class PaginaPrincipalController implements Initializable {
             e.printStackTrace();
         }
     }
+    
+    public void abrirMensaje(String mensaje, String accion) {
+    try {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/Alerta.fxml"));
+        Parent root = loader.load();
+
+        AlertaController controller = loader.getController();
+        controller.cargarDatos(mensaje, accion);
+        controller.setOverlay(overlay);
+        
+
+        popupMensaje.getChildren().setAll(root);
+        overlay.setVisible(true);
+
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+    }
+    
+    
    
 }
 

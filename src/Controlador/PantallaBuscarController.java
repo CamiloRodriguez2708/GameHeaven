@@ -67,7 +67,15 @@ public class PantallaBuscarController implements Initializable {
         Platform.runLater(()->{
             buscar.requestFocus();
             buscar.positionCaret(buscar.getText().length());
+            Stage stage = (Stage) buscar.getScene().getWindow();
+            stage.setOnCloseRequest(event -> {
+
+            Sesion.carrito.vaciar();});
         });
+        
+        
+           
+           
     }
 
     private void actualizarUsuario() {

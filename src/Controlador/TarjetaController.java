@@ -38,6 +38,8 @@ public class TarjetaController implements Initializable {
     
     private nodoVideojuego juego;
     
+    private PaginaPrincipalController controlador;
+    
     
     
     @Override
@@ -75,12 +77,21 @@ public class TarjetaController implements Initializable {
         nombre.setText(juego.nombre);
     }
     
+    public void getControlador(PaginaPrincipalController aux){
+        this.controlador = aux;
+    }
+    
     public void entrar(MouseEvent event) throws Exception{
+        if(Sesion.usuarioActual != null){
         Sistema.seleccionado = this.juego;
         System.out.println("JUEGO SELECCIONADO: "+ Sistema.seleccionado.nombre);
         Parent root = FXMLLoader.load(getClass().getResource("/Vista/PantallaCompra.fxml"));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = stage.getScene();
         scene.setRoot(root);
+        }
+        else{
+            controlador.abrirMensaje("POR FAVOR INICIE SESIÓN PRIMERO", "cerrar");
+        }
     }
 }

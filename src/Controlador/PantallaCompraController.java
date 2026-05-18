@@ -11,6 +11,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.ResourceBundle;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -118,6 +119,13 @@ public class PantallaCompraController implements Initializable {
         Image3.setOnMouseClicked(e -> {
             CambiarImagen(Image3);
 });
+        Platform.runLater(()->{
+           Stage stage = (Stage) ImagePrincipal.getScene().getWindow();
+           stage.setOnCloseRequest(event -> {
+
+            Sesion.carrito.vaciar();
+           });
+       });
    
     } 
     private void AgregarFavoritos(){

@@ -14,198 +14,208 @@
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane fx:id="Pantalla" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" style="-fx-background-color: #02031A;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador.PaginaPrincipalController">
-   <top>
-      <Pane prefHeight="85.0" prefWidth="1366.0" style="-fx-background-color: #021B2B;" BorderPane.alignment="CENTER">
-         <children>
-            <ImageView fitHeight="63.0" fitWidth="73.0" layoutX="21.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../Imagenes/logo%2080x60%20PX.png" />
-               </image>
-            </ImageView>
-            <AnchorPane fx:id="BuscarP" layoutX="480.0" layoutY="20.0">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador.PaginaPrincipalController">
+   <children>
+      <BorderPane fx:id="Pantalla" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" style="-fx-background-color: #02031A;">
+         <top>
+            <Pane prefHeight="85.0" prefWidth="1366.0" style="-fx-background-color: #021B2B;" BorderPane.alignment="CENTER">
                <children>
-                  <TextField fx:id="buscar" prefHeight="45.0" prefWidth="406.0" promptText="Buscar..." style="-fx-background-radius: 20; -fx-background-color: #EBDFCC; -fx-padding: 8 50;">
+                  <ImageView fitHeight="63.0" fitWidth="73.0" layoutX="21.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Imagenes/logo%2080x60%20PX.png" />
+                     </image>
+                  </ImageView>
+                  <AnchorPane fx:id="BuscarP" layoutX="480.0" layoutY="20.0">
+                     <children>
+                        <TextField fx:id="buscar" prefHeight="45.0" prefWidth="406.0" promptText="Buscar..." style="-fx-background-radius: 20; -fx-background-color: #EBDFCC; -fx-padding: 8 50;">
+                           <font>
+                              <Font name="Nirmala UI Bold" size="16.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="TEXT" />
+                           </cursor>
+                        </TextField>
+                        <ImageView fitHeight="38.0" fitWidth="38.0" layoutX="6.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Imagenes/Lupa%2050%20PX.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
+                  <ImageView fitHeight="64.0" fitWidth="64.0" layoutX="128.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Imagenes/User%2064%20PX.png" />
+                     </image>
+                  </ImageView>
+                  <Text fx:id="txtUsuario" fill="#ebdfcc" layoutX="205.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Invitado">
                      <font>
                         <Font name="Nirmala UI Bold" size="16.0" />
-                     </font>
-                     <cursor>
-                        <Cursor fx:constant="TEXT" />
-                     </cursor>
-                  </TextField>
-                  <ImageView fitHeight="38.0" fitWidth="38.0" layoutX="6.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../Imagenes/Lupa%2050%20PX.png" />
-                     </image>
-                  </ImageView>
-               </children>
-            </AnchorPane>
-            <ImageView fitHeight="64.0" fitWidth="64.0" layoutX="128.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../Imagenes/User%2064%20PX.png" />
-               </image>
-            </ImageView>
-            <Text fx:id="txtUsuario" fill="#ebdfcc" layoutX="205.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Invitado">
-               <font>
-                  <Font name="Nirmala UI Bold" size="16.0" />
-               </font>
-            </Text>
-            <Text fx:id="txtAccion" fill="#ff0841" layoutX="205.0" layoutY="37.0" onMouseClicked="#Login" strokeType="OUTSIDE" strokeWidth="0.0" text="Ingresar">
-               <font>
-                  <Font name="Nirmala UI Bold" size="16.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Text>
-            <Pane fx:id="PaneCompra" layoutX="1235.0" layoutY="19.0" prefHeight="45.0" prefWidth="99.0" style="-fx-background-color: EBDFCC; -fx-background-radius: 20;">
-               <children>
-                  <ImageView fitHeight="28.0" fitWidth="29.0" layoutX="14.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../Imagenes/Carrito%2050%20PX.png" />
-                     </image>
-                  </ImageView>
-                  <Text fx:id="carritoTxt" fill="#02031a" layoutX="62.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
-                     <font>
-                        <Font name="Nirmala UI Bold" size="24.0" />
                      </font>
                   </Text>
+                  <Text fx:id="txtAccion" fill="#ff0841" layoutX="205.0" layoutY="37.0" onMouseClicked="#Login" strokeType="OUTSIDE" strokeWidth="0.0" text="Ingresar">
+                     <font>
+                        <Font name="Nirmala UI Bold" size="16.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Text>
+                  <Pane fx:id="PaneCompra" layoutX="1235.0" layoutY="19.0" prefHeight="45.0" prefWidth="99.0" style="-fx-background-color: EBDFCC; -fx-background-radius: 20;">
+                     <children>
+                        <ImageView fitHeight="28.0" fitWidth="29.0" layoutX="14.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Imagenes/Carrito%2050%20PX.png" />
+                           </image>
+                        </ImageView>
+                        <Text fx:id="carritoTxt" fill="#02031a" layoutX="62.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                           <font>
+                              <Font name="Nirmala UI Bold" size="24.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </Pane>
+                  <ComboBox fx:id="ComboBoxT" layoutX="1077.0" layoutY="19.0" prefHeight="45.0" prefWidth="141.0" promptText="Catalogo" style="-fx-background-color: EBDFCC; -fx-background-radius: 20; -fx-font-size: 16; -fx-font-family: Nirmala UI; -fx-font-weight: bold; -fx-text-fill: #02031A;" stylesheets="@../Styles/ComboBoxT.css" visibleRowCount="3" />
                </children>
             </Pane>
-            <ComboBox fx:id="ComboBoxT" layoutX="1077.0" layoutY="19.0" prefHeight="45.0" prefWidth="141.0" promptText="Catalogo" style="-fx-background-color: EBDFCC; -fx-background-radius: 20; -fx-font-size: 16; -fx-font-family: Nirmala UI; -fx-font-weight: bold; -fx-text-fill: #02031A;" stylesheets="@../Styles/ComboBoxT.css" visibleRowCount="3" />
+         </top>
+         <center>
+            <AnchorPane prefHeight="0.0" prefWidth="1370.0" styleClass="mi-slider" BorderPane.alignment="CENTER">
+               <children>
+                  <HBox layoutX="348.0" layoutY="48.0">
+                     <children>
+                        <Button fx:id="btnMostrarTodo" mnemonicParsing="false" onAction="#mostrarTodoClick" style="-fx-background-color: #EBDFCC; -fx-background-radius: 5;" text="Todos">
+                           <HBox.margin>
+                              <Insets right="5.0" />
+                           </HBox.margin>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <font>
+                              <Font name="Nirmala UI Bold" size="16.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="btnAccion" mnemonicParsing="false" onAction="#accionClick" style="-fx-background-color: EBDFCC; -fx-background-radius: 5;" text="Acción">
+                           <HBox.margin>
+                              <Insets right="5.0" />
+                           </HBox.margin>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <font>
+                              <Font name="Nirmala UI Bold" size="16.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="btnDisparos" mnemonicParsing="false" onAction="#disparosClick" style="-fx-background-color: EBDFCC; -fx-background-radius: 5;" text="Disparos">
+                           <HBox.margin>
+                              <Insets right="5.0" />
+                           </HBox.margin>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <font>
+                              <Font name="Nirmala UI Bold" size="16.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="btnRPG" mnemonicParsing="false" onAction="#rpgClick" style="-fx-background-color: EBDFCC; -fx-background-radius: 5;" text="Rpg">
+                           <HBox.margin>
+                              <Insets right="5.0" />
+                           </HBox.margin>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <font>
+                              <Font name="Nirmala UI Bold" size="16.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="btnRitmo" mnemonicParsing="false" onAction="#ritmoClick" style="-fx-background-color: EBDFCC; -fx-background-radius: 5;" text="Ritmico">
+                           <HBox.margin>
+                              <Insets right="5.0" />
+                           </HBox.margin>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <font>
+                              <Font name="Nirmala UI Bold" size="16.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="btnEstrategia" mnemonicParsing="false" onAction="#estrategiaClick" style="-fx-background-color: EBDFCC; -fx-background-radius: 5;" text="Estrategia">
+                           <HBox.margin>
+                              <Insets right="5.0" />
+                           </HBox.margin>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <font>
+                              <Font name="Nirmala UI Bold" size="16.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="btnCasual" mnemonicParsing="false" onAction="#casualClick" style="-fx-background-color: EBDFCC; -fx-background-radius: 5;" text="Casual">
+                           <HBox.margin>
+                              <Insets right="5.0" />
+                           </HBox.margin>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <font>
+                              <Font name="Nirmala UI Bold" size="16.0" />
+                           </font>
+                        </Button>
+                        <Button mnemonicParsing="false" style="-fx-background-color: EBDFCC; -fx-background-radius: 5;" text="Más...">
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <font>
+                              <Font name="Nirmala UI Bold" size="16.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <Slider fx:id="SliderP" blockIncrement="1.0" layoutX="193.0" layoutY="60.0" stylesheets="@../Styles/SliderP.css" value="100.0">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Slider>
+                  <Text fill="#ebdfcc" layoutX="193.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Precio Max.">
+                     <font>
+                        <Font name="Nirmala UI Bold" size="16.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="FiltroPrecio" fill="#ebdfcc" layoutX="298.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="100">
+                     <font>
+                        <Font name="Nirmala UI Bold" size="16.0" />
+                     </font>
+                  </Text>
+                  <Button fx:id="Gestionar" layoutX="1087.0" layoutY="46.0" mnemonicParsing="false" onMouseClicked="#Admin" prefHeight="40.0" prefWidth="112.0" style="-fx-background-radius: 20; -fx-background-color: B10C43;" text="Gestionar" textFill="#ebdfcc">
+                     <font>
+                        <Font name="Nirmala UI Bold" size="18.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <ScrollPane fx:id="Scroll" hbarPolicy="NEVER" hmax="0.0" layoutX="-1.0" layoutY="97.0" prefHeight="584.0" prefWidth="1366.0" style="-fx-background-color: transparent;">
+                     <content>
+                        <FlowPane fx:id="panelCatalogo" alignment="TOP_CENTER" prefHeight="584.0" prefWidth="1364.0" style="-fx-background-color: transparent;" />
+                     </content>
+                  </ScrollPane>
+               </children>
+               <BorderPane.margin>
+                  <Insets />
+               </BorderPane.margin>
+            </AnchorPane>
+         </center>
+      </BorderPane>
+      <Pane fx:id="overlay" prefHeight="612.0" prefWidth="1183.0" style="-fx-background-color: rgba(0,0,0,0.6);" visible="false">
+         <children>
+            <AnchorPane fx:id="popupMensaje" layoutX="435.0" layoutY="250.0" prefHeight="245.0" prefWidth="496.0" />
          </children>
       </Pane>
-   </top>
-   <center>
-      <AnchorPane prefHeight="0.0" prefWidth="1370.0" styleClass="mi-slider" BorderPane.alignment="CENTER">
-         <children>
-            <HBox layoutX="348.0" layoutY="48.0">
-               <children>
-                  <Button fx:id="btnMostrarTodo" mnemonicParsing="false" onAction="#mostrarTodoClick" style="-fx-background-color: #EBDFCC; -fx-background-radius: 5;" text="Todos">
-                     <HBox.margin>
-                        <Insets right="5.0" />
-                     </HBox.margin>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                     <font>
-                        <Font name="Nirmala UI Bold" size="16.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="btnAccion" mnemonicParsing="false" onAction="#accionClick" style="-fx-background-color: EBDFCC; -fx-background-radius: 5;" text="Acción">
-                     <HBox.margin>
-                        <Insets right="5.0" />
-                     </HBox.margin>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                     <font>
-                        <Font name="Nirmala UI Bold" size="16.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="btnDisparos" mnemonicParsing="false" onAction="#disparosClick" style="-fx-background-color: EBDFCC; -fx-background-radius: 5;" text="Disparos">
-                     <HBox.margin>
-                        <Insets right="5.0" />
-                     </HBox.margin>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                     <font>
-                        <Font name="Nirmala UI Bold" size="16.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="btnRPG" mnemonicParsing="false" onAction="#rpgClick" style="-fx-background-color: EBDFCC; -fx-background-radius: 5;" text="Rpg">
-                     <HBox.margin>
-                        <Insets right="5.0" />
-                     </HBox.margin>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                     <font>
-                        <Font name="Nirmala UI Bold" size="16.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="btnRitmo" mnemonicParsing="false" onAction="#ritmoClick" style="-fx-background-color: EBDFCC; -fx-background-radius: 5;" text="Ritmico">
-                     <HBox.margin>
-                        <Insets right="5.0" />
-                     </HBox.margin>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                     <font>
-                        <Font name="Nirmala UI Bold" size="16.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="btnEstrategia" mnemonicParsing="false" onAction="#estrategiaClick" style="-fx-background-color: EBDFCC; -fx-background-radius: 5;" text="Estrategia">
-                     <HBox.margin>
-                        <Insets right="5.0" />
-                     </HBox.margin>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                     <font>
-                        <Font name="Nirmala UI Bold" size="16.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="btnCasual" mnemonicParsing="false" onAction="#casualClick" style="-fx-background-color: EBDFCC; -fx-background-radius: 5;" text="Casual">
-                     <HBox.margin>
-                        <Insets right="5.0" />
-                     </HBox.margin>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                     <font>
-                        <Font name="Nirmala UI Bold" size="16.0" />
-                     </font>
-                  </Button>
-                  <Button mnemonicParsing="false" style="-fx-background-color: EBDFCC; -fx-background-radius: 5;" text="Más...">
-                     <HBox.margin>
-                        <Insets />
-                     </HBox.margin>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                     <font>
-                        <Font name="Nirmala UI Bold" size="16.0" />
-                     </font>
-                  </Button>
-               </children>
-            </HBox>
-            <Slider fx:id="SliderP" blockIncrement="1.0" layoutX="193.0" layoutY="60.0" stylesheets="@../Styles/SliderP.css" value="100.0">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Slider>
-            <Text fill="#ebdfcc" layoutX="193.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Precio Max.">
-               <font>
-                  <Font name="Nirmala UI Bold" size="16.0" />
-               </font>
-            </Text>
-            <Text fx:id="FiltroPrecio" fill="#ebdfcc" layoutX="298.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="100">
-               <font>
-                  <Font name="Nirmala UI Bold" size="16.0" />
-               </font>
-            </Text>
-            <Button fx:id="Gestionar" layoutX="1087.0" layoutY="46.0" mnemonicParsing="false" onMouseClicked="#Admin" prefHeight="40.0" prefWidth="112.0" style="-fx-background-radius: 20; -fx-background-color: B10C43;" text="Gestionar" textFill="#ebdfcc">
-               <font>
-                  <Font name="Nirmala UI Bold" size="18.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Button>
-            <ScrollPane fx:id="Scroll" hbarPolicy="NEVER" hmax="0.0" layoutX="-1.0" layoutY="97.0" prefHeight="584.0" prefWidth="1370.0" style="-fx-background-color: transparent;">
-               <content>
-                  <FlowPane fx:id="panelCatalogo" alignment="TOP_CENTER" prefHeight="584.0" prefWidth="1370.0" style="-fx-background-color: transparent;" />
-               </content>
-            </ScrollPane>
-         </children>
-         <BorderPane.margin>
-            <Insets />
-         </BorderPane.margin>
-      </AnchorPane>
-   </center>
-</BorderPane>
+   </children>
+</StackPane>
