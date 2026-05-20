@@ -245,7 +245,7 @@ public class listaUsuarios {
 }
     private String listaToString(ArrayList<String> lista) {
     if (lista == null) return "";
-    return String.join(",", lista);
+    return String.join("|", lista);
 }
     
     

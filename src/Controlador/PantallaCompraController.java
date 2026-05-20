@@ -40,8 +40,9 @@ public class PantallaCompraController implements Initializable {
      */
     private nodoVideojuego juego = Sistema.seleccionado;
     boolean favoritos = false;
+    boolean listaFavoritosVacia = false;
     @FXML ComboBox<String> plataformaCB, ComboBoxT;
-    @FXML ImageView ImagePrincipal,Image1,Image2,Image3;
+    @FXML ImageView ImagePrincipal,Image1,Image2,Image3, Fav, noFav;
     @FXML Text nombreTxt, descripcionTxt, precioDTxt, precioFTxt, stockDTxt, stockFTxt, carritoTxt, txtUsuario, txtAccion;
     @FXML HBox etiquetasHbox;
     @FXML TextField buscar;
@@ -50,6 +51,8 @@ public class PantallaCompraController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         CargarJuego();
+        noFav.setVisible(true);
+        Fav.setVisible(false);
         carritoTxt.setText(String.valueOf(Sesion.carrito.cantidadJuegos()));
         ArrayList<String> list = new ArrayList<>();
         Collections.addAll(list, "Catalogo", "Historial", "Favoritos");
@@ -128,13 +131,35 @@ public class PantallaCompraController implements Initializable {
        });
    
     } 
-    private void AgregarFavoritos(){
+    @FXML
+    private void AgregarFavoritos(MouseEvent event){
+        try{
         if(favoritos == false){
+            if(listaFavoritosVacia){
+                Sesion.usuarioActual.listaDeseados.remove(0);
+                listaFavoritosVacia = false;
+            }
             Sesion.usuarioActual.listaDeseados.add(String.valueOf(juego.id));
+            favoritos= true;
+            Fav.setVisible(true);
+            noFav.setVisible(false);
+            Sesion.lista.guardarArchivo();
         }
         else{
             Sesion.usuarioActual.listaDeseados.remove(buscarFavoritoID());
-            
+            favoritos = false;
+            Fav.setVisible(false);
+            noFav.setVisible(true);
+            if(Sesion.usuarioActual.listaDeseados.isEmpty()){
+                Sesion.usuarioActual.listaDeseados.add("#");
+                listaFavoritosVacia = true;
+
+            }
+            Sesion.lista.guardarArchivo();
+        }  
+    }
+        catch(Exception e){
+            e.printStackTrace();
         }
     }
     
@@ -143,12 +168,18 @@ public class PantallaCompraController implements Initializable {
             if(!Sesion.usuarioActual.listaDeseados.get(i).equals("#")){
             if(juego.id == Integer.parseInt(Sesion.usuarioActual.listaDeseados.get(i))){
                 favoritos = true;
+                Fav.setVisible(true);
+                noFav.setVisible(false);
                 return i;
             }
             }
             else{
                 favoritos = false;
+                listaFavoritosVacia = true;
+                noFav.setVisible(true);
+                Fav.setVisible(false);
             }
+            
         }
         return -1;
     }
