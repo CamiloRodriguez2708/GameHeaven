@@ -5,6 +5,7 @@
 package Controlador;
 
 import Modelo.nodoVideojuego;
+import java.util.ArrayList;
 import java.util.Stack;
 
 /**
@@ -24,10 +25,24 @@ public class PilaCarrito {
     public nodoVideojuego eliminarJuego() {
 
     if (!carrito.isEmpty()) {
-        return carrito.pop();
+        nodoVideojuego juego = carrito.pop();
+        restaurarStock(juego);
+        return juego;
     }
 
     return null;
+}
+    public boolean eliminarJuego(nodoVideojuego juego) {
+
+    if (juego != null && carrito.remove(juego)) {
+        restaurarStock(juego);
+        return true;
+    }
+
+    return false;
+}
+    public ArrayList<nodoVideojuego> obtenerJuegos() {
+    return new ArrayList<>(carrito);
 }
     public float calcularTotal() {
 
@@ -51,29 +66,36 @@ public class PilaCarrito {
     public void vaciar(){
         while(!carrito.isEmpty()){
             nodoVideojuego juego = carrito.pop();
-            nodoVideojuego aux = Sistema.listaJuegos.buscarPorNombre(juego.nombre);
-            try{
-            if(aux != null){
-                    for(int i = 0; i < aux.plataforma.size(); i++){
-                        if(juego.plataforma.get(0).equalsIgnoreCase(aux.plataforma.get(i))){
-                            if(juego.edicion.equals("Digital")){
-                                aux.stockDigital.set(i, aux.stockDigital.get(i)+1);
-                                Sistema.listaJuegos.guardarArchivo();
-                            }
-                            else if (juego.edicion.equals("Fisico")){
-                                aux.stockFisico.set(i, aux.stockFisico.get(i)+1);
-                                Sistema.listaJuegos.guardarArchivo();
-                            }
-                        }
-                    }
-                }
-            }
-            catch (Exception e){
-                e.printStackTrace();
-            }
+            restaurarStock(juego);
         }
     
     
     
+}
+    public void confirmarCompra(){
+        carrito.clear();
+    }
+    
+    private void restaurarStock(nodoVideojuego juego){
+        nodoVideojuego aux = Sistema.listaJuegos.buscarPorNombre(juego.nombre);
+        try{
+        if(aux != null){
+                for(int i = 0; i < aux.plataforma.size(); i++){
+                    if(juego.plataforma.get(0).equalsIgnoreCase(aux.plataforma.get(i))){
+                        if(juego.edicion.equals("Digital")){
+                            aux.stockDigital.set(i, aux.stockDigital.get(i)+1);
+                            Sistema.listaJuegos.guardarArchivo();
+                        }
+                        else if (juego.edicion.equals("Fisico")){
+                            aux.stockFisico.set(i, aux.stockFisico.get(i)+1);
+                            Sistema.listaJuegos.guardarArchivo();
+                        }
+                    }
+                }
+            }
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
 }
 }

@@ -19,6 +19,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.application.Platform;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
@@ -30,7 +31,7 @@ public class PantallaBuscarController implements Initializable {
     private ComboBox<String> ComboBoxT;
 
     @FXML
-    private Text txtUsuario, txtAccion, carritoTxt;
+    private Text txtUsuario, txtAccion, carritoTxt, mensajeCarritoTxt;
     
     @FXML
     private ScrollPane ScrollB, ScrollR;
@@ -40,6 +41,9 @@ public class PantallaBuscarController implements Initializable {
     
     @FXML
     private HBox buscarPant, relPant;
+    
+    @FXML
+    private AnchorPane popupCarrito;
     
     
 
@@ -196,7 +200,30 @@ public class PantallaBuscarController implements Initializable {
         scene.setRoot(root);
     }
     
+    @FXML
+    public void abrirCarrito(MouseEvent event) {
+        actualizarPopupCarrito();
+        popupCarrito.setVisible(!popupCarrito.isVisible());
+    }
+    
+    @FXML
+    public void verCarrito(MouseEvent event) throws Exception {
+        Parent root = FXMLLoader.load(getClass().getResource("/Vista/PantallaCarrito.fxml"));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = stage.getScene();
+        scene.setRoot(root);
+    }
+    
+    private void actualizarPopupCarrito() {
+        int cantidad = Sesion.carrito.cantidadJuegos();
+        carritoTxt.setText(String.valueOf(cantidad));
+        if (cantidad == 1) {
+            mensajeCarritoTxt.setText("Hay 1 elemento\nen el carrito");
+        } else {
+            mensajeCarritoTxt.setText("Hay " + cantidad + " elementos\nen el carrito");
+        }
+    }
+    
     
    
 }
-

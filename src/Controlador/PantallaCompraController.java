@@ -29,6 +29,7 @@ import javafx.scene.effect.ColorInput;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -49,8 +50,9 @@ public class PantallaCompraController implements Initializable {
     boolean listaFavoritosVacia = false;
     @FXML ComboBox<String> plataformaCB, ComboBoxT;
     @FXML ImageView ImagePrincipal,Image1,Image2,Image3, Fav, noFav, CalPro, Cal1, Cal2, Cal3, Cal4, Cal5;
-    @FXML Text nombreTxt, descripcionTxt, precioDTxt, precioFTxt, stockDTxt, stockFTxt, carritoTxt, txtUsuario, txtAccion, prom;
+    @FXML Text nombreTxt, descripcionTxt, precioDTxt, precioFTxt, stockDTxt, stockFTxt, carritoTxt, txtUsuario, txtAccion, prom, mensajeCarritoTxt;
     @FXML HBox etiquetasHbox;
+    @FXML AnchorPane popupCarrito;
     @FXML TextField buscar;
     private List<ImageView> estrellas;
     private int calificacion;
@@ -215,6 +217,7 @@ public class PantallaCompraController implements Initializable {
         insertar.plataforma.add(plataformaCB.getSelectionModel().getSelectedItem());
         Sesion.carrito.agregarJuego(insertar);
         carritoTxt.setText(String.valueOf(Sesion.carrito.cantidadJuegos()));
+        actualizarPopupCarrito();
         stockFTxt.setText("Stock: " +juego.stockFisico.get(plataformaCB.getSelectionModel().getSelectedIndex()));
         Sistema.listaJuegos.guardarArchivo();
             }
@@ -242,6 +245,7 @@ public class PantallaCompraController implements Initializable {
         insertar.plataforma.add(plataformaCB.getSelectionModel().getSelectedItem());
         Sesion.carrito.agregarJuego(insertar);
         carritoTxt.setText(String.valueOf(Sesion.carrito.cantidadJuegos()));
+        actualizarPopupCarrito();
         stockDTxt.setText("Stock: " +juego.stockDigital.get(plataformaCB.getSelectionModel().getSelectedIndex()));
         Sistema.listaJuegos.guardarArchivo();    
             }
@@ -305,6 +309,31 @@ public class PantallaCompraController implements Initializable {
         Scene scene = stage.getScene();
         scene.setRoot(root);
     }
+    
+    @FXML
+    public void abrirCarrito(MouseEvent event) {
+        actualizarPopupCarrito();
+        popupCarrito.setVisible(!popupCarrito.isVisible());
+    }
+    
+    @FXML
+    public void verCarrito(MouseEvent event) throws Exception {
+        Parent root = FXMLLoader.load(getClass().getResource("/Vista/PantallaCarrito.fxml"));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = stage.getScene();
+        scene.setRoot(root);
+    }
+    
+    private void actualizarPopupCarrito() {
+        int cantidad = Sesion.carrito.cantidadJuegos();
+        carritoTxt.setText(String.valueOf(cantidad));
+        if (cantidad == 1) {
+            mensajeCarritoTxt.setText("Hay 1 elemento\nen el carrito");
+        } else {
+            mensajeCarritoTxt.setText("Hay " + cantidad + " elementos\nen el carrito");
+        }
+    }
+    
     private void actualizarUsuario() {
         if (Sesion.usuarioActual == null) {
             txtUsuario.setText("Invitado");

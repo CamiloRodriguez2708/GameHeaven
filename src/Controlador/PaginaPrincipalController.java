@@ -46,7 +46,7 @@ public class PaginaPrincipalController implements Initializable {
     private Slider SliderP;
 
     @FXML
-    private Text txtUsuario, FiltroPrecio, txtAccion, carritoTxt;
+    private Text txtUsuario, FiltroPrecio, txtAccion, carritoTxt, mensajeCarritoTxt;
     
     @FXML
     private AnchorPane BuscarP;
@@ -71,6 +71,7 @@ public class PaginaPrincipalController implements Initializable {
     
     @FXML private Pane overlay;
     @FXML private AnchorPane popupMensaje;
+    @FXML private AnchorPane popupCarrito;
     
    
     
@@ -332,6 +333,30 @@ public class PaginaPrincipalController implements Initializable {
         }
     }
     
+    @FXML
+    public void abrirCarrito(MouseEvent event) {
+        actualizarPopupCarrito();
+        popupCarrito.setVisible(!popupCarrito.isVisible());
+    }
+    
+    @FXML
+    public void verCarrito(MouseEvent event) throws Exception {
+        Parent root = FXMLLoader.load(getClass().getResource("/Vista/PantallaCarrito.fxml"));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = stage.getScene();
+        scene.setRoot(root);
+    }
+    
+    private void actualizarPopupCarrito() {
+        int cantidad = Sesion.carrito.cantidadJuegos();
+        carritoTxt.setText(String.valueOf(cantidad));
+        if (cantidad == 1) {
+            mensajeCarritoTxt.setText("Hay 1 elemento\nen el carrito");
+        } else {
+            mensajeCarritoTxt.setText("Hay " + cantidad + " elementos\nen el carrito");
+        }
+    }
+    
     public void abrirMensaje(String mensaje, String accion) {
     try {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/Alerta.fxml"));
@@ -353,4 +378,3 @@ public class PaginaPrincipalController implements Initializable {
     
    
 }
-

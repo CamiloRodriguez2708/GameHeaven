@@ -63,7 +63,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Text>
-                  <Pane fx:id="PaneCompra" layoutX="1235.0" layoutY="19.0" prefHeight="45.0" prefWidth="99.0" style="-fx-background-color: EBDFCC; -fx-background-radius: 20;">
+                  <Pane fx:id="PaneCompra" layoutX="1235.0" layoutY="19.0" onMouseClicked="#abrirCarrito" prefHeight="45.0" prefWidth="99.0" style="-fx-background-color: EBDFCC; -fx-background-radius: 20;">
                      <children>
                         <ImageView fitHeight="28.0" fitWidth="29.0" layoutX="14.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -76,6 +76,9 @@
                            </font>
                         </Text>
                      </children>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </Pane>
                   <ComboBox fx:id="ComboBoxT" layoutX="1077.0" layoutY="19.0" prefHeight="45.0" prefWidth="141.0" promptText="Catalogo" style="-fx-background-color: EBDFCC; -fx-background-radius: 20; -fx-font-size: 16; -fx-font-family: Nirmala UI; -fx-font-weight: bold; -fx-text-fill: #02031A;" stylesheets="@../Styles/ComboBoxT.css" visibleRowCount="3" />
                </children>
@@ -356,6 +359,31 @@
             </StackPane>
          </center>
       </BorderPane>
+      <AnchorPane fx:id="popupCarrito" pickOnBounds="false" prefHeight="768.0" prefWidth="1366.0" visible="false">
+         <children>
+            <AnchorPane layoutX="1177.0" layoutY="105.0" prefHeight="170.0" prefWidth="155.0" style="-fx-background-color: #EBDFCC; -fx-background-radius: 6;">
+               <children>
+                  <Text fx:id="mensajeCarritoTxt" fill="#02031a" layoutX="12.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hay 0 elementos&#10;en el carrito" textAlignment="CENTER" wrappingWidth="131.0">
+                     <font>
+                        <Font name="Nirmala UI" size="18.0" />
+                     </font>
+                  </Text>
+                  <AnchorPane layoutX="14.0" layoutY="112.0" onMouseClicked="#verCarrito" prefHeight="42.0" prefWidth="127.0" style="-fx-background-color: #FF0841; -fx-background-radius: 8;">
+                     <children>
+                        <Text fill="#ebdfcc" layoutX="19.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ver carrito">
+                           <font>
+                              <Font name="Nirmala UI Bold" size="17.0" />
+                           </font>
+                        </Text>
+                     </children>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
       <Pane fx:id="overlay" prefHeight="612.0" prefWidth="1183.0" style="-fx-background-color: rgba(0,0,0,0.6);" visible="false">
          <children>
             <AnchorPane fx:id="popupMensaje" layoutX="435.0" layoutY="250.0" prefHeight="245.0" prefWidth="496.0" />
