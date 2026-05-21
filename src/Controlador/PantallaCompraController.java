@@ -9,7 +9,9 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -21,10 +23,14 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.scene.effect.Blend;
+import javafx.scene.effect.BlendMode;
+import javafx.scene.effect.ColorInput;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -42,10 +48,12 @@ public class PantallaCompraController implements Initializable {
     boolean favoritos = false;
     boolean listaFavoritosVacia = false;
     @FXML ComboBox<String> plataformaCB, ComboBoxT;
-    @FXML ImageView ImagePrincipal,Image1,Image2,Image3, Fav, noFav;
-    @FXML Text nombreTxt, descripcionTxt, precioDTxt, precioFTxt, stockDTxt, stockFTxt, carritoTxt, txtUsuario, txtAccion;
+    @FXML ImageView ImagePrincipal,Image1,Image2,Image3, Fav, noFav, CalPro, Cal1, Cal2, Cal3, Cal4, Cal5;
+    @FXML Text nombreTxt, descripcionTxt, precioDTxt, precioFTxt, stockDTxt, stockFTxt, carritoTxt, txtUsuario, txtAccion, prom;
     @FXML HBox etiquetasHbox;
     @FXML TextField buscar;
+    private List<ImageView> estrellas;
+    private int calificacion;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -53,6 +61,16 @@ public class PantallaCompraController implements Initializable {
         CargarJuego();
         noFav.setVisible(true);
         Fav.setVisible(false);
+        Color(CalPro);
+        prom.setText(String.format("%.1f", juego.promedioCal()));
+        estrellas = Arrays.asList(
+            Cal1,
+            Cal2,
+            Cal3,
+            Cal4,
+            Cal5
+    );
+        
         carritoTxt.setText(String.valueOf(Sesion.carrito.cantidadJuegos()));
         ArrayList<String> list = new ArrayList<>();
         Collections.addAll(list, "Catalogo", "Historial", "Favoritos");
@@ -320,4 +338,49 @@ public class PantallaCompraController implements Initializable {
 
     ImagePrincipal.setImage(temp);
 }
+    private void Color(ImageView estrella) {
+
+    Blend blend = new Blend();
+    blend.setMode(BlendMode.SRC_ATOP);
+
+    ColorInput gold = new ColorInput(
+            0,
+            0,
+            estrella.getImage().getWidth(),
+            estrella.getImage().getHeight(),
+            Color.GOLD
+    );
+
+    blend.setTopInput(gold);
+
+    estrella.setEffect(blend);
+}
+    private void QuitarColor(ImageView estrella) {
+    estrella.setEffect(null);
+}
+    @FXML
+    public void Calificar(MouseEvent event) {
+
+    ImageView pulsada = (ImageView) event.getSource();
+
+    int indice = estrellas.indexOf(pulsada);
+    
+    int cal = estrellas.indexOf(pulsada) + 1;
+    calificacion = cal;
+
+    for (int i = 0; i < estrellas.size(); i++) {
+
+        if (i <= indice) {
+            Color(estrellas.get(i));
+        } else {
+            QuitarColor(estrellas.get(i));
+        }
+    }
+}
+    @FXML
+    public void GuardarCalificacion(MouseEvent event){
+        juego.calificaciones.add((float)calificacion);
+        prom.setText(String.format("%.1f", juego.promedioCal()));
+        Sistema.listaJuegos.guardarArchivo();
+    }
 }

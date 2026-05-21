@@ -215,6 +215,58 @@
                         <Image url="@../Imagenes/Favoritos.png" />
                      </image>
                   </ImageView>
+                  <AnchorPane layoutX="682.0" layoutY="269.0" prefHeight="135.0" prefWidth="653.0" style="-fx-background-color: #021B2B; -fx-background-radius: 30;">
+                     <children>
+                        <HBox layoutX="263.0" layoutY="14.0" spacing="15.0">
+                           <children>
+                              <ImageView fx:id="Cal1" fitHeight="71.0" fitWidth="61.0" onMouseClicked="#Calificar" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Imagenes/Estrella.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fx:id="Cal2" fitHeight="71.0" fitWidth="61.0" onMouseClicked="#Calificar" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Imagenes/Estrella.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fx:id="Cal3" fitHeight="71.0" fitWidth="61.0" onMouseClicked="#Calificar" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Imagenes/Estrella.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fx:id="Cal4" fitHeight="71.0" fitWidth="61.0" onMouseClicked="#Calificar" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Imagenes/Estrella.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fx:id="Cal5" fitHeight="71.0" fitWidth="61.0" onMouseClicked="#Calificar" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Imagenes/Estrella.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </HBox>
+                        <ImageView fx:id="CalPro" fitHeight="82.0" fitWidth="87.0" layoutX="28.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Imagenes/Estrella.png" />
+                           </image>
+                        </ImageView>
+                        <Text fx:id="prom" fill="WHITE" layoutX="138.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2.5">
+                           <font>
+                              <Font name="Nirmala UI Bold" size="50.0" />
+                           </font>
+                        </Text>
+                        <AnchorPane layoutX="378.0" layoutY="90.0" onMouseClicked="#GuardarCalificacion" prefHeight="39.0" prefWidth="136.0" style="-fx-background-color: FF0841; -fx-background-radius: 30;">
+                           <children>
+                              <Text fill="#ebdfcc" layoutX="22.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Reseñar">
+                                 <font>
+                                    <Font name="Nirmala UI Bold" size="25.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
                </children>
             </AnchorPane>
          </center>
