@@ -35,7 +35,7 @@ import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 
 
-public class PaginaPrincipalController implements Initializable {
+public class PantallaFavoritosController implements Initializable {
     
     String actFiltro = "";
 
@@ -66,8 +66,7 @@ public class PaginaPrincipalController implements Initializable {
     @FXML
     private TextField buscar;
     
-    @FXML
-    private Button Gestionar;
+
     
     @FXML private Pane overlay;
     @FXML private AnchorPane popupMensaje;
@@ -149,7 +148,7 @@ public class PaginaPrincipalController implements Initializable {
             BuscarP.setVisible(true);
             PaneCompra.setVisible(true);
             ComboBoxT.setVisible(true);
-            Gestionar.setVisible(false);
+            
         }
         
         SliderP.valueProperty().addListener((obs, oldVal, newVal) -> {
@@ -247,19 +246,30 @@ public class PaginaPrincipalController implements Initializable {
     private void filtrarTodo(String categoriaBusqueda, double precioMax) {
         panelCatalogo.getChildren().clear(); 
         nodoVideojuego temp = Sistema.listaJuegos.inicio;
+        
 
         while (temp != null) {
+            boolean Favorito = false;
 
             boolean cumpleCat = categoriaBusqueda.equalsIgnoreCase("Todos") || 
                     temp.categoria.toLowerCase().contains(categoriaBusqueda.toLowerCase());
 
             boolean cumplePrecio = temp.precioDigital <= precioMax;
+            
+            for(int i=0; i< Sesion.usuarioActual.listaDeseados.size(); i++){
+            if(!Sesion.usuarioActual.listaDeseados.get(i).equals("#")){
+                if(temp.id == Integer.parseInt(Sesion.usuarioActual.listaDeseados.get(i))){
+                    Favorito = true;
+                    break;
+                }
+            }
+            }
 
-            if (cumpleCat && cumplePrecio) {
+            if (cumpleCat && cumplePrecio && Favorito) {
                 try{
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/Tarjeta.fxml"));
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/TarjetaFav.fxml"));
                     Parent tarjeta = loader.load();
-                    TarjetaController controller = loader.getController();
+                    TarjetaFavController controller = loader.getController();
                     controller.anadirDatos(temp);
                     controller.getControlador(this);
                     panelCatalogo.getChildren().add(tarjeta);
@@ -269,11 +279,11 @@ public class PaginaPrincipalController implements Initializable {
                     e.printStackTrace();
                 }
             }
-            else if(categoriaBusqueda.equals("") && cumplePrecio){
+            else if(categoriaBusqueda.equals("") && cumplePrecio && Favorito){
                 try{
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/Tarjeta.fxml"));
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/TarjetaFav.fxml"));
                     Parent tarjeta = loader.load();
-                    TarjetaController controller = loader.getController();
+                    TarjetaFavController controller = loader.getController();
                     controller.anadirDatos(temp);
                     controller.getControlador(this);
                     panelCatalogo.getChildren().add(tarjeta);
@@ -293,13 +303,25 @@ public class PaginaPrincipalController implements Initializable {
     private void mostrarTodos() {
          panelCatalogo.getChildren().clear();
          nodoVideojuego temp = Sistema.listaJuegos.inicio;
+         
 
     while (temp != null) {
+        boolean Favorito = false;
+        for(int i=0; i< Sesion.usuarioActual.listaDeseados.size(); i++){
+            if(!Sesion.usuarioActual.listaDeseados.get(i).equals("#")){
+                if(temp.id == Integer.parseInt(Sesion.usuarioActual.listaDeseados.get(i))){
+                    Favorito = true;
+                    break;
+                }
+            }
+            
+            }
+        if(Favorito){
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/Tarjeta.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/TarjetaFav.fxml"));
             Parent tarjeta = loader.load();
 
-            TarjetaController controller = loader.getController();
+            TarjetaFavController controller = loader.getController();
             controller.anadirDatos(temp);
             controller.getControlador(this);
 
@@ -308,6 +330,7 @@ public class PaginaPrincipalController implements Initializable {
 
         } catch (Exception e) {
             e.printStackTrace();
+        }
         }
 
         temp = temp.sig;
@@ -321,13 +344,13 @@ public class PaginaPrincipalController implements Initializable {
             BuscarP.setVisible(false);
             PaneCompra.setVisible(false);
             ComboBoxT.setVisible(false);
-            Gestionar.setVisible(true);
+            
         }
         else if(Sesion.usuarioActual.tipo == 0){
             BuscarP.setVisible(true);
             PaneCompra.setVisible(true);
             ComboBoxT.setVisible(true);
-            Gestionar.setVisible(false);
+            
         }
         
     }
@@ -347,13 +370,7 @@ public class PaginaPrincipalController implements Initializable {
         scene.setRoot(root);
     }
     
-    @FXML
-    public void Admin (MouseEvent event) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/Vista/PantallaGestion.fxml"));
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Scene scene = stage.getScene();
-        scene.setRoot(root);
-    }
+    
     
     public void Buscar() {
         try{
@@ -409,14 +426,7 @@ public class PaginaPrincipalController implements Initializable {
     }
     }
     
-    @FXML
-    void revisarInicio(MouseEvent event){
-        if(Sesion.usuarioActual == null){
-        abrirMensaje("POR FAVOR INICIE SESIÓN PRIMERO", "cerrar");
-        ComboBoxT.hide();
-        }
-    }
     
-    
+   
    
 }

@@ -45,7 +45,7 @@ public class ConfiguracionUsuarioController implements Initializable {
     private ComboBox<String> ComboBoxT, tipoDoc, genero;
     
     @FXML
-    private TextField nombreR, documento, nombreU, correo, telefono, contrasena, banco, metodo, cuenta, codigo, departamento, municipio, dirrecciontxt;
+    private TextField nombreR, documento, nombreU, correo, telefono, contrasena, banco, metodo, cuenta, codigo, departamento, municipio, dirrecciontxt, buscar;
     
     @FXML
     private DatePicker nacimiento;
@@ -101,6 +101,50 @@ public class ConfiguracionUsuarioController implements Initializable {
             Sesion.carrito.vaciar();
            });
        });
+        ComboBoxT.getSelectionModel().selectedIndexProperty().addListener((obj, oldVal, newVal)->{
+            if(newVal.intValue() == 2){
+                try{
+                Parent root = FXMLLoader.load(getClass().getResource("/Vista/PantallaFavoritos.fxml"));
+                Stage stage = (Stage) ComboBoxT.getScene().getWindow();
+                Scene scene = stage.getScene();
+                scene.setRoot(root);
+                }
+                catch(IOException e){
+                    e.printStackTrace();
+                }
+            }
+            if(newVal.intValue() == 1){
+                try{
+                Parent root = FXMLLoader.load(getClass().getResource("/Vista/PantallaFavoritos.fxml"));
+                Stage stage = (Stage) ComboBoxT.getScene().getWindow();
+                Scene scene = stage.getScene();
+                scene.setRoot(root);
+                }
+                catch(IOException e){
+                    e.printStackTrace();
+                }
+            }
+            if(newVal.intValue() == 0){
+                try{
+                Parent root = FXMLLoader.load(getClass().getResource("/Vista/PaginaPrincipal.fxml"));
+                Stage stage = (Stage) ComboBoxT.getScene().getWindow();
+                Scene scene = stage.getScene();
+                scene.setRoot(root);
+                }
+                catch(IOException e){
+                    e.printStackTrace();
+                }
+            }
+        });
+        buscar.textProperty().addListener((obj, oldVal, newVal) ->{
+            if(newVal != ""){
+                Sesion.buscar = newVal;
+                Buscar();
+            }
+            else{
+                
+            }
+        });
     }    
     
     public void infoP (MouseEvent event) {
@@ -271,5 +315,15 @@ public class ConfiguracionUsuarioController implements Initializable {
     } catch (Exception e) {
         e.printStackTrace();
     }
+    }
+    public void Buscar() {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/Vista/PantallaBuscar.fxml"));
+            Stage stage = (Stage) buscar.getScene().getWindow();
+            Scene scene = stage.getScene();
+            scene.setRoot(root);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

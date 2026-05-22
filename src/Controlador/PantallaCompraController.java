@@ -149,7 +149,41 @@ public class PantallaCompraController implements Initializable {
             Sesion.carrito.vaciar();
            });
        });
-   
+   ComboBoxT.getSelectionModel().selectedIndexProperty().addListener((obj, oldVal, newVal)->{
+            if(newVal.intValue() == 2){
+                try{
+                Parent root = FXMLLoader.load(getClass().getResource("/Vista/PantallaFavoritos.fxml"));
+                Stage stage = (Stage) buscar.getScene().getWindow();
+                Scene scene = stage.getScene();
+                scene.setRoot(root);
+                }
+                catch(IOException e){
+                    e.printStackTrace();
+                }
+            }
+            if(newVal.intValue() == 1){
+                try{
+                Parent root = FXMLLoader.load(getClass().getResource("/Vista/PantallaFavoritos.fxml"));
+                Stage stage = (Stage) buscar.getScene().getWindow();
+                Scene scene = stage.getScene();
+                scene.setRoot(root);
+                }
+                catch(IOException e){
+                    e.printStackTrace();
+                }
+            }
+            if(newVal.intValue() == 0){
+                try{
+                Parent root = FXMLLoader.load(getClass().getResource("/Vista/PaginaPrincipal.fxml"));
+                Stage stage = (Stage) buscar.getScene().getWindow();
+                Scene scene = stage.getScene();
+                scene.setRoot(root);
+                }
+                catch(IOException e){
+                    e.printStackTrace();
+                }
+            }
+        });
     } 
     @FXML
     private void AgregarFavoritos(MouseEvent event){

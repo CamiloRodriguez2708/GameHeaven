@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.text.TextFlow?>
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador.TarjetaFavController">
+   <children>
+      <AnchorPane prefHeight="208.0" prefWidth="328.0">
+         <children>
+            <AnchorPane id="AnchorPane" onMouseClicked="#entrar" prefHeight="208.0" prefWidth="266.0" style="-fx-background-radius: 25; -fx-background-color: #021B2B;">
+               <children>
+                  <ImageView fx:id="portada" fitHeight="150.0" fitWidth="266.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Datos/Imagenes/kingdom.jpg" />
+                     </image>
+                  </ImageView>
+                  <AnchorPane layoutX="195.0" layoutY="159.0" prefHeight="42.0" prefWidth="63.0" style="-fx-background-color: FF0841; -fx-background-radius: 25;">
+                     <children>
+                        <Text fx:id="precio" fill="WHITE" layoutX="14.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\$30" textAlignment="CENTER">
+                           <font>
+                              <Font name="Nirmala UI Bold" size="20.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </AnchorPane>
+                  <TextFlow layoutX="14.0" layoutY="153.0" prefHeight="54.0" prefWidth="178.0" textAlignment="CENTER">
+                     <children>
+                        <Text fx:id="nombre" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Kingdom Hearts III" textAlignment="CENTER" wrappingWidth="263.5546875">
+                           <font>
+                              <Font name="Nirmala UI Bold" size="20.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </TextFlow>
+               </children>
+            </AnchorPane>
+            <ImageView fx:id="noFav" fitHeight="55.0" fitWidth="60.0" layoutX="283.0" layoutY="148.0" onMouseClicked="#AgregarFavoritos" preserveRatio="true">
+               <image>
+                  <Image url="@../Imagenes/NoFavoritos.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="Fav" fitHeight="68.0" fitWidth="62.0" layoutX="281.0" layoutY="143.0" onMouseClicked="#AgregarFavoritos" preserveRatio="true">
+               <image>
+                  <Image url="@../Imagenes/Favoritos.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>

@@ -18,7 +18,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador.PaginaPrincipalController">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador.PantallaFavoritosController">
    <children>
       <BorderPane fx:id="Pantalla" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" style="-fx-background-color: #02031A;">
          <top>
@@ -81,7 +81,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Pane>
-                  <ComboBox fx:id="ComboBoxT" layoutX="1077.0" layoutY="19.0" onMouseClicked="#revisarInicio" prefHeight="45.0" prefWidth="141.0" promptText="Catalogo" style="-fx-background-color: EBDFCC; -fx-background-radius: 20; -fx-font-size: 16; -fx-font-family: Nirmala UI; -fx-font-weight: bold; -fx-text-fill: #02031A;" stylesheets="@../Styles/ComboBoxT.css" visibleRowCount="3" />
+                  <ComboBox fx:id="ComboBoxT" layoutX="1077.0" layoutY="19.0" prefHeight="45.0" prefWidth="141.0" promptText="Favoritos" style="-fx-background-color: EBDFCC; -fx-background-radius: 20; -fx-font-size: 16; -fx-font-family: Nirmala UI; -fx-font-weight: bold; -fx-text-fill: #02031A;" stylesheets="@../Styles/ComboBoxT.css" visibleRowCount="3" />
                </children>
             </Pane>
          </top>
@@ -195,14 +195,6 @@
                         <Font name="Nirmala UI Bold" size="16.0" />
                      </font>
                   </Text>
-                  <Button fx:id="Gestionar" layoutX="1087.0" layoutY="46.0" mnemonicParsing="false" onMouseClicked="#Admin" prefHeight="40.0" prefWidth="112.0" style="-fx-background-radius: 20; -fx-background-color: B10C43;" text="Gestionar" textFill="#ebdfcc">
-                     <font>
-                        <Font name="Nirmala UI Bold" size="18.0" />
-                     </font>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Button>
                   <ScrollPane fx:id="Scroll" hbarPolicy="NEVER" hmax="0.0" layoutX="-1.0" layoutY="97.0" prefHeight="584.0" prefWidth="1366.0" style="-fx-background-color: transparent;">
                      <content>
                         <FlowPane fx:id="panelCatalogo" alignment="TOP_CENTER" prefHeight="584.0" prefWidth="1364.0" style="-fx-background-color: transparent;" />

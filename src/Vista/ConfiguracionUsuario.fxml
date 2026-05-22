@@ -30,7 +30,7 @@
                   </ImageView>
                   <AnchorPane fx:id="Buscar" layoutX="480.0" layoutY="20.0">
                      <children>
-                        <TextField prefHeight="45.0" prefWidth="406.0" promptText="Buscar..." style="-fx-background-radius: 20; -fx-background-color: #EBDFCC; -fx-padding: 8 50;">
+                        <TextField fx:id="buscar" prefHeight="45.0" prefWidth="406.0" promptText="Buscar..." style="-fx-background-radius: 20; -fx-background-color: #EBDFCC; -fx-padding: 8 50;">
                            <font>
                               <Font name="Nirmala UI Bold" size="16.0" />
                            </font>
