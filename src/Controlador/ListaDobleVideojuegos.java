@@ -46,9 +46,22 @@ public class ListaDobleVideojuegos {
         }
         aux = aux.sig;
     }
-
+ 
     return null;
 }
+    public nodoVideojuego buscarPorID(int id) {
+
+    nodoVideojuego aux = inicio;
+
+    while (aux != null) {
+        if (aux.id == id) {
+            return aux;
+        }
+        aux = aux.sig;
+    }
+    return null;
+    }
+    
    private List<nodoVideojuego> cargarDatos() {
   
 
@@ -63,7 +76,7 @@ public class ListaDobleVideojuegos {
                 if (linea.trim().isEmpty()) continue;
 
                 String[] partes = linea.split("//");
-                if (partes.length <18) continue;
+                if (partes.length <19) continue;
 
                 int id = Integer.parseInt(partes[0]);
                 String nombre = partes[1];

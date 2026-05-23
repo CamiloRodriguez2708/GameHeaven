@@ -1,12 +1,10 @@
 package Controlador;
 
 import Modelo.nodoVideojuego;
-import Controlador.TarjetaController;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,38 +13,25 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.Slider;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import javafx.animation.FadeTransition;
 import javafx.application.Platform;
-import javafx.geometry.Insets;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
-import javafx.scene.control.TextInputDialog;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
-import javafx.util.Duration;
+import Controlador.ColaHistorial;
 
 
-public class PaginaPrincipalController implements Initializable {
-    
-    String actFiltro = "";
+public class PantallaHistorialController implements Initializable {
 
     @FXML
     private ComboBox<String> ComboBoxT;
 
     @FXML
-    private Slider SliderP;
-
-    @FXML
-    private Text txtUsuario, FiltroPrecio, txtAccion, carritoTxt, mensajeCarritoTxt;
+    private Text txtUsuario, txtAccion, carritoTxt, mensajeCarritoTxt, historial;
     
     @FXML
     private AnchorPane BuscarP;
@@ -60,79 +45,17 @@ public class PaginaPrincipalController implements Initializable {
     @FXML
     private ScrollPane Scroll;
     
-    @FXML
-    private BorderPane Pantalla;
     
     @FXML
     private TextField buscar;
     
-    @FXML
-    private Button Gestionar;
+
     
     @FXML private Pane overlay;
     @FXML private AnchorPane popupMensaje;
     @FXML private AnchorPane popupCarrito;
     
-   
-    
-      @FXML
-      private void accionClick() { 
-           activarBoton(btnAccion);
-           filtrarTodo("accion", SliderP.getValue()); 
-           actFiltro = "accion";
-      }
-      
-      @FXML
-       private void estrategiaClick() { 
-         activarBoton(btnEstrategia);
-         filtrarTodo("estrategia", SliderP.getValue()); 
-         actFiltro = "estrategia";
-      }
-
-      @FXML
-      private void casualClick() { 
-         activarBoton(btnCasual);
-         filtrarTodo("casual", SliderP.getValue()); 
-         actFiltro = "casual";
-       }
-
-      @FXML
-       private void rpgClick() { 
-         activarBoton(btnRPG);
-         filtrarTodo("rpg", SliderP.getValue());
-         actFiltro = "rpg";
-       }
-
-      @FXML
-       private void disparosClick() { 
-         activarBoton(btnDisparos);
-         filtrarTodo("disparos", SliderP.getValue()); 
-         actFiltro = "disparos";
-       }
-
-      @FXML
-       private void ritmoClick() { 
-          activarBoton(btnRitmo);
-          filtrarTodo("ritmo", SliderP.getValue()); 
-          actFiltro = "ritmo";
-        }
-
-      @FXML
-       private void mostrarTodoClick() { 
-          activarBoton(btnMostrarTodo);
-           actFiltro = "";
-           mostrarTodos(); 
-         }
-    
-     @FXML private javafx.scene.control.Button btnMostrarTodo;
-     @FXML private javafx.scene.control.Button btnAccion;
-     @FXML private javafx.scene.control.Button btnDisparos;
-     @FXML private javafx.scene.control.Button btnRPG;
-     @FXML private javafx.scene.control.Button btnRitmo;
-     @FXML private javafx.scene.control.Button btnEstrategia;
-     @FXML private javafx.scene.control.Button btnCasual;
-    
-    
+    ColaHistorial cola = new ColaHistorial();
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -149,17 +72,10 @@ public class PaginaPrincipalController implements Initializable {
             BuscarP.setVisible(true);
             PaneCompra.setVisible(true);
             ComboBoxT.setVisible(true);
-            Gestionar.setVisible(false);
         }
-        
-        SliderP.valueProperty().addListener((obs, oldVal, newVal) -> {
-            FiltroPrecio.setText(String.valueOf(newVal.intValue()));
-            filtrarTodo(actFiltro, newVal.doubleValue());
-        });
         
         Platform.runLater(() -> {
           mostrarTodos();
-          activarBoton(btnMostrarTodo); 
           Stage stage = (Stage) buscar.getScene().getWindow();
            stage.setOnCloseRequest(event -> {
 
@@ -197,7 +113,7 @@ public class PaginaPrincipalController implements Initializable {
             }
             if(newVal.intValue() == 1){
                 try{
-                Parent root = FXMLLoader.load(getClass().getResource("/Vista/PantallaHistorial.fxml"));
+                Parent root = FXMLLoader.load(getClass().getResource("/Vista/PantallaFavoritos.fxml"));
                 Stage stage = (Stage) buscar.getScene().getWindow();
                 Scene scene = stage.getScene();
                 scene.setRoot(root);
@@ -218,6 +134,14 @@ public class PaginaPrincipalController implements Initializable {
                 }
             }
         });
+        if(!Sesion.usuarioActual.historial.get(0).equals("#")){
+        for(int i =0 ; i<Sesion.usuarioActual.historial.size(); i++){
+            cola.encolar(Sesion.usuarioActual.historial.get(i));
+        }
+    }
+        else{
+            historial.setText("No hay ningun juego en tu historial");
+        }
     }
 
     private void actualizarUsuario() {
@@ -230,78 +154,21 @@ public class PaginaPrincipalController implements Initializable {
         }
     }
     
-    private void activarBoton(javafx.scene.control.Button activo) {
-
-    btnMostrarTodo.setStyle("-fx-background-color: #EBDFCC;");
-    btnAccion.setStyle("-fx-background-color: #EBDFCC;");
-    btnDisparos.setStyle("-fx-background-color: #EBDFCC;");
-    btnRPG.setStyle("-fx-background-color: #EBDFCC;");
-    btnRitmo.setStyle("-fx-background-color: #EBDFCC;");
-    btnEstrategia.setStyle("-fx-background-color: #EBDFCC;");
-    btnCasual.setStyle("-fx-background-color: #EBDFCC;");
-
-    activo.setStyle("-fx-background-color: #ff0841; -fx-text-fill: white;");
-}
-
     
-    private void filtrarTodo(String categoriaBusqueda, double precioMax) {
-        panelCatalogo.getChildren().clear(); 
-        nodoVideojuego temp = Sistema.listaJuegos.inicio;
-
-        while (temp != null) {
-
-            boolean cumpleCat = categoriaBusqueda.equalsIgnoreCase("Todos") || 
-                    temp.categoria.toLowerCase().contains(categoriaBusqueda.toLowerCase());
-
-            boolean cumplePrecio = temp.precioDigital <= precioMax;
-
-            if (cumpleCat && cumplePrecio) {
-                try{
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/Tarjeta.fxml"));
-                    Parent tarjeta = loader.load();
-                    TarjetaController controller = loader.getController();
-                    controller.anadirDatos(temp);
-                    controller.getControlador(this);
-                    panelCatalogo.getChildren().add(tarjeta);
-                    FlowPane.setMargin(tarjeta, new javafx.geometry.Insets(15));
-                }
-                catch(Exception e){
-                    e.printStackTrace();
-                }
-            }
-            else if(categoriaBusqueda.equals("") && cumplePrecio){
-                try{
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/Tarjeta.fxml"));
-                    Parent tarjeta = loader.load();
-                    TarjetaController controller = loader.getController();
-                    controller.anadirDatos(temp);
-                    controller.getControlador(this);
-                    panelCatalogo.getChildren().add(tarjeta);
-                    FlowPane.setMargin(tarjeta, new javafx.geometry.Insets(15));
-                }
-                catch(Exception e){
-                    e.printStackTrace();
-                }
-                
-            }
-
-            temp = temp.sig; 
-        }
-    }
-
     
     private void mostrarTodos() {
          panelCatalogo.getChildren().clear();
-         nodoVideojuego temp = Sistema.listaJuegos.inicio;
-
-    while (temp != null) {
+         nodoVideojuego temp = cola.getFrente();
+        
+        if(!Sesion.usuarioActual.historial.equals("#")){
+        while(temp != null){
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/Tarjeta.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/TarjetaHistorial.fxml"));
             Parent tarjeta = loader.load();
 
-            TarjetaController controller = loader.getController();
+            TarjetaHistorialController controller = loader.getController();
             controller.anadirDatos(temp);
-            controller.getControlador(this);
+            
 
             panelCatalogo.getChildren().add(tarjeta);
             FlowPane.setMargin(tarjeta, new javafx.geometry.Insets(15));
@@ -309,10 +176,14 @@ public class PaginaPrincipalController implements Initializable {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        
+        
 
         temp = temp.sig;
+        }
     }
-
+        
+        
     }
     
     @FXML
@@ -321,13 +192,13 @@ public class PaginaPrincipalController implements Initializable {
             BuscarP.setVisible(false);
             PaneCompra.setVisible(false);
             ComboBoxT.setVisible(false);
-            Gestionar.setVisible(true);
+            
         }
         else if(Sesion.usuarioActual.tipo == 0){
             BuscarP.setVisible(true);
             PaneCompra.setVisible(true);
             ComboBoxT.setVisible(true);
-            Gestionar.setVisible(false);
+            
         }
         
     }
@@ -347,13 +218,7 @@ public class PaginaPrincipalController implements Initializable {
         scene.setRoot(root);
     }
     
-    @FXML
-    public void Admin (MouseEvent event) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/Vista/PantallaGestion.fxml"));
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Scene scene = stage.getScene();
-        scene.setRoot(root);
-    }
+    
     
     public void Buscar() {
         try{
@@ -409,14 +274,7 @@ public class PaginaPrincipalController implements Initializable {
     }
     }
     
-    @FXML
-    void revisarInicio(MouseEvent event){
-        if(Sesion.usuarioActual == null){
-        abrirMensaje("POR FAVOR INICIE SESIÓN PRIMERO", "cerrar");
-        ComboBoxT.hide();
-        }
-    }
     
-    
+   
    
 }

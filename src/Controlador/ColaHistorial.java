@@ -1,6 +1,7 @@
 package Controlador;
 
 import Modelo.nodoVideojuego;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,12 +38,12 @@ public class ColaHistorial {
         return finalCola;
     }
 
-    public void encolar(nodoVideojuego videojuego) {
-        if (videojuego == null) {
+    public void encolar(String info) {
+        if (info.isEmpty()||info.equals("")) {
             return;
         }
 
-        nodoVideojuego copia = copiarVideojuego(videojuego);
+        nodoVideojuego copia = copiarVideojuego(info);
 
         if (frente == null) {
             frente = finalCola = copia;
@@ -98,27 +99,35 @@ public class ColaHistorial {
         return lista;
     }
 
-    private nodoVideojuego copiarVideojuego(nodoVideojuego original) {
+    private nodoVideojuego copiarVideojuego(String info) {
+        String[] partes = info.split("~");
+        int id = Integer.parseInt(partes[0]);
+        ArrayList<String> plataforma = new ArrayList();
+        plataforma.add(partes[1]);
+        String edicion = partes[2];
+        String fecha = partes[3];
+        
+        nodoVideojuego juegoOriginal = Sistema.listaJuegos.buscarPorID(id);
         nodoVideojuego copia = new nodoVideojuego(
-                original.id,
-                original.nombre,
-                original.plataforma,
-                original.edicion,
-                original.categoria,
-                original.etiquetas,
-                original.descripcion,
-                original.peso,
-                original.requisitosMin,
-                original.requisitosRec,
-                original.idioma,
-                original.fechaLanzamiento,
-                original.portada,
-                original.capturas,
-                original.precioDigital,
-                original.precioFisico,
-                original.stockDigital,
-                original.stockFisico,
-                original.calificaciones
+                id,
+                juegoOriginal.nombre,
+                plataforma,
+                edicion,
+                juegoOriginal.categoria,
+                juegoOriginal.etiquetas,
+                juegoOriginal.descripcion,
+                juegoOriginal.peso,
+                juegoOriginal.requisitosMin,
+                juegoOriginal.requisitosRec,
+                juegoOriginal.idioma,
+                fecha,
+                juegoOriginal.portada,
+                juegoOriginal.capturas,
+                juegoOriginal.precioDigital,
+                juegoOriginal.precioFisico,
+                juegoOriginal.stockDigital,
+                juegoOriginal.stockFisico,
+                juegoOriginal.calificaciones
         );
         copia.sig = null;
         copia.ant = null;

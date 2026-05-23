@@ -115,7 +115,7 @@ public class ConfiguracionUsuarioController implements Initializable {
             }
             if(newVal.intValue() == 1){
                 try{
-                Parent root = FXMLLoader.load(getClass().getResource("/Vista/PantallaFavoritos.fxml"));
+                Parent root = FXMLLoader.load(getClass().getResource("/Vista/PantallaHistorial.fxml"));
                 Stage stage = (Stage) ComboBoxT.getScene().getWindow();
                 Scene scene = stage.getScene();
                 scene.setRoot(root);

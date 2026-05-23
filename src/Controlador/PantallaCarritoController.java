@@ -76,8 +76,8 @@ public class PantallaCarritoController implements Initializable {
             }
             if(newVal.intValue() == 1){
                 try{
-                Parent root = FXMLLoader.load(getClass().getResource("/Vista/PantallaFavoritos.fxml"));
-                Stage stage = (Stage) buscar.getScene().getWindow();
+                Parent root = FXMLLoader.load(getClass().getResource("/Vista/PantallaHistorial.fxml"));
+                Stage stage = (Stage) ComboBoxT.getScene().getWindow();
                 Scene scene = stage.getScene();
                 scene.setRoot(root);
                 }

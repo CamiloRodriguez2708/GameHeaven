@@ -7,6 +7,8 @@ package Controlador;
 import Modelo.nodoVideojuego;
 import java.util.ArrayList;
 import java.util.Stack;
+import java.time.*;
+import java.time.format.DateTimeFormatter;
 
 /**
  *
@@ -73,7 +75,18 @@ public class PilaCarrito {
     
 }
     public void confirmarCompra(){
-        carrito.clear();
+        while(!carrito.isEmpty()){
+            nodoVideojuego juego = carrito.pop();
+            
+            
+            String datos = juego.id+"~"+juego.plataforma.get(0)+"~"+juego.edicion+"~"+ LocalDate.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) ;
+            if(Sesion.usuarioActual.historial.get(0).equals("#")){
+            Sesion.usuarioActual.historial.remove(0);
+            }
+            Sesion.usuarioActual.historial.add(datos);
+        }
+        
+        Sesion.lista.guardarArchivo();
     }
     
     private void restaurarStock(nodoVideojuego juego){

@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador.PantallaHistorialController">
+   <children>
+      <BorderPane fx:id="Pantalla" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" style="-fx-background-color: #02031A;">
+         <top>
+            <Pane prefHeight="85.0" prefWidth="1366.0" style="-fx-background-color: #021B2B;" BorderPane.alignment="CENTER">
+               <children>
+                  <ImageView fitHeight="63.0" fitWidth="73.0" layoutX="21.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Imagenes/logo%2080x60%20PX.png" />
+                     </image>
+                  </ImageView>
+                  <AnchorPane fx:id="BuscarP" layoutX="480.0" layoutY="20.0">
+                     <children>
+                        <TextField fx:id="buscar" prefHeight="45.0" prefWidth="406.0" promptText="Buscar..." style="-fx-background-radius: 20; -fx-background-color: #EBDFCC; -fx-padding: 8 50;">
+                           <font>
+                              <Font name="Nirmala UI Bold" size="16.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="TEXT" />
+                           </cursor>
+                        </TextField>
+                        <ImageView fitHeight="38.0" fitWidth="38.0" layoutX="6.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Imagenes/Lupa%2050%20PX.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
+                  <ImageView fitHeight="64.0" fitWidth="64.0" layoutX="128.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Imagenes/User%2064%20PX.png" />
+                     </image>
+                  </ImageView>
+                  <Text fx:id="txtUsuario" fill="#ebdfcc" layoutX="205.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Invitado">
+                     <font>
+                        <Font name="Nirmala UI Bold" size="16.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="txtAccion" fill="#ff0841" layoutX="205.0" layoutY="37.0" onMouseClicked="#Login" strokeType="OUTSIDE" strokeWidth="0.0" text="Ingresar">
+                     <font>
+                        <Font name="Nirmala UI Bold" size="16.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Text>
+                  <Pane fx:id="PaneCompra" layoutX="1235.0" layoutY="19.0" onMouseClicked="#abrirCarrito" prefHeight="45.0" prefWidth="99.0" style="-fx-background-color: EBDFCC; -fx-background-radius: 20;">
+                     <children>
+                        <ImageView fitHeight="28.0" fitWidth="29.0" layoutX="14.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Imagenes/Carrito%2050%20PX.png" />
+                           </image>
+                        </ImageView>
+                        <Text fx:id="carritoTxt" fill="#02031a" layoutX="62.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                           <font>
+                              <Font name="Nirmala UI Bold" size="24.0" />
+                           </font>
+                        </Text>
+                     </children>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Pane>
+                  <ComboBox fx:id="ComboBoxT" layoutX="1077.0" layoutY="19.0" prefHeight="45.0" prefWidth="141.0" promptText="Historial" style="-fx-background-color: EBDFCC; -fx-background-radius: 20; -fx-font-size: 16; -fx-font-family: Nirmala UI; -fx-font-weight: bold; -fx-text-fill: #02031A;" stylesheets="@../Styles/ComboBoxT.css" visibleRowCount="3" />
+               </children>
+            </Pane>
+         </top>
+         <center>
+            <AnchorPane prefHeight="0.0" prefWidth="1370.0" styleClass="mi-slider" BorderPane.alignment="CENTER">
+               <children>
+                  <ScrollPane fx:id="Scroll" hbarPolicy="NEVER" hmax="0.0" layoutX="-1.0" layoutY="97.0" prefHeight="584.0" prefWidth="1366.0" style="-fx-background-color: transparent;">
+                     <content>
+                        <FlowPane fx:id="panelCatalogo" alignment="TOP_CENTER" prefHeight="584.0" prefWidth="1364.0" style="-fx-background-color: transparent;" />
+                     </content>
+                  </ScrollPane>
+                  <Text fx:id="historial" fill="#ebdfcc" layoutX="54.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Historial:">
+                     <font>
+                        <Font name="Nirmala UI Bold" size="34.0" />
+                     </font>
+                  </Text>
+               </children>
+               <BorderPane.margin>
+                  <Insets />
+               </BorderPane.margin>
+            </AnchorPane>
+         </center>
+      </BorderPane>
+      <AnchorPane fx:id="popupCarrito" pickOnBounds="false" prefHeight="768.0" prefWidth="1366.0" visible="false">
+         <children>
+            <AnchorPane layoutX="1177.0" layoutY="105.0" prefHeight="170.0" prefWidth="155.0" style="-fx-background-color: #EBDFCC; -fx-background-radius: 6;">
+               <children>
+                  <Text fx:id="mensajeCarritoTxt" fill="#02031a" layoutX="12.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hay 0 elementos&#10;en el carrito" textAlignment="CENTER" wrappingWidth="131.0">
+                     <font>
+                        <Font name="Nirmala UI" size="18.0" />
+                     </font>
+                  </Text>
+                  <AnchorPane layoutX="14.0" layoutY="112.0" onMouseClicked="#verCarrito" prefHeight="42.0" prefWidth="127.0" style="-fx-background-color: #FF0841; -fx-background-radius: 8;">
+                     <children>
+                        <Text fill="#ebdfcc" layoutX="19.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ver carrito">
+                           <font>
+                              <Font name="Nirmala UI Bold" size="17.0" />
+                           </font>
+                        </Text>
+                     </children>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+      <Pane fx:id="overlay" prefHeight="612.0" prefWidth="1183.0" style="-fx-background-color: rgba(0,0,0,0.6);" visible="false">
+         <children>
+            <AnchorPane fx:id="popupMensaje" layoutX="435.0" layoutY="250.0" prefHeight="245.0" prefWidth="496.0" />
+         </children>
+      </Pane>
+   </children>
+</StackPane>
