@@ -13,4 +13,6 @@ public class Sesion {
     public static listaUsuarios lista = new listaUsuarios();
     public static PilaCarrito carrito = new PilaCarrito();
     public static String buscar = "";
+    public static String paginaActual = "/Vista/paginaPrincipal.fxml";
+    public static String paginaAnterior = "";
 }

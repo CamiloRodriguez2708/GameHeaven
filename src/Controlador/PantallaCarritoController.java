@@ -97,6 +97,8 @@ public class PantallaCarritoController implements Initializable {
                 }
             }
         });
+        Sesion.paginaAnterior = Sesion.paginaActual;
+        Sesion.paginaActual = "/Vista/PantallaCarrito.fxml";
     }
 
     private void cargarCarrito() {

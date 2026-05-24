@@ -145,6 +145,8 @@ public class ConfiguracionUsuarioController implements Initializable {
                 
             }
         });
+        Sesion.paginaAnterior = Sesion.paginaActual;
+        Sesion.paginaActual = "/Vista/ConfiguracionUsuario.fxml";
     }    
     
     public void infoP (MouseEvent event) {
@@ -189,7 +191,7 @@ public class ConfiguracionUsuarioController implements Initializable {
     
     @FXML
     public void principal(MouseEvent event) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/Vista/paginaPrincipal.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource(Sesion.paginaAnterior));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = stage.getScene();
         scene.setRoot(root);

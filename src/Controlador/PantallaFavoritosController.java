@@ -217,6 +217,8 @@ public class PantallaFavoritosController implements Initializable {
                 }
             }
         });
+        Sesion.paginaAnterior = Sesion.paginaActual;
+        Sesion.paginaActual = "/Vista/PantallaFavoritos.fxml";
     }
 
     private void actualizarUsuario() {

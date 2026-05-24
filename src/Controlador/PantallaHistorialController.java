@@ -142,6 +142,8 @@ public class PantallaHistorialController implements Initializable {
         else{
             historial.setText("No hay ningun juego en tu historial");
         }
+        Sesion.paginaAnterior = Sesion.paginaActual;
+        Sesion.paginaActual = "/Vista/PantallaHistorial.fxml";
     }
 
     private void actualizarUsuario() {

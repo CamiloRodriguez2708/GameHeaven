@@ -218,6 +218,8 @@ public class PaginaPrincipalController implements Initializable {
                 }
             }
         });
+        Sesion.paginaAnterior = Sesion.paginaActual;
+        Sesion.paginaActual = "/Vista/PaginaPrincipal.fxml";
     }
 
     private void actualizarUsuario() {

@@ -63,6 +63,7 @@ public class PantallaBuscarController implements Initializable {
         buscar.textProperty().addListener((obs, oldVal, newVal) ->{
             if(newVal != ""){
             MostrarRelacionados(MostrarBusqueda(newVal));
+            Sesion.buscar= newVal;
             }
             else{
                 Regresar();
@@ -112,8 +113,8 @@ public class PantallaBuscarController implements Initializable {
                 }
             }
         });
-           
-           
+        Sesion.paginaAnterior = Sesion.paginaActual;
+        Sesion.paginaActual = "/Vista/PantallaBuscar.fxml";
     }
 
     private void actualizarUsuario() {
@@ -209,7 +210,7 @@ public class PantallaBuscarController implements Initializable {
     @FXML
     public void Regresar() {
         try{
-        Parent root = FXMLLoader.load(getClass().getResource("/Vista/PaginaPrincipal.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource(Sesion.paginaAnterior));
         Stage stage = (Stage) buscar.getScene().getWindow();
         Scene scene = stage.getScene();
         scene.setRoot(root);

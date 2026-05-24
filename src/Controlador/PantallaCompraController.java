@@ -184,6 +184,8 @@ public class PantallaCompraController implements Initializable {
                 }
             }
         });
+        Sesion.paginaAnterior = Sesion.paginaActual;
+        Sesion.paginaActual = "/Vista/PantallaCompra.fxml";
     } 
     @FXML
     private void AgregarFavoritos(MouseEvent event){
@@ -324,7 +326,7 @@ public class PantallaCompraController implements Initializable {
     
     @FXML
     public void volver(MouseEvent event) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/Vista/paginaPrincipal.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource(Sesion.paginaAnterior));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = stage.getScene();
         scene.setRoot(root);
