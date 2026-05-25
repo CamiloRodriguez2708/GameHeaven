@@ -70,6 +70,12 @@ public class ConfiguracionUsuarioController implements Initializable {
         ComboBoxT.getItems().setAll(list);
         actualizarUsuario();
         
+        ComboBoxT.getStylesheets().add(getClass().getResource("/Styles/ComboBoxGlobal.css").toExternalForm());
+
+        tipoDoc.getStylesheets().add(getClass().getResource("/Styles/ComboBoxGlobal.css").toExternalForm());
+
+        genero.getStylesheets().add(getClass().getResource("/Styles/ComboBoxGlobal.css").toExternalForm());
+        
         nombreR.setText(Sesion.usuarioActual.nombreR);
         documento.setText(Sesion.usuarioActual.numD);
         nombreU.setText(Sesion.usuarioActual.nombreU);
@@ -279,6 +285,7 @@ public class ConfiguracionUsuarioController implements Initializable {
         
         Sesion.lista.modificar(Sesion.usuarioActual);
         Sesion.lista.guardarArchivo();
+        actualizarUsuario();
     }
     
     public void borrar(Event event) throws IOException{

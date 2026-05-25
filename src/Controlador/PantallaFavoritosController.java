@@ -52,13 +52,13 @@ public class PantallaFavoritosController implements Initializable {
     private AnchorPane BuscarP;
     
     @FXML
-    private Pane PaneCompra;
+    private Pane PaneCompra, PanelMBotones;
     
     @FXML
-    private FlowPane panelCatalogo;
+    private FlowPane panelCatalogo, panelBotones;
     
     @FXML
-    private ScrollPane Scroll;
+    private ScrollPane Scroll, ScrollP;
     
     @FXML
     private BorderPane Pantalla;
@@ -130,6 +130,7 @@ public class PantallaFavoritosController implements Initializable {
      @FXML private javafx.scene.control.Button btnRitmo;
      @FXML private javafx.scene.control.Button btnEstrategia;
      @FXML private javafx.scene.control.Button btnCasual;
+     @FXML private javafx.scene.control.Button btnMas;
     
     
 
@@ -141,6 +142,7 @@ public class PantallaFavoritosController implements Initializable {
         actualizarUsuario();
         carritoTxt.setText(String.valueOf(Sesion.carrito.cantidadJuegos()));
         Scroll.getStylesheets().add(getClass().getResource("/Styles/ScrollPane.css").toExternalForm());
+        ScrollP.getStylesheets().add(getClass().getResource("/Styles/ScrollPaneP.css").toExternalForm());
         if(Sesion.usuarioActual != null){
         Mostrar();
         }
@@ -240,6 +242,7 @@ public class PantallaFavoritosController implements Initializable {
     btnRitmo.setStyle("-fx-background-color: #EBDFCC;");
     btnEstrategia.setStyle("-fx-background-color: #EBDFCC;");
     btnCasual.setStyle("-fx-background-color: #EBDFCC;");
+    btnMas.setStyle("-fx-background-color: #EBDFCC;");
 
     activo.setStyle("-fx-background-color: #ff0841; -fx-text-fill: white;");
 }
@@ -430,5 +433,53 @@ public class PantallaFavoritosController implements Initializable {
     
     
    
+   void crearBotones(){
+    panelBotones.getChildren().clear();
+    nodoVideojuego aux = Sistema.listaJuegos.inicio;
+    ArrayList<String> repetidos = new ArrayList();
+    while (aux != null){
+    
+        if(!aux.categoria.equalsIgnoreCase("accion") &&
+           !aux.categoria.equalsIgnoreCase("estrategia") &&
+           !aux.categoria.equalsIgnoreCase("casual") &&
+           !aux.categoria.equalsIgnoreCase("rpg") &&
+           !aux.categoria.equalsIgnoreCase("disparos") &&
+           !aux.categoria.equalsIgnoreCase("ritmo") &&
+           !repetidos.contains(aux.categoria.toLowerCase())){
+           repetidos.add(aux.categoria.toLowerCase());
+    Button boton = new Button(aux.categoria);
+    String categoria = aux.categoria;
+    boton.setOnAction(e -> {
+        filtrarTodo(categoria, SliderP.getValue()); 
+        actFiltro = categoria;
+        PanelMBotones.setVisible(false);
+    });
+    boton.setStyle("""
+    -fx-background-color: #ff0841;
+    -fx-text-fill: white;
+    -fx-font-family: 'Nirmala UI';
+    -fx-font-weight: bold;
+    -fx-font-size: 16px; 
+     """);
+    panelBotones.getChildren().add(boton);
+    
+}
+        aux = aux.sig;
+    }
    
+}
+   @FXML
+    private void abrirBotones(){
+        PanelMBotones.setVisible(true);
+        activarBoton(btnMas);
+        panelBotones.setHgap(10);
+        panelBotones.setVgap(10);
+        panelBotones.setPadding(new Insets(10));
+        crearBotones();
+    }
+    
+    @FXML
+    private void cerrarBotones(MouseEvent event){
+        PanelMBotones.setVisible(false);
+    }
 }

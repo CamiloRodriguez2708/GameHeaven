@@ -22,6 +22,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.shape.Rectangle;
 import Controlador.PantallaGestionController;
+import Modelo.nodoUsuario;
 import java.io.FileInputStream;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -148,6 +149,7 @@ public class TarjetaAdminController implements Initializable {
     
     public void eliminar(){
         eliminarCarpeta();
+        eliminarFavoritos();
         Sistema.listaJuegos.eliminar(juego.id);
         if(buscar != null){
             control.filtrarTodo(buscar);
@@ -194,6 +196,21 @@ public class TarjetaAdminController implements Initializable {
 
     carpeta.delete();
 }
+    private void eliminarFavoritos(){
+        nodoUsuario aux = Sesion.lista.cab; 
+        
+        do{
+           for(int i = 0; i<aux.listaDeseados.size(); i++){
+               if(aux.listaDeseados.get(i).equals(String.valueOf(juego.id))){
+                   aux.listaDeseados.remove(i);
+                   i--;
+                   
+               }
+           }
+           aux = aux.sig;
+        }while (aux != Sesion.lista.cab);
+        Sesion.lista.guardarArchivo();
+    }
 }   
     
     

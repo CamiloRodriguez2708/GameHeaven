@@ -13,7 +13,7 @@ import java.util.Date;
 import java.util.List;
 
 public class listaUsuarios {
-    private  nodoUsuario cab;
+    public nodoUsuario cab;
     
 
     public listaUsuarios() {

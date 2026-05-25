@@ -3,6 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -133,16 +134,20 @@
                   </AnchorPane>
                   <AnchorPane layoutX="682.0" layoutY="43.0" prefHeight="216.0" prefWidth="653.0" style="-fx-background-color: #021B2B; -fx-background-radius: 30;">
                      <children>
-                        <TextFlow layoutX="14.0" layoutY="7.0" prefHeight="170.0" prefWidth="626.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="13.0">
-                           <children>
-                              <Text fx:id="descripcionTxt" fill="#ebdfcc" strokeType="OUTSIDE" strokeWidth="0.0" text="Es un juego...">
-                                 <font>
-                                    <Font name="Nirmala UI Bold" size="18.0" />
-                                 </font>
-                              </Text>
-                           </children>
-                        </TextFlow>
-                        <HBox fx:id="etiquetasHbox" layoutX="7.0" layoutY="251.0" prefHeight="40.0" prefWidth="571.0" spacing="15.0" AnchorPane.bottomAnchor="22.0" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="9.0" />
+                        <HBox fx:id="etiquetasHbox" layoutX="14.0" layoutY="166.0" prefHeight="40.0" prefWidth="628.0" spacing="15.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="11.0" />
+                        <ScrollPane fx:id="Scroll" hbarPolicy="NEVER" layoutX="14.0" layoutY="15.0" prefHeight="133.0" prefWidth="619.0" style="-fx-background-color: transparent;" vbarPolicy="AS_NEEDED">
+                           <content>
+                              <TextFlow prefHeight="303.0" prefWidth="600.0">
+                                 <children>
+                                    <Text fx:id="descripcionTxt" fill="#ebdfcc" strokeType="OUTSIDE" strokeWidth="0.0" text="Es un juego...">
+                                       <font>
+                                          <Font name="Nirmala UI Bold" size="18.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                              </TextFlow>
+                           </content>
+                        </ScrollPane>
                      </children>
                   </AnchorPane>
                   <AnchorPane layoutX="850.0" layoutY="595.0" prefHeight="59.0" prefWidth="485.0" style="-fx-background-color: #021B2B; -fx-background-radius: 30;">

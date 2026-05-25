@@ -1,0 +1,48 @@
+.combo-box {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 20;
+    -fx-border-radius: 20;
+    -fx-border-color: #cccccc;
+    -fx-padding: 2;
+}
+
+/* Texto del valor seleccionado */
+.combo-box .cell {
+    -fx-text-fill: #02031A;
+}
+
+/* Flecha del ComboBox */
+.combo-box .arrow-button {
+    -fx-background-color: transparent;
+}
+
+.combo-box .arrow {
+    -fx-background-color: #02031A;
+}
+
+/* ===== DROPDOWN (lista desplegable) ===== */
+.combo-box-popup .list-view {
+    -fx-background-color: white;
+    -fx-background-radius: 15;
+    -fx-border-radius: 15;
+    -fx-padding: 5;
+}
+
+/* Ítems */
+.combo-box-popup .list-cell {
+    -fx-background-color: transparent;
+    -fx-text-fill: #02031A;
+}
+
+/* Hover */
+.combo-box-popup .list-cell:hover {
+    -fx-background-color: #ff0841;
+    -fx-text-fill: white;
+    -fx-background-radius: 10;
+}
+
+/* Ítem seleccionado */
+.combo-box-popup .list-cell:selected {
+    -fx-background-color: #ff0841;
+    -fx-text-fill: white;
+}

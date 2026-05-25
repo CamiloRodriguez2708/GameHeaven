@@ -167,7 +167,7 @@
                               <Font name="Nirmala UI Bold" size="16.0" />
                            </font>
                         </Button>
-                        <Button mnemonicParsing="false" style="-fx-background-color: EBDFCC; -fx-background-radius: 5;" text="Más...">
+                        <Button fx:id="btnMas" mnemonicParsing="false" onAction="#abrirBotones" style="-fx-background-color: EBDFCC; -fx-background-radius: 5;" text="Más...">
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>
@@ -235,6 +235,19 @@
       <Pane fx:id="overlay" prefHeight="612.0" prefWidth="1183.0" style="-fx-background-color: rgba(0,0,0,0.6);" visible="false">
          <children>
             <AnchorPane fx:id="popupMensaje" layoutX="435.0" layoutY="250.0" prefHeight="245.0" prefWidth="496.0" />
+         </children>
+      </Pane>
+      <Pane fx:id="PanelMBotones" onMouseClicked="#cerrarBotones" prefHeight="612.0" prefWidth="1183.0" style="-fx-background-color: rgba(0,0,0,0.6);" visible="false">
+         <children>
+            <AnchorPane fx:id="popupMensaje1" layoutX="700.0" layoutY="180.0" prefHeight="153.0" prefWidth="496.0" style="-fx-background-color: #EBDFCC; -fx-background-radius: 30;">
+               <children>
+                  <ScrollPane fx:id="ScrollP" hbarPolicy="NEVER" prefHeight="155.0" prefWidth="496.0" style="-fx-background-radius: 30; -fx-background-color: #EBDFCC;">
+                     <content>
+                        <FlowPane fx:id="panelBotones" prefHeight="153.0" prefWidth="478.0" rowValignment="BOTTOM" style="-fx-background-color: transparent;" />
+                     </content>
+                  </ScrollPane>
+               </children>
+            </AnchorPane>
          </children>
       </Pane>
    </children>

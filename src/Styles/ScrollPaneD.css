@@ -1,0 +1,25 @@
+#ScrollD .scroll-bar:horizontal {
+    -fx-background-color: #1a1a2e;
+    -fx-background-radius: 20;
+    -fx-pref-height: 12px;
+}
+
+#ScrollD .scroll-bar:horizontal .thumb {
+    -fx-background-color: #ff0841;
+    -fx-background-radius: 5px;
+}
+
+#ScrollD .scroll-bar:horizontal .increment-button,
+#ScrollD .scroll-bar:horizontal .decrement-button {
+    -fx-background-color: transparent;
+}
+
+#ScrollD .scroll-bar:horizontal .increment-arrow,
+#ScrollD .scroll-bar:horizontal .decrement-arrow {
+    -fx-shape: "";
+    -fx-padding: 0;
+}
+
+#ScrollD .viewport {
+    -fx-background-color: transparent;
+}

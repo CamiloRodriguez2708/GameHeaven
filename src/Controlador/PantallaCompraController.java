@@ -22,6 +22,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.effect.Blend;
 import javafx.scene.effect.BlendMode;
@@ -54,8 +55,10 @@ public class PantallaCompraController implements Initializable {
     @FXML HBox etiquetasHbox;
     @FXML AnchorPane popupCarrito;
     @FXML TextField buscar;
+    @FXML ScrollPane Scroll;
     private List<ImageView> estrellas;
     private int calificacion;
+    
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -72,7 +75,12 @@ public class PantallaCompraController implements Initializable {
             Cal4,
             Cal5
     );
-        
+        Platform.runLater(() -> {
+    Scroll.getScene().getStylesheets().add(
+        getClass().getResource("/Styles/ScrollPane.css").toExternalForm()
+    );
+});
+        plataformaCB.getStylesheets().add(getClass().getResource("/Styles/ComboBoxGlobal.css").toExternalForm());
         carritoTxt.setText(String.valueOf(Sesion.carrito.cantidadJuegos()));
         ArrayList<String> list = new ArrayList<>();
         Collections.addAll(list, "Catalogo", "Historial", "Favoritos");
@@ -301,7 +309,18 @@ public class PantallaCompraController implements Initializable {
         Image3.setImage(new Image(new File(System.getProperty("user.dir")+ "/src/datos/imagenes/"+ juego.capturas.get(2)).toURI().toString()));
         
         nombreTxt.setText(juego.nombre);
-        descripcionTxt.setText(juego.descripcion + "\n"+ "Requisitos minimos: " + juego.requisitosMin+ "\n"+"Requisitos minimos: " + juego.requisitosRec);
+        
+        descripcionTxt.setText(juego.descripcion + "\n\n" +
+
+        "DETALLES DEL JUEGO:\n" +
+        "Plataformas: " + String.join(", ", juego.plataforma) + "\n" +
+        "Categoría: " + juego.categoria + "\n" +
+        "Idiomas: " + String.join(", ", juego.idioma) + "\n" +
+        "Fecha de lanzamiento: " + juego.fechaLanzamiento + "\n" +
+        "Peso: " + juego.peso + "\n" +
+        "REQUISITOS MINIMOS: " + juego.requisitosMin + "\n" +
+        "REQUISITOS RECOMENDADOS: " + juego.requisitosRec);
+        
         plataformaCB.getItems().setAll(juego.plataforma);
         plataformaCB.getSelectionModel().select(0);
         precioDTxt.setText("Precio Digital: $" + (int) juego.precioDigital);

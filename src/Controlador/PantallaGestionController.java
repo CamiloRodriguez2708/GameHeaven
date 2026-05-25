@@ -139,7 +139,10 @@ public class PantallaGestionController implements Initializable {
     @FXML
     public void Login(MouseEvent event) throws Exception {
         if (Sesion.usuarioActual != null) {
-            Parent root = FXMLLoader.load(getClass().getResource("/Vista/ConfiguracionUsuario.fxml"));
+            Sesion.usuarioActual = null;
+            actualizarUsuario();
+            
+            Parent root = FXMLLoader.load(getClass().getResource("/Vista/paginaPrincipal.fxml"));
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             Scene scene = stage.getScene();
             scene.setRoot(root);
@@ -148,8 +151,7 @@ public class PantallaGestionController implements Initializable {
         Parent root = FXMLLoader.load(getClass().getResource("/Vista/PantallaLogin.fxml"));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = stage.getScene();
-        scene.setRoot(root);
-    }
+        scene.setRoot(root);}
     @FXML
     public void principal(MouseEvent event) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("/Vista/paginaPrincipal.fxml"));
