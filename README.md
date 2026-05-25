@@ -34,5 +34,5 @@ El proyecto está orientado al aprendizaje de:
 - Camilo Rodríguez  
 - Sofía Arrollo  
 - Yirley Nieves  
-- Sebastián Gonzales  
+- Sebastián Gonzalez 
 Ingeniería de Sistemas – Universidad de Córdoba
