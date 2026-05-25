@@ -31,9 +31,9 @@ El proyecto está orientado al aprendizaje de:
 
 **Proyecto realizado por:**
 
-- Camilo Rodríguez  
-- Sofía Arrollo  
-- Yirley Nieves  
-- Sebastián Gonzalez
+- Camilo Rodríguez Garciaz
+- Sofía Arrollo Burgos
+- Yirley Nieves Yepes 
+- Sebastián Gonzalez Ruiz
   
 Ingeniería de Sistemas – Universidad de Córdoba
