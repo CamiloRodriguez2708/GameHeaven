@@ -106,6 +106,7 @@ public class ColaHistorial {
         plataforma.add(partes[1]);
         String edicion = partes[2];
         String fecha = partes[3];
+        float precio = Float.parseFloat(partes[4]);
         
         nodoVideojuego juegoOriginal = Sistema.listaJuegos.buscarPorID(id);
         nodoVideojuego copia = new nodoVideojuego(
@@ -123,8 +124,8 @@ public class ColaHistorial {
                 fecha,
                 juegoOriginal.portada,
                 juegoOriginal.capturas,
-                juegoOriginal.precioDigital,
-                juegoOriginal.precioFisico,
+                precio,
+                precio,
                 juegoOriginal.stockDigital,
                 juegoOriginal.stockFisico,
                 juegoOriginal.calificaciones

@@ -184,7 +184,7 @@ public class listaUsuarios {
 
             lista.add(usuario);
         }
-
+        br.close();
     } catch (Exception e) {
         e.printStackTrace();
     }
@@ -238,7 +238,7 @@ public class listaUsuarios {
             temp = temp.sig;
             }while (temp != cab);
         }
-
+        bw.close();
     } catch (IOException e) {
         e.printStackTrace();
     }

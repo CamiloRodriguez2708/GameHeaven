@@ -79,7 +79,13 @@ public class PilaCarrito {
             nodoVideojuego juego = carrito.pop();
             
             
-            String datos = juego.id+"~"+juego.plataforma.get(0)+"~"+juego.edicion+"~"+ LocalDate.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) ;
+            String datos = juego.id+"~"+juego.plataforma.get(0)+"~"+juego.edicion+"~"+ LocalDate.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))+"~";
+            if(juego.edicion.equalsIgnoreCase("Fisico")){
+                datos += juego.precioFisico;
+            }
+            if(juego.edicion.equalsIgnoreCase("Digital")){
+                datos += juego.precioDigital;
+            }
             if(Sesion.usuarioActual.historial.get(0).equals("#")){
             Sesion.usuarioActual.historial.remove(0);
             }

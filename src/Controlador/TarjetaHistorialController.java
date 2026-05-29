@@ -33,7 +33,7 @@ public class TarjetaHistorialController implements Initializable {
     
     @FXML private Label nombre;
     
-    @FXML private Text Fecha;
+    @FXML private Text Fecha, precio;
     
     private nodoVideojuego juego;
     
@@ -69,6 +69,7 @@ public class TarjetaHistorialController implements Initializable {
         } catch (Exception e) {
             System.out.println("Error cargando imagen");
         }
+        precio.setText("$"+(int) juego.precioDigital);
         nombre.setText(juego.nombre +" ("+juego.plataforma.get(0)+") "+"("+juego.edicion+")");
         Fecha.setText(juego.fechaLanzamiento);
     }

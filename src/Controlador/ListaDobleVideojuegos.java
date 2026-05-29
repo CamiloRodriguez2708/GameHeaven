@@ -113,7 +113,7 @@ public class ListaDobleVideojuegos {
 
                 lista.add(juego);
             }
-
+            br.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -227,7 +227,7 @@ public class ListaDobleVideojuegos {
 
             temp = temp.sig;
         }
-
+        bw.close();
     } catch (IOException e) {
         e.printStackTrace();
     }
